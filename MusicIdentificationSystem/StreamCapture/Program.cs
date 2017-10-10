@@ -17,10 +17,10 @@ namespace StreamCapture
         static void Main(string[] args)
         {
 
-            //RecordStations();
-            AudioDecoder audioDecoder = new AudioDecoder();
+            RecordStations();
+            //AudioDecoder audioDecoder = new AudioDecoder();
             //audioDecoder.ConvertMp3ToWavFolder(@"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\", @"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\out\");
-            audioDecoder.ConvertWavToMp3Folder(@"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\out\", @"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\out\");
+            //audioDecoder.ConvertWavToMp3Folder(@"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\out\", @"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\out\");
         }
         private static void ConvertMp3ToWav_old(string _inPath_, string _outPath_)
         {
@@ -61,9 +61,10 @@ namespace StreamCapture
                 {
                     if (station.IsActive.HasValue && station.IsActive.Value)
                     {
+                        
                         Capture capture = new Capture();
                         Console.WriteLine("Start capture station {0}", station.StationName);
-                        capture.StartCapture2(0, station.Url, station.LocalPath);
+                        capture.StartCapture2(1, station);
                         Console.WriteLine("End capture station {0}", station.StationName);
 
                         ////Process process = new Process();

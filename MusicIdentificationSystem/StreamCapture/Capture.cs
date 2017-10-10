@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MusicIdentificationSystem.DAL;
+using MusicIdentificationSystem.EF.Context;
+using MusicIdentificationSystem.EF.Entities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,6 +14,7 @@ namespace StreamCapture
     public class Capture
     {
         String serverPath = "/";
+        private UnitOfWork unitOfWork = new UnitOfWork();
 
         public void StartCapture(int minutes, string server, string destinationPath)
         {
@@ -25,7 +29,7 @@ namespace StreamCapture
 
             Stream socketStream = null; // input stream on the web request
             Stream byteOut = null; // output stream on the destination file
-            TagLib.File f = null ;
+            TagLib.File f = null;
             // create web request
             request = (HttpWebRequest)WebRequest.Create(server);
 
@@ -51,7 +55,7 @@ namespace StreamCapture
             var curentHour = DateTime.Now.Hour;
             DateTime startTime = DateTime.Now;
             DateTime endTime = DateTime.Now.AddMinutes(minutes);
-           
+
             try
             {
                 // open stream on response
@@ -83,7 +87,7 @@ namespace StreamCapture
                         byteOut.Write(buffer, 0, bufLen);
                         //byteOut.Flush();
                     }
-                    
+
                     //for (int i = 0; i < bufLen; i++)
                     //{
                     //    if (count++ < metaInt) // write bytes to filestream
@@ -158,7 +162,7 @@ namespace StreamCapture
             {
                 foreach (string srcFileName in Directory.GetFiles(folderpath))
                 {
-                    if (Path.GetExtension(srcFileName).ToLower() == ".mp3" )
+                    if (Path.GetExtension(srcFileName).ToLower() == ".mp3")
                     {
                         using (Stream srcStream = File.OpenRead(srcFileName))
                         {
@@ -168,22 +172,33 @@ namespace StreamCapture
                 }
             }
         }
-        public void StartCapture2(int minutes, string server, string destinationPath)
+        public void StartCapture2(int minutes, StreamStationEntity station)
         {
             HttpWebRequest req;
             Stream s = null;
-            Stream fs = null;
+            FileStream fs = null;
+
+            //using (var db = new Db())
+            //{
+            StreamEntity stream = null;
             try
             {
-                req = (HttpWebRequest)WebRequest.Create(server);
+
+                //station.Url, station.LocalPath
+                req = (HttpWebRequest)WebRequest.Create(station.Url);
 
 
                 WebResponse resp = req.GetResponse();
                 s = resp.GetResponseStream();
                 var curentHour = DateTime.Now.Hour;
-                fs = createNewFile(destinationPath, "defaultStream");
-
-
+                fs = createNewFile(station.LocalPath, "defaultStream");
+                stream = new StreamEntity();
+                //db.Streams.Add(stream);
+                stream.StationId = station.Id;
+                stream.FileName = fs.Name;
+                stream.StartTime = DateTime.Now;
+                //db.SaveChanges();
+                unitOfWork.StreamRepository.Insert(stream);
                 byte[] buffer = new byte[4096];
                 var total = 0;
                 var count = 0;
@@ -200,7 +215,17 @@ namespace StreamCapture
                             fs.Flush();
                             fs.Close();
                         }
-                        fs = createNewFile(destinationPath, "defaultStream");
+                        stream.EndTime = DateTime.Now;
+                        unitOfWork.StreamRepository.Insert(stream);
+                        //db.SaveChanges();
+                        fs = createNewFile(station.LocalPath, "defaultStream");
+                        //db.Streams.Add(stream);
+                        stream = new StreamEntity();
+                        stream.StationId = station.Id;
+                        stream.FileName = fs.Name;
+                        stream.StartTime = DateTime.Now;
+                        //unitOfWork.StreamRepository.Insert(stream);
+                        //db.SaveChanges();
                         curentHour = DateTime.Now.Hour;
                     }
                     int bytesRead = s.Read(buffer, 0, buffer.Length);
@@ -210,7 +235,12 @@ namespace StreamCapture
                     count++;
                     //total += bytesRead;
                 }
+                stream.EndTime = DateTime.Now;
+                unitOfWork.StreamRepository.Insert(stream);
+                //db.SaveChanges();
+                unitOfWork.Save();
             }
+
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
@@ -221,7 +251,14 @@ namespace StreamCapture
                     fs.Close();
                 if (s != null)
                     s.Close();
+                if (stream != null)
+                {
+                    stream.EndTime = DateTime.Now;
+                    //db.SaveChanges();
+                    unitOfWork.Save();
+                }
             }
+            //}
         }
         /// <summary>
 		/// Create new file without overwritin existing files with the same filename.
@@ -229,7 +266,7 @@ namespace StreamCapture
 		/// <param name="destPath">destination path of the new file</param>
 		/// <param name="filename">filename of the file to be created</param>
 		/// <returns>an output stream on the file</returns>
-		private static Stream createNewFile(String destPath, String filename)
+		private static FileStream createNewFile(String destPath, String filename)
         {
             // replace characters, that are not allowed in filenames. (quick and dirrrrrty ;) )
             filename = filename.Replace(":", "");
