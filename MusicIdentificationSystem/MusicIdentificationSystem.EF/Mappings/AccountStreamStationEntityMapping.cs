@@ -16,28 +16,24 @@ namespace MusicIdentificationSystem.EF.Mappings
     using MusicIdentificationSystem.EF.Context;
     using MusicIdentificationSystem.EF.Entities;
 
-    // Tracks
+    // AccountStreamStations
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.32.0.0")]
-    public partial class TrackEntityMapping : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TrackEntity>
+    public partial class AccountStreamStationEntityMapping : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AccountStreamStationEntity>
     {
-        public TrackEntityMapping()
+        public AccountStreamStationEntityMapping()
             : this("dbo")
         {
         }
 
-        public TrackEntityMapping(string schema)
+        public AccountStreamStationEntityMapping(string schema)
         {
-            ToTable("Tracks", schema);
+            ToTable("AccountStreamStations", schema);
             HasKey(x => x.Id);
 
             Property(x => x.Id).HasColumnName(@"Id").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.Isrc).HasColumnName(@"ISRC").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
-            Property(x => x.Artist).HasColumnName(@"Artist").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(255);
-            Property(x => x.Title).HasColumnName(@"Title").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(255);
-            Property(x => x.Album).HasColumnName(@"Album").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(255);
-            Property(x => x.ReleaseYear).HasColumnName(@"ReleaseYear").HasColumnType("int").IsOptional();
-            Property(x => x.Length).HasColumnName(@"Length").HasColumnType("float").IsOptional();
-            Property(x => x.IsActive).HasColumnName(@"IsActive").HasColumnType("bit").IsOptional();
+            Property(x => x.AccountId).HasColumnName(@"AccountId").HasColumnType("int").IsRequired();
+            Property(x => x.StreamStationId).HasColumnName(@"StreamStationId").HasColumnType("int").IsRequired();
+            Property(x => x.IsActive).HasColumnName(@"IsActive").HasColumnType("bit").IsRequired();
             InitializePartial();
         }
         partial void InitializePartial();

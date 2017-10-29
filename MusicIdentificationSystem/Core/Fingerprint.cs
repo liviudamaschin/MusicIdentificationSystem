@@ -11,6 +11,7 @@ using NAudio.Wave;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MusicIdentificationSystem.EF.Entities;
+using MusicIdentificationSystem.DAL;
 
 namespace MusicIdentification.Core
 {
@@ -21,7 +22,7 @@ namespace MusicIdentification.Core
         private readonly IAudioService audioService = new NAudioService(); // use NAudio audio processing library
         private readonly IFingerprintCommandBuilder fingerprintCommandBuilder = new FingerprintCommandBuilder();
         private readonly IQueryCommandBuilder queryCommandBuilder = new QueryCommandBuilder();
-
+        private UnitOfWork unitOfWork = new UnitOfWork();
         public void StoreAudioFileFingerprintsInStorageForLaterRetrieval(string pathToAudioFile)
         {
             try
@@ -87,7 +88,7 @@ namespace MusicIdentification.Core
                         trackresult.Filename = queryAudioFile;
                         trackresult.TrackId = Convert.ToInt32(result.Track.TrackReference.Id);
                         trackresult.MatchStartAt = Convert.ToDecimal(result.TrackMatchStartsAt);
-                        
+                        //trackresult.Track = unitOfWork.TrackRepository.GetByID(trackresult.TrackId);
                         tracks.Add(trackresult);
                     }
                     //TrackData track = new TrackData();

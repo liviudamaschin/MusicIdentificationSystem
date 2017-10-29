@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateFingerprint", "CreateFingerprint\CreateFingerprint.csproj", "{89C8EEE9-2A43-44E7-A5E6-CE693C08E608}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{1A1942C3-A252-4256-A438-DB060A3E4036}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicIdentificationSystem.DAL", "MusicIdentificationSystem.DAL\MusicIdentificationSystem.DAL.csproj", "{6D162B39-716A-4385-B543-7A0750B7F090}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MdiHelper", "MdiHelper\MdiHelper.csproj", "{8DE00346-07A2-4049-8D77-4C47F182FFCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{6D162B39-716A-4385-B543-7A0750B7F090}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D162B39-716A-4385-B543-7A0750B7F090}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D162B39-716A-4385-B543-7A0750B7F090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DE00346-07A2-4049-8D77-4C47F182FFCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DE00346-07A2-4049-8D77-4C47F182FFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DE00346-07A2-4049-8D77-4C47F182FFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DE00346-07A2-4049-8D77-4C47F182FFCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,27 +16,22 @@ namespace MusicIdentificationSystem.EF.Mappings
     using MusicIdentificationSystem.EF.Context;
     using MusicIdentificationSystem.EF.Entities;
 
-    // Tracks
+    // Accounts
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.32.0.0")]
-    public partial class TrackEntityMapping : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TrackEntity>
+    public partial class AccountEntityMapping : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AccountEntity>
     {
-        public TrackEntityMapping()
+        public AccountEntityMapping()
             : this("dbo")
         {
         }
 
-        public TrackEntityMapping(string schema)
+        public AccountEntityMapping(string schema)
         {
-            ToTable("Tracks", schema);
+            ToTable("Accounts", schema);
             HasKey(x => x.Id);
 
             Property(x => x.Id).HasColumnName(@"Id").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.Isrc).HasColumnName(@"ISRC").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
-            Property(x => x.Artist).HasColumnName(@"Artist").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(255);
-            Property(x => x.Title).HasColumnName(@"Title").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(255);
-            Property(x => x.Album).HasColumnName(@"Album").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(255);
-            Property(x => x.ReleaseYear).HasColumnName(@"ReleaseYear").HasColumnType("int").IsOptional();
-            Property(x => x.Length).HasColumnName(@"Length").HasColumnType("float").IsOptional();
+            Property(x => x.AccountName).HasColumnName(@"AccountName").HasColumnType("nvarchar").IsOptional().HasMaxLength(250);
             Property(x => x.IsActive).HasColumnName(@"IsActive").HasColumnType("bit").IsOptional();
             InitializePartial();
         }

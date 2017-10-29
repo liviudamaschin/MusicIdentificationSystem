@@ -17,6 +17,10 @@ namespace MusicIdentificationSystem.EF.Interfaces
 
     public partial interface IDb : System.IDisposable
     {
+        System.Data.Entity.DbSet<AccountEntity> Accounts { get; set; } // Accounts
+        System.Data.Entity.DbSet<AccountStreamStationEntity> AccountStreamStations { get; set; } // AccountStreamStations
+        System.Data.Entity.DbSet<ApplicationSettingEntity> ApplicationSettings { get; set; } // ApplicationSettings
+        System.Data.Entity.DbSet<ClientEntity> Clients { get; set; } // Clients
         System.Data.Entity.DbSet<FingerprintEntity> Fingerprints { get; set; } // Fingerprints
         System.Data.Entity.DbSet<ResultEntity> Results { get; set; } // Results
         System.Data.Entity.DbSet<StreamEntity> Streams { get; set; } // Stream

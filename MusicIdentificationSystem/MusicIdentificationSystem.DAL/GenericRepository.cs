@@ -79,5 +79,10 @@ namespace MusicIdentificationSystem.DAL
             dbSet.Attach(entityToUpdate);
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
+
+        public virtual void Save(TEntity entityToSave)
+        {
+           // if (context.Entry(entityToSave).Property("Id").CurrentValue )
+        }
     }
 }

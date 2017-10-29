@@ -14,17 +14,23 @@
 namespace MusicIdentificationSystem.EF.Entities
 {
 
+    // Clients
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.32.0.0")]
-    public partial class SpReadTrackByArtistAndSongNameReturnModel
+    public partial class ClientEntity
     {
-        public System.Int32 Id { get; set; }
-        public System.String ISRC { get; set; }
-        public System.String Artist { get; set; }
-        public System.String Title { get; set; }
-        public System.String Album { get; set; }
-        public System.Int32? ReleaseYear { get; set; }
-        public System.Double? Length { get; set; }
-        public System.Boolean? IsActive { get; set; }
+        public int Id { get; set; } // Id (Primary key)
+        public string Name { get; set; } // Name (length: 50)
+        public string Email { get; set; } // Email (length: 50)
+        public string Address { get; set; } // Address (length: 250)
+        public bool? IsActive { get; set; } // IsActive
+
+        public ClientEntity()
+        {
+            IsActive = true;
+            InitializePartial();
+        }
+
+        partial void InitializePartial();
     }
 
 }

@@ -13,6 +13,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,6 +57,15 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
     <Reference Include="NAudio, Version=1.8.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NAudio.1.8.3\lib\net35\NAudio.dll</HintPath>
@@ -75,6 +99,9 @@
       <HintPath>..\packages\SoundFingerprinting.SQL.3.1.2\lib\net45\SoundFingerprinting.SQL.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SourceGrid">
+      <HintPath>..\DLLS\SourceGrid\Release\SourceGrid.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -98,11 +125,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateNewFingerprint.cs">
+    <Compile Include="frmEditTrack.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateNewFingerprint.Designer.cs">
-      <DependentUpon>CreateNewFingerprint.cs</DependentUpon>
+    <Compile Include="frmEditTrack.Designer.cs">
+      <DependentUpon>frmEditTrack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFingerprintFolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFingerprintFolder.Designer.cs">
+      <DependentUpon>frmFingerprintFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTracks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTracks.Designer.cs">
+      <DependentUpon>frmTracks.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -117,23 +156,35 @@
     <Compile Include="MainMDI.Designer.cs">
       <DependentUpon>MainMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewStreamStation.cs">
+    <Compile Include="frmEditStreamStation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewStreamStation.Designer.cs">
-      <DependentUpon>NewStreamStation.cs</DependentUpon>
+    <Compile Include="frmEditStreamStation.Designer.cs">
+      <DependentUpon>frmEditStreamStation.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ListItem.cs" />
+    <Compile Include="frmStationList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStationList.Designer.cs">
+      <DependentUpon>frmStationList.cs</DependentUpon>
+    </Compile>
     <Compile Include="StreamStationList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StreamStationList.Designer.cs">
       <DependentUpon>StreamStationList.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CreateNewFingerprint.resx">
-      <DependentUpon>CreateNewFingerprint.cs</DependentUpon>
+    <EmbeddedResource Include="frmEditTrack.resx">
+      <DependentUpon>frmEditTrack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFingerprintFolder.resx">
+      <DependentUpon>frmFingerprintFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTracks.resx">
+      <DependentUpon>frmTracks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -141,8 +192,8 @@
     <EmbeddedResource Include="MainMDI.resx">
       <DependentUpon>MainMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewStreamStation.resx">
-      <DependentUpon>NewStreamStation.cs</DependentUpon>
+    <EmbeddedResource Include="frmEditStreamStation.resx">
+      <DependentUpon>frmEditStreamStation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -154,11 +205,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="frmStationList.resx">
+      <DependentUpon>frmStationList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StreamStationList.resx">
       <DependentUpon>StreamStationList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\ListItem.datasource" />
+    <None Include="Properties\DataSources\MusicIdentificationSystem.EF.Entities.StreamEntity.datasource" />
+    <None Include="Properties\DataSources\MusicIdentificationSystem.EF.Entities.StreamStationEntity.datasource" />
+    <None Include="Properties\DataSources\MusicIdentificationSystem.EF.Entities.TrackEntity.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -178,6 +234,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{1a1942c3-a252-4256-a438-db060a3e4036}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MdiHelper\MdiHelper.csproj">
+      <Project>{8DE00346-07A2-4049-8D77-4C47F182FFCD}</Project>
+      <Name>MdiHelper</Name>
     </ProjectReference>
     <ProjectReference Include="..\MusicIdentificationSystem.DAL\MusicIdentificationSystem.DAL.csproj">
       <Project>{6D162B39-716A-4385-B543-7A0750B7F090}</Project>
@@ -260,6 +320,18 @@
     <Content Include="x86\tags.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

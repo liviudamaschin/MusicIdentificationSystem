@@ -1,6 +1,6 @@
 ﻿namespace CreateFingerprint
 {
-    partial class CreateNewFingerprint
+    partial class frmFingerprintFolder
     {
         /// <summary>
         /// Required designer variable.
@@ -32,11 +32,15 @@
             this.txtSongsPath = new System.Windows.Forms.TextBox();
             this.btnSelectSongsFolder = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.metroListView1 = new MetroFramework.Controls.MetroListView();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.File = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(283, 151);
+            this.button1.Location = new System.Drawing.Point(962, 46);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 23);
             this.button1.TabIndex = 5;
@@ -46,14 +50,14 @@
             // 
             // txtSongsPath
             // 
-            this.txtSongsPath.Location = new System.Drawing.Point(66, 13);
+            this.txtSongsPath.Location = new System.Drawing.Point(66, 18);
             this.txtSongsPath.Name = "txtSongsPath";
-            this.txtSongsPath.Size = new System.Drawing.Size(257, 22);
+            this.txtSongsPath.Size = new System.Drawing.Size(927, 22);
             this.txtSongsPath.TabIndex = 4;
             // 
             // btnSelectSongsFolder
             // 
-            this.btnSelectSongsFolder.Location = new System.Drawing.Point(329, 13);
+            this.btnSelectSongsFolder.Location = new System.Drawing.Point(999, 16);
             this.btnSelectSongsFolder.Name = "btnSelectSongsFolder";
             this.btnSelectSongsFolder.Size = new System.Drawing.Size(37, 21);
             this.btnSelectSongsFolder.TabIndex = 3;
@@ -70,16 +74,58 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Folder";
             // 
-            // CreateNewFingerprint
+            // metroListView1
+            // 
+            this.metroListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.File,
+            this.Status});
+            this.metroListView1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.metroListView1.FullRowSelect = true;
+            this.metroListView1.GridLines = true;
+            this.metroListView1.Location = new System.Drawing.Point(15, 85);
+            this.metroListView1.MultiSelect = false;
+            this.metroListView1.Name = "metroListView1";
+            this.metroListView1.OwnerDraw = true;
+            this.metroListView1.Size = new System.Drawing.Size(1021, 276);
+            this.metroListView1.TabIndex = 7;
+            this.metroListView1.UseCompatibleStateImageBehavior = false;
+            this.metroListView1.UseSelectable = true;
+            this.metroListView1.View = System.Windows.Forms.View.Details;
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(969, 378);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 8;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // File
+            // 
+            this.File.Text = "File";
+            this.File.Width = 853;
+            // 
+            // Status
+            // 
+            this.Status.Text = "Status";
+            this.Status.Width = 123;
+            // 
+            // frmFingerprintFolder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 186);
+            this.CancelButton = this.btnClose;
+            this.ClientSize = new System.Drawing.Size(1056, 413);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.metroListView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtSongsPath);
             this.Controls.Add(this.btnSelectSongsFolder);
-            this.Name = "CreateNewFingerprint";
+            this.Name = "frmFingerprintFolder";
             this.Text = "CreateFingerprint";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -92,5 +138,9 @@
         private System.Windows.Forms.TextBox txtSongsPath;
         private System.Windows.Forms.Button btnSelectSongsFolder;
         private System.Windows.Forms.Label label1;
+        private MetroFramework.Controls.MetroListView metroListView1;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ColumnHeader File;
+        private System.Windows.Forms.ColumnHeader Status;
     }
 }
