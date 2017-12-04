@@ -24,6 +24,7 @@ namespace MusicIdentificationSystem.EF.Entities
         public string LocalPath { get; set; } // LocalPath
         public bool? IsActive { get; set; } // IsActive
         public string Description { get; set; } // Description (length: 250)
+        public bool? Running { get; set; } // Running
 
         // Reverse navigation
 

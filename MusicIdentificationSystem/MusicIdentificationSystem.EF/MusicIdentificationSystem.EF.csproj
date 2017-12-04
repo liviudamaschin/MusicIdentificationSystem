@@ -94,6 +94,9 @@
     <Compile Include="Entities\SpInsertTrackReturnModel.cs">
       <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\SpMisGetActiveStationsReturnModel.cs">
+      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\SpReadFingerprintByTrackIdReturnModel.cs">
       <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
     </Compile>

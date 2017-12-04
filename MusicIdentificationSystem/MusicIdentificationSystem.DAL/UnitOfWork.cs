@@ -63,6 +63,11 @@ namespace MusicIdentificationSystem.DAL
             }
         }
 
+        public List<SpMisGetActiveStationsReturnModel> GetActiveStations()
+        {
+            return context.SpMisGetActiveStations();
+        }
+
         public void Save()
         {
             context.SaveChanges();

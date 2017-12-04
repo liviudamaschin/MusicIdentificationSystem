@@ -71,9 +71,6 @@ namespace MusicIdentification.Core
                 int secondsToAnalyze = (int)Math.Truncate(reader.TotalTime.TotalSeconds) - 1;
                 // query the underlying database for similar audio sub-fingerprints
 
-                //Stopwatch sw = new Stopwatch();
-                //sw.Start();
-                
                 var queryResult = queryCommandBuilder.BuildQueryCommand()
                                                      .From(queryAudioFile, secondsToAnalyze, startAtSecond)
                                                      .UsingServices(modelService, audioService)
@@ -91,9 +88,7 @@ namespace MusicIdentification.Core
                         //trackresult.Track = unitOfWork.TrackRepository.GetByID(trackresult.TrackId);
                         tracks.Add(trackresult);
                     }
-                    //TrackData track = new TrackData();
-
-                    //TrackList.Add(new ListItem(result.Track.ISRC, string.Format("{0} - {1} : {2}", result.Track.Artist, result.Track.Title, result.TrackMatchStartsAt)));
+                   
                 }
 
                 return tracks;
@@ -128,18 +123,6 @@ namespace MusicIdentification.Core
                         tracks.AddRange(matchedTracks);
                 }
             }
-            //Parallel.ForEach(files, file =>
-            //{
-            //    FileInfo fileInfo = new FileInfo(file);
-            //    if (fileInfo.Extension.ToLower() == ".mp3")
-            //    {
-            //        List<TrackData> matchedTracks = null;
-
-            //        matchedTracks=GetBestMatchForSong(fileInfo.FullName);
-            //        if (matchedTracks!=null)
-            //            tracks.AddRange(matchedTracks);
-            //    }
-            //});
             return tracks;
         }
     }

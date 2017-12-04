@@ -175,6 +175,25 @@ namespace MusicIdentificationSystem.EF.Context
             return System.Threading.Tasks.Task.FromResult(SpInsertTrack(isrc, artist, title, album, releaseYear, length, out procResult));
         }
 
+        public System.Collections.Generic.List<SpMisGetActiveStationsReturnModel> SpMisGetActiveStations()
+        {
+            int procResult;
+            return SpMisGetActiveStations(out procResult);
+        }
+
+        public System.Collections.Generic.List<SpMisGetActiveStationsReturnModel> SpMisGetActiveStations(out int procResult)
+        {
+
+            procResult = 0;
+            return new System.Collections.Generic.List<SpMisGetActiveStationsReturnModel>();
+        }
+
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<SpMisGetActiveStationsReturnModel>> SpMisGetActiveStationsAsync()
+        {
+            int procResult;
+            return System.Threading.Tasks.Task.FromResult(SpMisGetActiveStations(out procResult));
+        }
+
         public System.Collections.Generic.List<SpReadFingerprintByTrackIdReturnModel> SpReadFingerprintByTrackId(int? trackId)
         {
             int procResult;

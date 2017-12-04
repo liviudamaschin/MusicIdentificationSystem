@@ -40,7 +40,7 @@ namespace CreateFingerprint
             }
             catch (Exception err)
             {
-                DevAge.Windows.Forms.ErrorDialog.Show(this, err, "Error loading dataset");
+                //DevAge.Windows.Forms.ErrorDialog.Show(this, err, "Error loading dataset");
             }
             
         }

@@ -8,12 +8,14 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace StreamCapture
 {
     public class Capture
     {
         String serverPath = "/";
+
         private UnitOfWork unitOfWork = new UnitOfWork();
 
         public void StartCapture(int minutes, string server, string destinationPath)
@@ -149,6 +151,16 @@ namespace StreamCapture
                     socketStream.Close();
             }
         }
+
+        //internal Task<bool> StartCapture2(CancellationToken token, int v, StreamStationEntity station)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="folderpath"></param>
         public void combineFolderContent(string folderpath)
         {
             //string[] srcFileNames = { "file1.txt", "file2.txt", "file3.txt" };
@@ -172,94 +184,104 @@ namespace StreamCapture
                 }
             }
         }
-        public void StartCapture2(int minutes, StreamStationEntity station)
+
+        internal async Task<bool> StartCapture2(CancellationToken ct,int minutes, StreamStationEntity station)
         {
-            HttpWebRequest req;
-            Stream s = null;
-            FileStream fs = null;
+            await Task.Run(() => {
+                HttpWebRequest req;
+                Stream s = null;
+                FileStream fs = null;
 
-            //using (var db = new Db())
-            //{
-            StreamEntity stream = null;
-            try
-            {
-
-                //station.Url, station.LocalPath
-                req = (HttpWebRequest)WebRequest.Create(station.Url);
-
-
-                WebResponse resp = req.GetResponse();
-                s = resp.GetResponseStream();
-                var curentHour = DateTime.Now.Hour;
-                fs = createNewFile(station.LocalPath, "defaultStream");
-                stream = new StreamEntity();
-                //db.Streams.Add(stream);
-                stream.StationId = station.Id;
-                stream.FileName = fs.Name;
-                stream.StartTime = DateTime.Now;
-                //db.SaveChanges();
-                unitOfWork.StreamRepository.Insert(stream);
-                byte[] buffer = new byte[4096];
-                var total = 0;
-                var count = 0;
-                DateTime startTime = DateTime.Now;
-                DateTime endTime = DateTime.Now.AddMinutes(minutes);
-
-                //while (s.CanRead)
-                while (minutes == 0 || endTime > DateTime.Now)
+                Console.WriteLine("Start capture station {0}", station.StationName);
+                StreamEntity stream = null;
+                try
                 {
-                    if (curentHour != DateTime.Now.Hour)
-                    {
-                        if (fs != null)
-                        {
-                            fs.Flush();
-                            fs.Close();
-                        }
-                        stream.EndTime = DateTime.Now;
-                        unitOfWork.StreamRepository.Insert(stream);
-                        //db.SaveChanges();
-                        fs = createNewFile(station.LocalPath, "defaultStream");
-                        //db.Streams.Add(stream);
-                        stream = new StreamEntity();
-                        stream.StationId = station.Id;
-                        stream.FileName = fs.Name;
-                        stream.StartTime = DateTime.Now;
-                        //unitOfWork.StreamRepository.Insert(stream);
-                        //db.SaveChanges();
-                        curentHour = DateTime.Now.Hour;
-                    }
-                    int bytesRead = s.Read(buffer, 0, buffer.Length);
-                    fs.Write(buffer, 0, bytesRead);
-                    if (count % 100 == 0)
-                        fs.Flush();
-                    count++;
-                    //total += bytesRead;
-                }
-                stream.EndTime = DateTime.Now;
-                unitOfWork.StreamRepository.Insert(stream);
-                //db.SaveChanges();
-                unitOfWork.Save();
-            }
 
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                if (fs != null)
-                    fs.Close();
-                if (s != null)
-                    s.Close();
-                if (stream != null)
-                {
-                    stream.EndTime = DateTime.Now;
-                    //db.SaveChanges();
+                    //station.Url, station.LocalPath
+                    req = (HttpWebRequest)WebRequest.Create(station.Url);
+
+
+                    WebResponse resp = req.GetResponse();
+                    s = resp.GetResponseStream();
+                    var curentHour = DateTime.Now.Hour;
+                    fs = createNewFile(station.LocalPath, "defaultStream");
+                    stream = new StreamEntity();
+
+                    stream.StationId = station.Id;
+                    stream.FileName = fs.Name;
+                    stream.StartTime = DateTime.Now;
+
+                    unitOfWork.StreamRepository.Insert(stream);
                     unitOfWork.Save();
+                    byte[] buffer = new byte[4096];
+                    var total = 0;
+                    var count = 0;
+                    DateTime startTime = DateTime.Now;
+                    DateTime endTime = DateTime.Now.AddMinutes(minutes);
+
+                    //while (s.CanRead)
+                    while (minutes == 0 || endTime > DateTime.Now || !ct.IsCancellationRequested)
+                    {
+                        if (curentHour != DateTime.Now.Hour)
+                        {
+                            if (fs != null)
+                            {
+                                fs.Flush();
+                                fs.Close();
+                            }
+                            stream.EndTime = DateTime.Now;
+                            //unitOfWork.StreamRepository.Insert(stream);
+                            unitOfWork.Save();
+
+                            fs = createNewFile(station.LocalPath, "defaultStream");
+
+                            stream = new StreamEntity();
+                            stream.StationId = station.Id;
+                            stream.FileName = fs.Name;
+                            stream.StartTime = DateTime.Now;
+                            unitOfWork.StreamRepository.Insert(stream);
+                            unitOfWork.Save();
+                            curentHour = DateTime.Now.Hour;
+                        }
+                        int bytesRead = s.Read(buffer, 0, buffer.Length);
+                        fs.Write(buffer, 0, bytesRead);
+                        stream.EndTime = DateTime.Now;
+                        unitOfWork.Save();
+                        if (count % 100 == 0)
+                            fs.Flush();
+                        count++;
+                        //total += bytesRead;
+                    }
+                    stream.EndTime = DateTime.Now;
+                    //unitOfWork.StreamRepository.Insert(stream);
+                    unitOfWork.Save();
+                    //return true;
+
                 }
-            }
-            //}
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    //return false;
+                }
+                finally
+                {
+                    if (fs != null)
+                        fs.Close();
+                    if (s != null)
+                        s.Close();
+                    if (stream != null)
+                    {
+                        stream.EndTime = DateTime.Now;
+                        unitOfWork.Save();
+                    }
+
+                }
+            },ct);
+            //Console.WriteLine("End capture station {0}", station.StationName);
+            return true;
         }
+
         /// <summary>
 		/// Create new file without overwritin existing files with the same filename.
 		/// </summary>
@@ -294,7 +316,8 @@ namespace StreamCapture
                 var filepath = String.Format("{0}.mp3", Path.Combine(destPath + filename));
                 if (!File.Exists(filepath))
                 {
-                    return File.Create(filepath);
+                    //return File.Create(filepath);
+                    return new FileStream(filepath, FileMode.CreateNew, FileAccess.ReadWrite, FileShare.ReadWrite);
                     //TagLib.File f = TagLib.File.Create(filepath);
                     //return f;
                     //f.Tag.Album = "New Album Title";
@@ -307,7 +330,8 @@ namespace StreamCapture
                         filepath = String.Format("{0}({1}).mp3", Path.Combine(destPath + filename),i);
                         if (!File.Exists(filepath))
                         {
-                            return File.Create(filepath);
+                            //return File.Create(filepath);
+                            return new FileStream(filepath, FileMode.CreateNew, FileAccess.ReadWrite, FileShare.ReadWrite);
                         }
                     }
                 }
@@ -405,6 +429,12 @@ namespace StreamCapture
                 if (socketStream != null)
                     socketStream.Close();
             }
+        }
+
+        ~Capture()
+        {
+
+            unitOfWork.Save();
         }
     }
 }

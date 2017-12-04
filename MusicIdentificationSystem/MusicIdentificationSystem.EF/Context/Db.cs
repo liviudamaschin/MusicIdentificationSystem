@@ -494,6 +494,28 @@ namespace MusicIdentificationSystem.EF.Context
             return procResultData;
         }
 
+        public System.Collections.Generic.List<SpMisGetActiveStationsReturnModel> SpMisGetActiveStations()
+        {
+            int procResult;
+            return SpMisGetActiveStations(out procResult);
+        }
+
+        public System.Collections.Generic.List<SpMisGetActiveStationsReturnModel> SpMisGetActiveStations(out int procResult)
+        {
+            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
+            var procResultData = Database.SqlQuery<SpMisGetActiveStationsReturnModel>("EXEC @procResult = [dbo].[sp_mis_GetActiveStations] ", procResultParam).ToList();
+
+            procResult = (int) procResultParam.Value;
+            return procResultData;
+        }
+
+        public async System.Threading.Tasks.Task<System.Collections.Generic.List<SpMisGetActiveStationsReturnModel>> SpMisGetActiveStationsAsync()
+        {
+            var procResultData = await Database.SqlQuery<SpMisGetActiveStationsReturnModel>("EXEC [dbo].[sp_mis_GetActiveStations] ").ToListAsync();
+
+            return procResultData;
+        }
+
         public System.Collections.Generic.List<SpReadFingerprintByTrackIdReturnModel> SpReadFingerprintByTrackId(int? trackId)
         {
             int procResult;
