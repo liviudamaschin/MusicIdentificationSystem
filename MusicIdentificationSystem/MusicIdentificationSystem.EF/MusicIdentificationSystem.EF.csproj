@@ -62,6 +62,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Entities\AccountEntity.cs">
+      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AccountStreamStationEntity.cs">
+      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ApplicationSettingEntity.cs">
+      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ClientEntity.cs">
+      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\FingerprintEntity.cs">
       <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
     </Compile>
@@ -80,6 +92,9 @@
       <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\SpInsertTrackReturnModel.cs">
+      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SpMisGetActiveStationsReturnModel.cs">
       <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\SpReadFingerprintByTrackIdReturnModel.cs">
@@ -125,6 +140,18 @@
       <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Mappings\AccountEntityMapping.cs">
+      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\AccountStreamStationEntityMapping.cs">
+      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\ApplicationSettingEntityMapping.cs">
+      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\ClientEntityMapping.cs">
+      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="Mappings\FingerprintEntityMapping.cs">
       <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>

@@ -37,6 +37,7 @@ namespace MusicIdentificationSystem.EF.Mappings
             Property(x => x.Album).HasColumnName(@"Album").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(255);
             Property(x => x.ReleaseYear).HasColumnName(@"ReleaseYear").HasColumnType("int").IsOptional();
             Property(x => x.Length).HasColumnName(@"Length").HasColumnType("float").IsOptional();
+            Property(x => x.IsActive).HasColumnName(@"IsActive").HasColumnType("bit").IsOptional();
             InitializePartial();
         }
         partial void InitializePartial();

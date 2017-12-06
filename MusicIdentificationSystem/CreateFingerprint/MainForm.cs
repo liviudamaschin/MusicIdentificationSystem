@@ -1,4 +1,5 @@
 ﻿using MusicIdentification.Core;
+using MusicIdentificationSystem.DAL;
 using MusicIdentificationSystem.EF.Entities;
 using NAudio.Wave;
 using SoundFingerprinting;
@@ -34,7 +35,7 @@ namespace CreateFingerprint
         private readonly IQueryCommandBuilder queryCommandBuilder = new QueryCommandBuilder();
         public BindingList<ListItem> TrackList;
 
-        
+        private UnitOfWork unitOfWork = new UnitOfWork();
 
         //private readonly IModelService modelService2 = new SqlModelService()
         //public File OpenedFile;
@@ -251,10 +252,11 @@ namespace CreateFingerprint
 
             TrackList.Clear();
             Fingerprint fingerprint = new Fingerprint();
-            List<ResultEntity> traks = fingerprint.GetMatchSongsFromFolder(textBox3.Text);
-            foreach (var track in traks)
+            List<ResultEntity> results = fingerprint.GetMatchSongsFromFolder(textBox3.Text);
+            foreach (var result in results)
             {
-                TrackList.Add(new ListItem(track.Track.Isrc, string.Format("{0} - {1}", track.Track.Artist, track.Track.Title)));
+                var track =unitOfWork.TrackRepository.GetByID(result.TrackId);
+                TrackList.Add(new ListItem(track.Isrc, string.Format("{0} - {1}", track.Artist, track.Title)));
             }
         }
 

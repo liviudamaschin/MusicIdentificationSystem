@@ -22,6 +22,10 @@ namespace MusicIdentificationSystem.EF.Context
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.32.0.0")]
     public partial class FakeDb : IDb
     {
+        public System.Data.Entity.DbSet<AccountEntity> Accounts { get; set; }
+        public System.Data.Entity.DbSet<AccountStreamStationEntity> AccountStreamStations { get; set; }
+        public System.Data.Entity.DbSet<ApplicationSettingEntity> ApplicationSettings { get; set; }
+        public System.Data.Entity.DbSet<ClientEntity> Clients { get; set; }
         public System.Data.Entity.DbSet<FingerprintEntity> Fingerprints { get; set; }
         public System.Data.Entity.DbSet<ResultEntity> Results { get; set; }
         public System.Data.Entity.DbSet<StreamEntity> Streams { get; set; }
@@ -31,6 +35,10 @@ namespace MusicIdentificationSystem.EF.Context
 
         public FakeDb()
         {
+            Accounts = new FakeDbSet<AccountEntity>("Id");
+            AccountStreamStations = new FakeDbSet<AccountStreamStationEntity>("Id");
+            ApplicationSettings = new FakeDbSet<ApplicationSettingEntity>("Id");
+            Clients = new FakeDbSet<ClientEntity>("Id");
             Fingerprints = new FakeDbSet<FingerprintEntity>("Id");
             Results = new FakeDbSet<ResultEntity>("Id");
             Streams = new FakeDbSet<StreamEntity>("Id");
@@ -165,6 +173,25 @@ namespace MusicIdentificationSystem.EF.Context
         {
             int procResult;
             return System.Threading.Tasks.Task.FromResult(SpInsertTrack(isrc, artist, title, album, releaseYear, length, out procResult));
+        }
+
+        public System.Collections.Generic.List<SpMisGetActiveStationsReturnModel> SpMisGetActiveStations()
+        {
+            int procResult;
+            return SpMisGetActiveStations(out procResult);
+        }
+
+        public System.Collections.Generic.List<SpMisGetActiveStationsReturnModel> SpMisGetActiveStations(out int procResult)
+        {
+
+            procResult = 0;
+            return new System.Collections.Generic.List<SpMisGetActiveStationsReturnModel>();
+        }
+
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<SpMisGetActiveStationsReturnModel>> SpMisGetActiveStationsAsync()
+        {
+            int procResult;
+            return System.Threading.Tasks.Task.FromResult(SpMisGetActiveStations(out procResult));
         }
 
         public System.Collections.Generic.List<SpReadFingerprintByTrackIdReturnModel> SpReadFingerprintByTrackId(int? trackId)

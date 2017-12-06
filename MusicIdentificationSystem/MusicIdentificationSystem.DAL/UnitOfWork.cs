@@ -2,7 +2,9 @@
 using MusicIdentificationSystem.EF.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +18,7 @@ namespace MusicIdentificationSystem.DAL
         private GenericRepository<StreamEntity> streamRepository;
         private GenericRepository<StreamStationEntity> streamStationRepository;
         private GenericRepository<SubFingerprintEntity> subFingerprintRepository;
+        private GenericRepository<TrackEntity> trackRepository;
 
         public GenericRepository<FingerprintEntity> FingerprintRepository
         {
@@ -52,6 +55,18 @@ namespace MusicIdentificationSystem.DAL
                 return this.subFingerprintRepository ?? new GenericRepository<SubFingerprintEntity>(context);
             }
         }
+        public GenericRepository<TrackEntity> TrackRepository
+        {
+            get
+            {
+                return this.trackRepository ?? new GenericRepository<TrackEntity>(context);
+            }
+        }
+
+        public List<SpMisGetActiveStationsReturnModel> GetActiveStations()
+        {
+            return context.SpMisGetActiveStations();
+        }
 
         public void Save()
         {
@@ -76,6 +91,12 @@ namespace MusicIdentificationSystem.DAL
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public void DisposeDbContext()
+        {
+            context.Dispose();
+            context = new Db();
         }
     }
 }

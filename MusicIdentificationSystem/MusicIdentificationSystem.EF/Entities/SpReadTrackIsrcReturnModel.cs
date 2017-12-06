@@ -24,6 +24,7 @@ namespace MusicIdentificationSystem.EF.Entities
         public System.String Album { get; set; }
         public System.Int32? ReleaseYear { get; set; }
         public System.Double? Length { get; set; }
+        public System.Boolean? IsActive { get; set; }
     }
 
 }

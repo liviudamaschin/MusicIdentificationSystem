@@ -25,6 +25,7 @@ namespace MusicIdentificationSystem.EF.Entities
         public string Album { get; set; } // Album (length: 255)
         public int? ReleaseYear { get; set; } // ReleaseYear
         public double? Length { get; set; } // Length
+        public bool? IsActive { get; set; } // IsActive
 
         // Reverse navigation
 
@@ -45,6 +46,7 @@ namespace MusicIdentificationSystem.EF.Entities
         {
             ReleaseYear = 0;
             Length = 0;
+            IsActive = true;
             Fingerprints = new System.Collections.Generic.List<FingerprintEntity>();
             Results = new System.Collections.Generic.List<ResultEntity>();
             SubFingerprints = new System.Collections.Generic.List<SubFingerprintEntity>();

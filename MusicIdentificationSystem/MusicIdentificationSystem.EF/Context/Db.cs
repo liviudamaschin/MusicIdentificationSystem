@@ -22,6 +22,10 @@ namespace MusicIdentificationSystem.EF.Context
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.32.0.0")]
     public partial class Db : System.Data.Entity.DbContext, IDb
     {
+        public System.Data.Entity.DbSet<AccountEntity> Accounts { get; set; } // Accounts
+        public System.Data.Entity.DbSet<AccountStreamStationEntity> AccountStreamStations { get; set; } // AccountStreamStations
+        public System.Data.Entity.DbSet<ApplicationSettingEntity> ApplicationSettings { get; set; } // ApplicationSettings
+        public System.Data.Entity.DbSet<ClientEntity> Clients { get; set; } // Clients
         public System.Data.Entity.DbSet<FingerprintEntity> Fingerprints { get; set; } // Fingerprints
         public System.Data.Entity.DbSet<ResultEntity> Results { get; set; } // Results
         public System.Data.Entity.DbSet<StreamEntity> Streams { get; set; } // Stream
@@ -82,6 +86,10 @@ namespace MusicIdentificationSystem.EF.Context
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Configurations.Add(new AccountEntityMapping());
+            modelBuilder.Configurations.Add(new AccountStreamStationEntityMapping());
+            modelBuilder.Configurations.Add(new ApplicationSettingEntityMapping());
+            modelBuilder.Configurations.Add(new ClientEntityMapping());
             modelBuilder.Configurations.Add(new FingerprintEntityMapping());
             modelBuilder.Configurations.Add(new ResultEntityMapping());
             modelBuilder.Configurations.Add(new StreamEntityMapping());
@@ -94,6 +102,10 @@ namespace MusicIdentificationSystem.EF.Context
 
         public static System.Data.Entity.DbModelBuilder CreateModel(System.Data.Entity.DbModelBuilder modelBuilder, string schema)
         {
+            modelBuilder.Configurations.Add(new AccountEntityMapping(schema));
+            modelBuilder.Configurations.Add(new AccountStreamStationEntityMapping(schema));
+            modelBuilder.Configurations.Add(new ApplicationSettingEntityMapping(schema));
+            modelBuilder.Configurations.Add(new ClientEntityMapping(schema));
             modelBuilder.Configurations.Add(new FingerprintEntityMapping(schema));
             modelBuilder.Configurations.Add(new ResultEntityMapping(schema));
             modelBuilder.Configurations.Add(new StreamEntityMapping(schema));
@@ -478,6 +490,28 @@ namespace MusicIdentificationSystem.EF.Context
                 lengthParam.Value = System.DBNull.Value;
 
             var procResultData = await Database.SqlQuery<SpInsertTrackReturnModel>("EXEC [dbo].[sp_InsertTrack] @ISRC, @Artist, @Title, @Album, @ReleaseYear, @Length", isrcParam, artistParam, titleParam, albumParam, releaseYearParam, lengthParam).ToListAsync();
+
+            return procResultData;
+        }
+
+        public System.Collections.Generic.List<SpMisGetActiveStationsReturnModel> SpMisGetActiveStations()
+        {
+            int procResult;
+            return SpMisGetActiveStations(out procResult);
+        }
+
+        public System.Collections.Generic.List<SpMisGetActiveStationsReturnModel> SpMisGetActiveStations(out int procResult)
+        {
+            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
+            var procResultData = Database.SqlQuery<SpMisGetActiveStationsReturnModel>("EXEC @procResult = [dbo].[sp_mis_GetActiveStations] ", procResultParam).ToList();
+
+            procResult = (int) procResultParam.Value;
+            return procResultData;
+        }
+
+        public async System.Threading.Tasks.Task<System.Collections.Generic.List<SpMisGetActiveStationsReturnModel>> SpMisGetActiveStationsAsync()
+        {
+            var procResultData = await Database.SqlQuery<SpMisGetActiveStationsReturnModel>("EXEC [dbo].[sp_mis_GetActiveStations] ").ToListAsync();
 
             return procResultData;
         }
