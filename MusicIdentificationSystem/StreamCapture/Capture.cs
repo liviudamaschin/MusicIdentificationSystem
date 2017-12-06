@@ -197,6 +197,7 @@ namespace StreamCapture
                 try
                 {
 
+
                     //station.Url, station.LocalPath
                     req = (HttpWebRequest)WebRequest.Create(station.Url);
 

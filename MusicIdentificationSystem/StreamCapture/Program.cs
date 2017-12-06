@@ -114,8 +114,6 @@ namespace StreamCapture
                     {
                         if (!runningStations.ContainsKey(station.Id))
                         {
-
-                            
                             Capture capture = new Capture();
                             Console.WriteLine("Lounch capture station {0}", station.StationName);
                             CancellationTokenSource cts = new CancellationTokenSource();
