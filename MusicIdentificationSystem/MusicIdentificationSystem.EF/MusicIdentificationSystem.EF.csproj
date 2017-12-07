@@ -48,135 +48,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\Db.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\FakeDb.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\FakeDbSet.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\MusicIdentificationSystem.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Entities\FingerprintEntity.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\MusicIdentificationSystem.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Entities\ResultEntity.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SpInsertFingerprintReturnModel.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SpInsertSubFingerprintReturnModel.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SpInsertTrackReturnModel.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SpReadFingerprintByTrackIdReturnModel.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SpReadFingerprintsByHashBinHashTableAndThresholdReturnModel.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SpReadSubFingerprintsByHashBinHashTableAndThresholdWithClustersReturnModel.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SpReadSubFingerprintsByTrackIdReturnModel.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SpReadTrackByArtistAndSongNameReturnModel.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SpReadTrackByIdReturnModel.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SpReadTrackIsrcReturnModel.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SpReadTracksReturnModel.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\StreamEntity.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\StreamStationEntity.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\SubFingerprintEntity.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\TrackEntity.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces\IDb.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces\MusicIdentificationSystem.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Mappings\FingerprintEntityMapping.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Mappings\MusicIdentificationSystem.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Mappings\ResultEntityMapping.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Mappings\StreamEntityMapping.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Mappings\StreamStationEntityMapping.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Mappings\SubFingerprintEntityMapping.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Mappings\TrackEntityMapping.cs">
-      <DependentUpon>MusicIdentificationSystem.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Context\Db.cs" />
+    <Compile Include="Entities\AccountEntity.cs" />
+    <Compile Include="Entities\AccountStreamStationEntity.cs" />
+    <Compile Include="Entities\ApplicationSettingEntity.cs" />
+    <Compile Include="Entities\ClientEntity.cs" />
+    <Compile Include="Entities\FingerprintEntity.cs" />
+    <Compile Include="Entities\ResultEntity.cs" />
+    <Compile Include="Entities\SpInsertFingerprintReturnModel.cs" />
+    <Compile Include="Entities\SpInsertSubFingerprintReturnModel.cs" />
+    <Compile Include="Entities\SpInsertTrackReturnModel.cs" />
+    <Compile Include="Entities\SpReadFingerprintByTrackIdReturnModel.cs" />
+    <Compile Include="Entities\SpReadFingerprintsByHashBinHashTableAndThresholdReturnModel.cs" />
+    <Compile Include="Entities\SpReadSubFingerprintsByHashBinHashTableAndThresholdWithClustersReturnModel.cs" />
+    <Compile Include="Entities\SpReadSubFingerprintsByTrackIdReturnModel.cs" />
+    <Compile Include="Entities\SpReadTrackByArtistAndSongNameReturnModel.cs" />
+    <Compile Include="Entities\SpReadTrackByIdReturnModel.cs" />
+    <Compile Include="Entities\SpReadTrackIsrcReturnModel.cs" />
+    <Compile Include="Entities\SpReadTracksReturnModel.cs" />
+    <Compile Include="Entities\StreamEntity.cs" />
+    <Compile Include="Entities\StreamStationEntity.cs" />
+    <Compile Include="Entities\SubFingerprintEntity.cs" />
+    <Compile Include="Entities\TrackEntity.cs" />
+    <Compile Include="Interfaces\IDb.cs" />
+    <Compile Include="Mappings\AccountEntityMapping.cs" />
+    <Compile Include="Mappings\AccountStreamStationEntityMapping.cs" />
+    <Compile Include="Mappings\ApplicationSettingEntityMapping.cs" />
+    <Compile Include="Mappings\ClientEntityMapping.cs" />
+    <Compile Include="Mappings\FingerprintEntityMapping.cs" />
+    <Compile Include="Mappings\ResultEntityMapping.cs" />
+    <Compile Include="Mappings\StreamEntityMapping.cs" />
+    <Compile Include="Mappings\StreamStationEntityMapping.cs" />
+    <Compile Include="Mappings\SubFingerprintEntityMapping.cs" />
+    <Compile Include="Mappings\TrackEntityMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="EF.Reverse.POCO.Core.ttinclude" />
-    <None Include="EF.Reverse.POCO.ttinclude" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Context\MusicIdentificationSystem.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MusicIdentificationSystem.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entities\MusicIdentificationSystem.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MusicIdentificationSystem.cs</LastGenOutput>
-    </Content>
-    <Content Include="Interfaces\MusicIdentificationSystem.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MusicIdentificationSystem.cs</LastGenOutput>
-    </Content>
-    <Content Include="Mappings\MusicIdentificationSystem.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MusicIdentificationSystem.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

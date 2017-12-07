@@ -79,5 +79,20 @@ namespace MusicIdentificationSystem.DAL
             dbSet.Attach(entityToUpdate);
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
+
+        public virtual bool AlreadyExists(string propertyOrField, string value)
+        {
+            ParameterExpression param = Expression.Parameter(typeof(TEntity));
+            Expression boby = Expression.Equal(Expression.PropertyOrField(param, propertyOrField),
+                  Expression.Constant(value, typeof(string)));
+            Expression<Func<TEntity, bool>> filter = Expression.Lambda<Func<TEntity, bool>>(boby, param);
+
+            var entities = Get(filter);
+
+            if (entities != null && entities.Count() > 0)
+                return true;
+            else
+                return false;
+        }
     }
 }

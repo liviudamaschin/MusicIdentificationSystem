@@ -24,7 +24,7 @@ namespace MusicIdentificationSystem.Backoffice.Validators
                         return new ValidationFailure("Email", "Emailul este incorect!");
                 }
                 return null;
-            });
+            }); 
 
             Custom(x =>
             {
