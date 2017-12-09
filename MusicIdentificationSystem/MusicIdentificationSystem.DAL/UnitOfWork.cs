@@ -19,6 +19,10 @@ namespace MusicIdentificationSystem.DAL
         private GenericRepository<StreamStationEntity> streamStationRepository;
         private GenericRepository<SubFingerprintEntity> subFingerprintRepository;
         private GenericRepository<TrackEntity> trackRepository;
+        private GenericRepository<AccountEntity> accountRepository;
+        private GenericRepository<AccountStreamStationEntity> accountStreamStationRepository;
+        private GenericRepository<ApplicationSettingEntity> applicationSettingRepository;
+        private GenericRepository<ClientEntity> clientRepository;
 
         public GenericRepository<FingerprintEntity> FingerprintRepository
         {
@@ -60,6 +64,34 @@ namespace MusicIdentificationSystem.DAL
             get
             {
                 return this.trackRepository ?? new GenericRepository<TrackEntity>(context);
+            }
+        }
+        public GenericRepository<AccountEntity> AccountRepository
+        {
+            get
+            {
+                return this.accountRepository ?? new GenericRepository<AccountEntity>(context);
+            }
+        }
+        public GenericRepository<AccountStreamStationEntity> AccountStreamStationRepository
+        {
+            get
+            {
+                return this.accountStreamStationRepository ?? new GenericRepository<AccountStreamStationEntity>(context);
+            }
+        }
+        public GenericRepository<ApplicationSettingEntity> ApplicationSettingRepository
+        {
+            get
+            {
+                return this.applicationSettingRepository ?? new GenericRepository<ApplicationSettingEntity>(context);
+            }
+        }
+        public GenericRepository<ClientEntity> ClientRepository
+        {
+            get
+            {
+                return this.clientRepository ?? new GenericRepository<ClientEntity>(context);
             }
         }
 
