@@ -58,6 +58,7 @@
     <Compile Include="Entities\SpInsertFingerprintReturnModel.cs" />
     <Compile Include="Entities\SpInsertSubFingerprintReturnModel.cs" />
     <Compile Include="Entities\SpInsertTrackReturnModel.cs" />
+    <Compile Include="Entities\SpMisGetActiveStationsReturnModel.cs" />
     <Compile Include="Entities\SpReadFingerprintByTrackIdReturnModel.cs" />
     <Compile Include="Entities\SpReadFingerprintsByHashBinHashTableAndThresholdReturnModel.cs" />
     <Compile Include="Entities\SpReadSubFingerprintsByHashBinHashTableAndThresholdWithClustersReturnModel.cs" />
