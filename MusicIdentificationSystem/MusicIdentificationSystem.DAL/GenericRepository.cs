@@ -80,6 +80,11 @@ namespace MusicIdentificationSystem.DAL
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
 
+        public virtual void Save(TEntity entityToSave)
+        {
+           // if (context.Entry(entityToSave).Property("Id").CurrentValue )
+        }
+
         public virtual bool AlreadyExists(string propertyOrField, string value)
         {
             ParameterExpression param = Expression.Parameter(typeof(TEntity));

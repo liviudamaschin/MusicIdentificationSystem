@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace CreateFingerprint
 {
-    public partial class CreateNewFingerprint : Form
+    public partial class frmFingerprintFolder : Form
     {
-        public CreateNewFingerprint()
+        public frmFingerprintFolder()
         {
             InitializeComponent();
         }
@@ -45,14 +45,22 @@ namespace CreateFingerprint
             foreach (string file in files)
             {
                 FileInfo fileInfo = new FileInfo(file);
-                if (fileInfo.Extension.ToLower() == "mp3")
+                if (fileInfo.Extension.ToLower() == ".mp3")
                 {
+                    ListViewItem item= new ListViewItem(file);
+                    metroListView1.Items.Add(item);
                     Fingerprint fingerprint = new Fingerprint();
                     fingerprint.StoreAudioFileFingerprintsInStorageForLaterRetrieval(file);
+                    item.SubItems.Add("done");
                 }
 
             }
             //MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
