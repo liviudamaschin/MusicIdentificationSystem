@@ -24,6 +24,7 @@ namespace MusicIdentificationSystem.EF.Mappings
             Property(x => x.StartTime).HasColumnName(@"StartTime").HasColumnType("datetime").IsOptional();
             Property(x => x.EndTime).HasColumnName(@"EndTime").HasColumnType("datetime").IsOptional();
             Property(x => x.FileName).HasColumnName(@"FileName").HasColumnType("nvarchar").IsOptional().HasMaxLength(250);
+            Property(x => x.FileNameTransformed).HasColumnName(@"FileNameTransformed").HasColumnType("nvarchar").IsOptional().HasMaxLength(250);
 
             // Foreign keys
             HasOptional(a => a.StreamStation).WithMany(b => b.Streams).HasForeignKey(c => c.StationId).WillCascadeOnDelete(false); // FK_Stream_StreamStations

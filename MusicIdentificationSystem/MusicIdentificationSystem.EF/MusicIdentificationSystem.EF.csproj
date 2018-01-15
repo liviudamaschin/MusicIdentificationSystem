@@ -55,6 +55,7 @@
     <Compile Include="Entities\ClientEntity.cs" />
     <Compile Include="Entities\FingerprintEntity.cs" />
     <Compile Include="Entities\ResultEntity.cs" />
+    <Compile Include="Entities\SpGetUnprocessedStreamsReturnModel.cs" />
     <Compile Include="Entities\SpInsertFingerprintReturnModel.cs" />
     <Compile Include="Entities\SpInsertSubFingerprintReturnModel.cs" />
     <Compile Include="Entities\SpInsertTrackReturnModel.cs" />

@@ -57,6 +57,7 @@ namespace StreamCapture
                 // Log error.
             }
         }
+
         public void ConvertMp3ToWavFolder(string sourceFolder, string destinationFolder)
         {
             if (!Directory.Exists(destinationFolder))
@@ -73,6 +74,7 @@ namespace StreamCapture
             });
            
         }
+
         public void ConvertWavToMp3Folder(string sourceFolder, string destinationFolder)
         {
             if (!Directory.Exists(destinationFolder))
@@ -89,7 +91,8 @@ namespace StreamCapture
             });
             
         }
-        public void NormalizeMp3(string sourceFolder, string destinationFolder)
+
+        public void NormalizeMp3Folder(string sourceFolder, string destinationFolder)
         {
             if (!Directory.Exists(destinationFolder))
                 Directory.CreateDirectory(destinationFolder);
@@ -105,6 +108,18 @@ namespace StreamCapture
                     File.Delete(String.Format("{0}{1}", destinationFolder, fileInfo.Name.Replace(fileInfo.Extension, ".wav")));
                 }
             });
+        }
+
+        public string NormalizeMp3(string source, string destinationFolder)
+        {
+            
+            FileInfo fileInfo = new FileInfo(source);
+            string destinationFile = String.Format("{0}{1}", destinationFolder, fileInfo.Name.Replace(fileInfo.Extension, ".mp3"));
+            ConvertMp3ToWav(fileInfo.FullName, String.Format("{0}{1}", destinationFolder, fileInfo.Name.Replace(fileInfo.Extension, ".wav")));
+            ConvertWavToMp3(String.Format("{0}{1}", destinationFolder, fileInfo.Name.Replace(fileInfo.Extension, ".wav")), destinationFile);
+            File.Delete(String.Format("{0}{1}", destinationFolder, fileInfo.Name.Replace(fileInfo.Extension, ".wav")));
+
+            return destinationFile;
         }
     }
 }

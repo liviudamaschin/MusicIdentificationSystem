@@ -25,6 +25,7 @@ namespace MusicIdentificationSystem.EF.Mappings
             Property(x => x.LocalPath).HasColumnName(@"LocalPath").HasColumnType("nvarchar(max)").IsOptional();
             Property(x => x.IsActive).HasColumnName(@"IsActive").HasColumnType("bit").IsOptional();
             Property(x => x.Description).HasColumnName(@"Description").HasColumnType("nvarchar").IsOptional().HasMaxLength(250);
+            Property(x => x.TransformFolder).HasColumnName(@"TransformFolder").HasColumnType("nvarchar").IsOptional().HasMaxLength(250);
         }
     }
 }

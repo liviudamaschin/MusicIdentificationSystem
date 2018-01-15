@@ -224,7 +224,7 @@ namespace CreateFingerprint
             //audioDecoder.ConvertMp3ToWavFolder(textBox1.Text, textBox2.Text);
             //audioDecoder.ConvertWavToMp3Folder(textBox2.Text, textBox2.Text);
             //DeleteFiles(textBox2.Text, ".mp3");
-            audioDecoder.NormalizeMp3(textBox1.Text, textBox2.Text);
+            audioDecoder.NormalizeMp3Folder(textBox1.Text, textBox2.Text);
 
         }
 

@@ -14,7 +14,6 @@
 namespace MusicIdentificationSystem.EF.Entities
 {
 
-    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.32.0.0")]
     public partial class SpMisGetActiveStationsReturnModel
     {
         public System.Int32 Id { get; set; }

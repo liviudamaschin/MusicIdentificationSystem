@@ -100,6 +100,11 @@ namespace MusicIdentificationSystem.DAL
             return context.SpMisGetActiveStations();
         }
 
+        public List<SpGetUnprocessedStreamsReturnModel> GetUnprocessedStreams()
+        {
+            return context.SpGetUnprocessedStreams();
+        }
+
         public void Save()
         {
             context.SaveChanges();

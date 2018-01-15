@@ -16,8 +16,8 @@ namespace CreateFingerprint
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainForm());
-            Application.Run(new MainMDI());
+            Application.Run(new MainForm());
+            //Application.Run(new MainMDI());
         }
     }
 }

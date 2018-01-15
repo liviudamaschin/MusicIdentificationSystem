@@ -19,7 +19,8 @@ namespace MusicIdentificationSystem.DAL
                     StationName = entity.StationName,
                     Url = entity.Url,
                     Description = entity.Description,
-                    IsActive = entity.IsActive
+                    IsActive = entity.IsActive,
+                    TransformFolder=entity.TransformFolder
                 };
                 dbContext.StreamStations.Add(streamStation);
                 changesSaved = dbContext.SaveChanges();

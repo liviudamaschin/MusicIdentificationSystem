@@ -20,6 +20,10 @@ namespace StreamCapture
         {
 
             RecordStations();
+            //MatchStream();
+
+
+            /////////////////////////
             //AudioDecoder audioDecoder = new AudioDecoder();
             //audioDecoder.ConvertMp3ToWavFolder(@"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\", @"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\out\");
             //audioDecoder.ConvertWavToMp3Folder(@"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\out\", @"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\out\");
@@ -35,12 +39,12 @@ namespace StreamCapture
             }
         }
 
-        
         private static void ConcatFiles()
         {
             Capture capture = new Capture();
             capture.combineFolderContent(@"C:\Liviu\Stream\Paralel\rockfm\_2017-09-26\");
         }
+
         private static void RecordStations()
         {
 
@@ -146,6 +150,15 @@ namespace StreamCapture
             Console.WriteLine("Done!!!");
             Console.ReadLine();
         }
-        
+
+        private static void MatchStream()
+        {
+            UnitOfWork unitOfWork = new UnitOfWork();
+            var unprocessedStreamStations = unitOfWork.GetUnprocessedStreams();
+            foreach (var unprocessedStreamStation in unprocessedStreamStations)
+            {
+                //unprocessedStreamStation.FileNameTransformed
+            }
+        }
     }
 }
