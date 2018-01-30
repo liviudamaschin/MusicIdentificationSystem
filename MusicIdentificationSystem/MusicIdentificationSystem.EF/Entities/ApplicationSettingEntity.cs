@@ -11,5 +11,8 @@ namespace MusicIdentificationSystem.EF.Entities
         public int Id { get; set; } // Id (Primary key)
         public string KeyName { get; set; } // KeyName (length: 250)
         public string KeyValue { get; set; } // KeyValue (length: 250)
+        public string Description { get; set; } // Description (length: 1000)
+        public int? AccountId { get; set; } // AccountId
+        public bool IsActive { get; set; } // IsActive
     }
 }
