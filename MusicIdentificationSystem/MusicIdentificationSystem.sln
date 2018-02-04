@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicIdentificationSystem.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicIdentificationSystem.StreamCapture.Console", "MusicIdentificationSystem.StreamCapture\MusicIdentificationSystem.StreamCapture.Console.csproj", "{13E08E78-392E-4AA3-9312-D3D3589AD9DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicIdentificationSystem.GetResults.Console", "MusicIdentificationSystem.GetResults.Console\MusicIdentificationSystem.GetResults.Console.csproj", "{F3E18C74-7918-48C6-AB99-90688438A9BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{13E08E78-392E-4AA3-9312-D3D3589AD9DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13E08E78-392E-4AA3-9312-D3D3589AD9DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13E08E78-392E-4AA3-9312-D3D3589AD9DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3E18C74-7918-48C6-AB99-90688438A9BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3E18C74-7918-48C6-AB99-90688438A9BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3E18C74-7918-48C6-AB99-90688438A9BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3E18C74-7918-48C6-AB99-90688438A9BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
