@@ -1,15 +1,7 @@
-﻿using MetroFramework.Forms;
-using MusicIdentificationSystem.DAL;
-using MusicIdentificationSystem.EF.Context;
-using MusicIdentificationSystem.EF.Entities;
+﻿using MusicIdentificationSystem.DAL.DbEntities;
+using MusicIdentificationSystem.DAL.Repositories;
+using MusicIdentificationSystem.DAL.UnitOfWork;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CreateFingerprint
@@ -17,8 +9,8 @@ namespace CreateFingerprint
     public partial class frmEditStreamStation : Form
     {
         private int? streamStationId ;
-        UnitOfWork unitOfWork = new UnitOfWork();
-
+        //UnitOfWork2 unitOfWork = new UnitOfWork2();
+        StreamStationRepository streamStationRepository = new StreamStationRepository();
 
         public frmEditStreamStation()
         {
@@ -35,13 +27,13 @@ namespace CreateFingerprint
             StreamStationEntity entity = null;
             if (this.streamStationId.HasValue)
             {
-                entity = unitOfWork.StreamStationRepository.GetByID(this.streamStationId.Value);
-                unitOfWork.StreamStationRepository.Update(entity);
+                entity = streamStationRepository.GetByID(this.streamStationId.Value);
+                streamStationRepository.Update(entity);
             }
             else
             {
                 entity = new StreamStationEntity();
-                unitOfWork.StreamStationRepository.Insert(entity);
+                streamStationRepository.Insert(entity);
             }
             entity.Description = rtbDescription.Text.ToString();
             entity.StationName = txtStationName.Text;
@@ -50,7 +42,7 @@ namespace CreateFingerprint
             entity.Url = txtUrl.Text;
 
 
-            unitOfWork.Save();
+            streamStationRepository.Save();
             //StreamStation.AddStreamStation(entity);
             this.Close();
         }
@@ -63,7 +55,7 @@ namespace CreateFingerprint
         {
             if (this.streamStationId.HasValue)
             {
-                var entity = unitOfWork.StreamStationRepository.GetByID(this.streamStationId.Value);
+                var entity = streamStationRepository.GetByID(this.streamStationId.Value);
 
                 rtbDescription.Text = entity.Description;
                 txtStationName.Text = entity.StationName;

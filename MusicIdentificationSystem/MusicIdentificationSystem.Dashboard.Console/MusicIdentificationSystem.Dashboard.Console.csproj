@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -44,6 +47,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Monitoring.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -67,9 +72,9 @@
       <Project>{6D162B39-716A-4385-B543-7A0750B7F090}</Project>
       <Name>MusicIdentificationSystem.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MusicIdentificationSystem.EF\MusicIdentificationSystem.EF.csproj">
-      <Project>{71F5FCCF-BF88-495A-A808-109D2C619D12}</Project>
-      <Name>MusicIdentificationSystem.EF</Name>
+    <ProjectReference Include="..\MusicIdentificationSystem.DTO\MusicIdentificationSystem.DTO.csproj">
+      <Project>{E69D814B-DB5C-43BE-AA40-3842174D35BB}</Project>
+      <Name>MusicIdentificationSystem.DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

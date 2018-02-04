@@ -268,10 +268,6 @@
       <Project>{6d162b39-716a-4385-b543-7a0750b7f090}</Project>
       <Name>MusicIdentificationSystem.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MusicIdentificationSystem.EF\MusicIdentificationSystem.EF.csproj">
-      <Project>{71f5fccf-bf88-495a-a808-109d2c619d12}</Project>
-      <Name>MusicIdentificationSystem.EF</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Resources\Resources.csproj">
       <Project>{76eae888-670f-4c6f-a3ad-30e1a834a354}</Project>
       <Name>Resources</Name>

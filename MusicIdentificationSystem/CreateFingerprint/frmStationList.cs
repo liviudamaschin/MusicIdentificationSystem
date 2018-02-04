@@ -1,7 +1,7 @@
 ﻿using MdiHelper;
-using MetroFramework.Forms;
 using MusicIdentificationSystem.DAL;
-using MusicIdentificationSystem.EF.Entities;
+using MusicIdentificationSystem.DAL.DatabaseConfiguration;
+using MusicIdentificationSystem.DAL.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,9 +17,13 @@ namespace CreateFingerprint
 {
     public partial class frmStationList : Form
     {
-        UnitOfWork unitOfWork = new UnitOfWork();
+        private IDatabaseConfigurationManager config;
+
+        private UnitOfWork2 unitOfWork;
         public frmStationList()
         {
+            //this.config = config;
+            this.unitOfWork = new UnitOfWork2();
             InitializeComponent();
         }
        

@@ -153,7 +153,7 @@
             // 
             // trackEntityBindingSource
             // 
-            this.trackEntityBindingSource.DataSource = typeof(MusicIdentificationSystem.EF.Entities.TrackEntity);
+            this.trackEntityBindingSource.DataSource = typeof(MusicIdentificationSystem.DAL.DbEntities.TrackEntity);
             // 
             // btnClose
             // 

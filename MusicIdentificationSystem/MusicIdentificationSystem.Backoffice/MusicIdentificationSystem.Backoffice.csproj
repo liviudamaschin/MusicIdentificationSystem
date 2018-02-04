@@ -861,10 +861,6 @@
       <Name>MusicIdentificationSystem.DAL</Name>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
-    <ProjectReference Include="..\MusicIdentificationSystem.EF\MusicIdentificationSystem.EF.csproj">
-      <Project>{71f5fccf-bf88-495a-a808-109d2c619d12}</Project>
-      <Name>MusicIdentificationSystem.EF</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

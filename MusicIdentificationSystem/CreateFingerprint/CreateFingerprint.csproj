@@ -241,17 +241,13 @@
       <Project>{1a1942c3-a252-4256-a438-db060a3e4036}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MdiHelper\MdiHelper.csproj">
-      <Project>{8DE00346-07A2-4049-8D77-4C47F182FFCD}</Project>
-      <Name>MdiHelper</Name>
+    <ProjectReference Include="..\MdiHelper\MdiHelp.csproj">
+      <Project>{8de00346-07a2-4049-8d77-4c47f182ffcd}</Project>
+      <Name>MdiHelp</Name>
     </ProjectReference>
     <ProjectReference Include="..\MusicIdentificationSystem.DAL\MusicIdentificationSystem.DAL.csproj">
       <Project>{6D162B39-716A-4385-B543-7A0750B7F090}</Project>
       <Name>MusicIdentificationSystem.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MusicIdentificationSystem.EF\MusicIdentificationSystem.EF.csproj">
-      <Project>{71F5FCCF-BF88-495A-A808-109D2C619D12}</Project>
-      <Name>MusicIdentificationSystem.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\StreamCapture\StreamCapture.csproj">
       <Project>{AEC02DD7-101F-4C25-A70E-7FFFA4D28D6D}</Project>

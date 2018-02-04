@@ -1,13 +1,11 @@
-﻿using MusicIdentificationSystem.DAL;
-using MusicIdentificationSystem.EF.Context;
-using MusicIdentificationSystem.EF.Entities;
+﻿using MusicIdentification.Core;
+using MusicIdentificationSystem.DAL.Context;
+using MusicIdentificationSystem.DAL.DbEntities;
+using MusicIdentificationSystem.DAL.Repositories;
+using MusicIdentificationSystem.DAL.UnitOfWork;
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,15 +16,49 @@ namespace StreamCapture
         
         static void Main(string[] args)
         {
-
-            RecordStations();
+            //TestEntities();
+            //RecordStations();
             //MatchStream();
 
+            //ConvertFiles();
 
             /////////////////////////
             //AudioDecoder audioDecoder = new AudioDecoder();
             //audioDecoder.ConvertMp3ToWavFolder(@"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\", @"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\out\");
             //audioDecoder.ConvertWavToMp3Folder(@"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\out\", @"C:\Liviu\Stream\Paralel\rockfm\2017-10-01\out\");
+        }
+
+        private static void ConvertFiles()
+        {
+            MediaConvertor.ConvertFiles();
+        }
+        private static void TestEntities()
+        {
+            //UnitOfWork2 unitOfWork = new UnitOfWork2();
+
+
+            //StreamStationEntity
+            //StreamStationEntity streamStationEntity = new StreamStationEntity();
+            //streamStationEntity.StationName = "qqq";
+            //streamStationEntity.TransformFolder = "zzz";
+            ////DatabaseContext db = new DatabaseContext();
+
+            //unitOfWork.StreamStationRepository.Insert(streamStationEntity);
+            //unitOfWork.Save();
+
+            //StreamEntity
+            StreamRepository streamRepository  = new StreamRepository();
+            StreamEntity streamEntity = streamRepository.GetByID(58);
+            StreamEntity streamEntity2 = streamRepository.GetByID(57);
+            streamEntity.FileName = "aqsqsqd";
+            streamRepository.Save();
+            //streamEntity.FileName = "qqq";
+            //streamEntity.StationId = 1;
+            ////DatabaseContext db = new DatabaseContext();
+
+            //unitOfWork.StreamRepository.Insert(streamEntity);
+            //unitOfWork.Save();
+
         }
         private static void ConvertMp3ToWav_old(string _inPath_, string _outPath_)
         {
@@ -104,8 +136,9 @@ namespace StreamCapture
             #endregion
 
             #region taskProcessing
-            UnitOfWork unitOfWork = new UnitOfWork();
-            var streamStations = unitOfWork.StreamStationRepository.Get();
+            StreamStationRepository streamStationRepository = new StreamStationRepository();
+            //UnitOfWork2 unitOfWork = new UnitOfWork2();
+            var streamStations = streamStationRepository.Get();
             // Instantiate the CancellationTokenSource.
             //cts = new CancellationTokenSource();
             Dictionary<int, CancellationTokenSource> runningStations = new Dictionary<int, CancellationTokenSource>();
@@ -136,8 +169,8 @@ namespace StreamCapture
                         }
                     }
                 }
-                unitOfWork.DisposeDbContext();
-                streamStations = unitOfWork.StreamStationRepository.Get();
+                //unitOfWork.DisposeDbContext();
+                streamStations = streamStationRepository.Get();
             }
             #endregion
 
@@ -153,11 +186,23 @@ namespace StreamCapture
 
         private static void MatchStream()
         {
-            UnitOfWork unitOfWork = new UnitOfWork();
-            var unprocessedStreamStations = unitOfWork.GetUnprocessedStreams();
+            UnitOfWork2 unitOfWork = new UnitOfWork2();
+            var unprocessedStreamStations = unitOfWork.StreamStationRepository.GetUnprocessedStreams();
             foreach (var unprocessedStreamStation in unprocessedStreamStations)
             {
-                //unprocessedStreamStation.FileNameTransformed
+                if (unprocessedStreamStation.FileNameTransformed != null)
+                {
+                    Fingerprint fingerprint = new Fingerprint();
+                    List<ResultEntity> results = fingerprint.GetMatchSongsFromFolder(unprocessedStreamStation.FileNameTransformed);
+                    foreach (var result in results)
+                    {
+                        var track = unitOfWork.TrackRepository.GetByID(result.TrackId);
+                        StreamResultsEntity streamResult = new StreamResultsEntity();
+                        //streamResult.ResultId = 
+                        //unitOfWork.StreamResultsRepository.
+                        //TrackList.Add(new ListItem(track.Isrc, string.Format("{0} - {1}", track.Artist, track.Title)));
+                    }
+                }
             }
         }
     }

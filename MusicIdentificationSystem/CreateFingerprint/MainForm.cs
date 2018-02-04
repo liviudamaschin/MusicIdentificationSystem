@@ -1,14 +1,13 @@
 ﻿using MusicIdentification.Core;
-using MusicIdentificationSystem.DAL;
-using MusicIdentificationSystem.EF.Entities;
+using MusicIdentificationSystem.DAL.DbEntities;
+using MusicIdentificationSystem.DAL.Repositories;
+using MusicIdentificationSystem.DAL.UnitOfWork;
 using NAudio.Wave;
 using SoundFingerprinting;
 using SoundFingerprinting.Audio;
-using SoundFingerprinting.Audio.Bass;
 using SoundFingerprinting.Audio.NAudio;
 using SoundFingerprinting.Builder;
 using SoundFingerprinting.DAO.Data;
-using SoundFingerprinting.InMemory;
 using SoundFingerprinting.Query;
 using SoundFingerprinting.SQL;
 using StreamCapture;
@@ -18,7 +17,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
-using WMPLib;
 
 namespace CreateFingerprint
 {
@@ -35,8 +33,8 @@ namespace CreateFingerprint
         private readonly IQueryCommandBuilder queryCommandBuilder = new QueryCommandBuilder();
         public BindingList<ListItem> TrackList;
 
-        private UnitOfWork unitOfWork = new UnitOfWork();
-
+        //private UnitOfWork2 unitOfWork = new UnitOfWork2();
+        TrackRepository trackRepository = new TrackRepository();
         //private readonly IModelService modelService2 = new SqlModelService()
         //public File OpenedFile;
         public MainForm()
@@ -113,8 +111,20 @@ namespace CreateFingerprint
                 MessageBox.Show(ex.Message);
             }
         }
-
-        public TrackData GetBestMatchForSong(string queryAudioFile)
+        public void GetBestMatchForSong(string audioFile)
+        {
+            Fingerprint fingerprint = new Fingerprint();
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            List<ResultEntity> results = fingerprint.GetBestMatchForSong(audioFile);
+            sw.Stop();
+            MessageBox.Show(String.Format("Time elapsed {0}:{1}", sw.Elapsed.TotalMinutes, sw.Elapsed.TotalSeconds));
+            foreach (ResultEntity result in results)
+            {
+                TrackList.Add(new ListItem(result.Id.ToString() , $"{result.Track.Artist}, {result.Track.Title}, {result.MatchStartAt}"));
+            }
+        }
+        public TrackData GetBestMatchForSong2(string queryAudioFile)
         {
             try
             {
@@ -255,7 +265,7 @@ namespace CreateFingerprint
             List<ResultEntity> results = fingerprint.GetMatchSongsFromFolder(textBox3.Text);
             foreach (var result in results)
             {
-                var track =unitOfWork.TrackRepository.GetByID(result.TrackId);
+                var track =trackRepository.GetByID(result.TrackId);
                 TrackList.Add(new ListItem(track.Isrc, string.Format("{0} - {1}", track.Artist, track.Title)));
             }
         }

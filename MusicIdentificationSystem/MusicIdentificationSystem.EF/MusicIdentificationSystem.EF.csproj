@@ -49,29 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\Db.cs" />
-    <Compile Include="Entities\AccountEntity.cs" />
-    <Compile Include="Entities\AccountStreamStationEntity.cs" />
-    <Compile Include="Entities\ApplicationSettingEntity.cs" />
-    <Compile Include="Entities\ClientEntity.cs" />
-    <Compile Include="Entities\FingerprintEntity.cs" />
-    <Compile Include="Entities\ResultEntity.cs" />
-    <Compile Include="Entities\SpGetUnprocessedStreamsReturnModel.cs" />
-    <Compile Include="Entities\SpInsertFingerprintReturnModel.cs" />
-    <Compile Include="Entities\SpInsertSubFingerprintReturnModel.cs" />
-    <Compile Include="Entities\SpInsertTrackReturnModel.cs" />
-    <Compile Include="Entities\SpMisGetActiveStationsReturnModel.cs" />
-    <Compile Include="Entities\SpReadFingerprintByTrackIdReturnModel.cs" />
-    <Compile Include="Entities\SpReadFingerprintsByHashBinHashTableAndThresholdReturnModel.cs" />
-    <Compile Include="Entities\SpReadSubFingerprintsByHashBinHashTableAndThresholdWithClustersReturnModel.cs" />
-    <Compile Include="Entities\SpReadSubFingerprintsByTrackIdReturnModel.cs" />
-    <Compile Include="Entities\SpReadTrackByArtistAndSongNameReturnModel.cs" />
-    <Compile Include="Entities\SpReadTrackByIdReturnModel.cs" />
-    <Compile Include="Entities\SpReadTrackIsrcReturnModel.cs" />
-    <Compile Include="Entities\SpReadTracksReturnModel.cs" />
-    <Compile Include="Entities\StreamEntity.cs" />
-    <Compile Include="Entities\StreamStationEntity.cs" />
-    <Compile Include="Entities\SubFingerprintEntity.cs" />
-    <Compile Include="Entities\TrackEntity.cs" />
     <Compile Include="Interfaces\IDb.cs" />
     <Compile Include="Mappings\AccountEntityMapping.cs" />
     <Compile Include="Mappings\AccountStreamStationEntityMapping.cs" />
@@ -92,6 +69,11 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MusicIdentificationSystem.DAL\MusicIdentificationSystem.DAL.csproj">
+      <Project>{6D162B39-716A-4385-B543-7A0750B7F090}</Project>
+      <Name>MusicIdentificationSystem.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

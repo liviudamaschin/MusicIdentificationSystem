@@ -79,10 +79,6 @@
       <Project>{6D162B39-716A-4385-B543-7A0750B7F090}</Project>
       <Name>MusicIdentificationSystem.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MusicIdentificationSystem.EF\MusicIdentificationSystem.EF.csproj">
-      <Project>{71F5FCCF-BF88-495A-A808-109D2C619D12}</Project>
-      <Name>MusicIdentificationSystem.EF</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

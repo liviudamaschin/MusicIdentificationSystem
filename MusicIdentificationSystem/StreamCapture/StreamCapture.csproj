@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="AudioDecoder.cs" />
     <Compile Include="Capture.cs" />
+    <Compile Include="MediaConvertor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,13 +69,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{1A1942C3-A252-4256-A438-DB060A3E4036}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MusicIdentificationSystem.DAL\MusicIdentificationSystem.DAL.csproj">
       <Project>{6D162B39-716A-4385-B543-7A0750B7F090}</Project>
       <Name>MusicIdentificationSystem.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MusicIdentificationSystem.EF\MusicIdentificationSystem.EF.csproj">
-      <Project>{71F5FCCF-BF88-495A-A808-109D2C619D12}</Project>
-      <Name>MusicIdentificationSystem.EF</Name>
+    <ProjectReference Include="..\MusicIdentificationSystem.DTO\MusicIdentificationSystem.DTO.csproj">
+      <Project>{E69D814B-DB5C-43BE-AA40-3842174D35BB}</Project>
+      <Name>MusicIdentificationSystem.DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
