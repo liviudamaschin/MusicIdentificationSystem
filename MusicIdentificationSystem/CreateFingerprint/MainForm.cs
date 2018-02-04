@@ -10,7 +10,6 @@ using SoundFingerprinting.Builder;
 using SoundFingerprinting.DAO.Data;
 using SoundFingerprinting.Query;
 using SoundFingerprinting.SQL;
-using StreamCapture;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

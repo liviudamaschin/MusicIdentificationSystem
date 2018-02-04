@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AudioDecoder.cs" />
     <Compile Include="Fingerprint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
