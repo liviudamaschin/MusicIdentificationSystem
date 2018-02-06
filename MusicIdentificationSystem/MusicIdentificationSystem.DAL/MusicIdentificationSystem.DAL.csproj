@@ -30,15 +30,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=4.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StructureMap.4.6.1\lib\net45\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,21 +57,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenericRepository.cs" />
+    <Compile Include="Context\DatabaseContext.cs" />
+    <Compile Include="DatabaseConfiguration\ConfigurationManager.cs" />
+    <Compile Include="DatabaseConfiguration\DatabaseConfigurationManager.cs" />
+    <Compile Include="DatabaseConfiguration\IDatabaseConfigurationManager.cs" />
+    <Compile Include="DbEntities\AccountEntity.cs" />
+    <Compile Include="DbEntities\AccountStreamStationEntity.cs" />
+    <Compile Include="DbEntities\ApplicationSettingEntity.cs" />
+    <Compile Include="DbEntities\ClientEntity.cs" />
+    <Compile Include="DbEntities\FingerprintEntity.cs" />
+    <Compile Include="DbEntities\ResultEntity.cs" />
+    <Compile Include="DbEntities\StreamEntity.cs" />
+    <Compile Include="DbEntities\StreamResultsEntity.cs" />
+    <Compile Include="DbEntities\StreamStationEntity.cs" />
+    <Compile Include="DbEntities\SubFingerprintEntity.cs" />
+    <Compile Include="DbEntities\TrackEntity.cs" />
+    <Compile Include="GenericRepository2.cs" />
+    <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\ApplicationSettingRepository.cs" />
+    <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
+    <Compile Include="Repositories\IGenericRepository.cs" />
+    <Compile Include="Repositories\StreamRepository.cs" />
+    <Compile Include="Repositories\StreamStationRepository.cs" />
+    <Compile Include="Repositories\TrackRepository.cs" />
     <Compile Include="StreamStation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitOfWork.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork2.cs" />
     <Compile Include="Utils.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MusicIdentificationSystem.EF\MusicIdentificationSystem.EF.csproj">
-      <Project>{71F5FCCF-BF88-495A-A808-109D2C619D12}</Project>
-      <Name>MusicIdentificationSystem.EF</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MusicIdentificationSystem.DTO\MusicIdentificationSystem.DTO.csproj">
+      <Project>{E69D814B-DB5C-43BE-AA40-3842174D35BB}</Project>
+      <Name>MusicIdentificationSystem.DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

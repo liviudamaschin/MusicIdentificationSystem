@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using MusicIdentificationSystem.Backoffice.Helpers;
 using MusicIdentificationSystem.Backoffice.Models;
 using MusicIdentificationSystem.DAL;
+using MusicIdentificationSystem.DAL.UnitOfWork;
 using System;
 using System.Linq.Expressions;
 
@@ -28,7 +29,7 @@ namespace MusicIdentificationSystem.Backoffice.Validators
 
             Custom(x =>
             {
-                var unitOfWork = new UnitOfWork();
+                var unitOfWork = new UnitOfWork2();
 
                 if (unitOfWork.ClientRepository.AlreadyExists(propertyOrField: "Email", value: x.Email))
                     return new ValidationFailure("Email", "Emailul deja exista in sistem");

@@ -1,5 +1,7 @@
 ﻿using MusicIdentificationSystem.DAL;
-using MusicIdentificationSystem.EF.Entities;
+using MusicIdentificationSystem.DAL.DbEntities;
+using MusicIdentificationSystem.DAL.Repositories;
+using MusicIdentificationSystem.DAL.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +17,8 @@ namespace CreateFingerprint
     public partial class frmEditTrack : Form
     {
         private int? trackId;
-        UnitOfWork unitOfWork = new UnitOfWork();
-
+        //UnitOfWork2 unitOfWork = new UnitOfWork2();
+        TrackRepository trackRepository = new TrackRepository();
         public frmEditTrack()
         {
             InitializeComponent();
@@ -33,7 +35,7 @@ namespace CreateFingerprint
         {
             if (this.trackId.HasValue)
             {
-                var entity = unitOfWork.TrackRepository.GetByID(this.trackId.Value);
+                var entity = trackRepository.GetByID(this.trackId.Value);
 
                 txtArtist.Text = entity.Artist;
                 txtTitle.Text = entity.Title;
@@ -51,13 +53,13 @@ namespace CreateFingerprint
             TrackEntity entity = null;
             if (this.trackId.HasValue)
             {
-                entity = unitOfWork.TrackRepository.GetByID(this.trackId.Value);
-                unitOfWork.TrackRepository.Update(entity);
+                entity = trackRepository.GetByID(this.trackId.Value);
+                trackRepository.Update(entity);
             }
             else
             {
                 entity = new TrackEntity();
-                unitOfWork.TrackRepository.Insert(entity);
+                trackRepository.Insert(entity);
             }
             entity.Album = txtAlbum.Text;
             entity.Title = txtTitle.Text;
@@ -68,7 +70,7 @@ namespace CreateFingerprint
             
 
 
-            unitOfWork.Save();//StreamStation.AddStreamStation(entity);
+            trackRepository.Save();//StreamStation.AddStreamStation(entity);
             this.Close();
         }
 

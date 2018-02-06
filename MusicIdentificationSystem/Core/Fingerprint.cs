@@ -9,9 +9,9 @@ using SoundFingerprinting.SQL;
 using System.IO;
 using NAudio.Wave;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using MusicIdentificationSystem.EF.Entities;
-using MusicIdentificationSystem.DAL;
+using MusicIdentificationSystem.DAL.DbEntities;
+using MusicIdentificationSystem.DAL.DatabaseConfiguration;
+using MusicIdentificationSystem.DAL.UnitOfWork;
 
 namespace MusicIdentification.Core
 {
@@ -22,7 +22,15 @@ namespace MusicIdentification.Core
         private readonly IAudioService audioService = new NAudioService(); // use NAudio audio processing library
         private readonly IFingerprintCommandBuilder fingerprintCommandBuilder = new FingerprintCommandBuilder();
         private readonly IQueryCommandBuilder queryCommandBuilder = new QueryCommandBuilder();
-        private UnitOfWork unitOfWork = new UnitOfWork();
+        //private UnitOfWork2 unitOfWork;
+        private IDatabaseConfigurationManager config;
+
+        public Fingerprint()
+        {
+            this.config = config;
+            //this.unitOfWork = new UnitOfWork2();
+        }
+
         public void StoreAudioFileFingerprintsInStorageForLaterRetrieval(string pathToAudioFile)
         {
             try
@@ -79,7 +87,7 @@ namespace MusicIdentification.Core
                
                 foreach (ResultEntry result in queryResult.ResultEntries)
                 {
-                    if (result.Confidence > 0.5)
+                    if (result.Confidence > 0.7)
                     {
                         ResultEntity trackresult = new ResultEntity();
                         trackresult.Filename = queryAudioFile;

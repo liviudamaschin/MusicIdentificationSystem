@@ -1,5 +1,7 @@
 ﻿using MdiHelper;
 using MusicIdentificationSystem.DAL;
+using MusicIdentificationSystem.DAL.Repositories;
+using MusicIdentificationSystem.DAL.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +17,8 @@ namespace CreateFingerprint
 {
     public partial class frmTracks : Form
     {
-        UnitOfWork unitOfWork = new UnitOfWork();
+        //UnitOfWork2 unitOfWork = new UnitOfWork2();
+        TrackRepository trackRepository = new TrackRepository();
         public frmTracks()
         {
             InitializeComponent();
@@ -31,7 +34,7 @@ namespace CreateFingerprint
             try
             {
 
-                var tracks = unitOfWork.TrackRepository.Get();
+                var tracks = trackRepository.Get();
 
                 //dgvStationList.DataSource = streamStations.ToList();
 
@@ -58,8 +61,8 @@ namespace CreateFingerprint
             //Reciever of the dialogresult, as specified in the method call (ShowChildDialog) above.
             //MessageBox.Show("ChildDemoForm returned: " + e.Result.ToString());
             int selRow = metroGrid1.SelectedRows[0].Index;
-            unitOfWork.DisposeDbContext();
-            var traks = unitOfWork.TrackRepository.Get();
+            //unitOfWork.DisposeDbContext();
+            var traks = trackRepository.Get();
             //dgvStationList.DataSource = streamStations.ToList();
             metroGrid1.DataSource = traks.ToList();
             //dgvStationList.Rows[e.RowIndex].Selected = true;

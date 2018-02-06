@@ -17,6 +17,7 @@ namespace StreamCapture
             //startInfo.WindowStyle = ProcessWindowStyle.Hidden;
             startInfo.FileName = "ffmpeg.exe";
             startInfo.Arguments = String.Format(@"-i {0} -acodec libmp3lame {1}", source, destination);
+            //.StartInfo.Arguments = "-threads 2"
             //process.StartInfo = startInfo;
             //process.Start();
             try

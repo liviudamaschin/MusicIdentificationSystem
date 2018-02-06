@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MusicIdentificationSystem.EF.Context;
-using MusicIdentificationSystem.EF.Entities;
+using MusicIdentificationSystem.DAL.Context;
+using MusicIdentificationSystem.DAL.DbEntities;
 
 namespace MusicIdentificationSystem.Backoffice.Controllers
 {
     public class AccountEntitiesController : Controller
     {
-        private Db db = new Db();
+        private DatabaseContext db = new DatabaseContext();
 
         // GET: AccountEntities
         public async Task<ActionResult> Index()

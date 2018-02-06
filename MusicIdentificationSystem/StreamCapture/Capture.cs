@@ -1,14 +1,14 @@
-﻿using MusicIdentificationSystem.DAL;
-using MusicIdentificationSystem.EF.Context;
-using MusicIdentificationSystem.EF.Entities;
+﻿
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using MusicIdentificationSystem.DAL.UnitOfWork;
+using MusicIdentificationSystem.DAL.DbEntities;
+using MusicIdentificationSystem.DAL.DatabaseConfiguration;
+using MusicIdentificationSystem.DAL;
+using MusicIdentificationSystem.DAL.Repositories;
 
 namespace StreamCapture
 {
@@ -16,14 +16,18 @@ namespace StreamCapture
     {
         String serverPath = "/";
 
-        private UnitOfWork unitOfWork = new UnitOfWork();
-
+        //private UnitOfWork2 unitOfWork;
+        StreamRepository streamRepository = new StreamRepository();
         private HttpWebRequest req;
         private Stream stream = null;
         private FileStream fs = null;
         private StreamEntity streamEntity = new StreamEntity();
 
         private AudioDecoder audioDecoder = new AudioDecoder();
+        public Capture()
+        {
+            //this.unitOfWork = new UnitOfWork2();
+        }
 
         public void StartCapture(int minutes, string server, string destinationPath)
         {
@@ -195,9 +199,7 @@ namespace StreamCapture
         internal async Task<bool> StartCapture2(CancellationToken ct,int minutes, StreamStationEntity station)
         {
             await Task.Run(() => {
-                //HttpWebRequest req;
-                //Stream s = null;
-                //FileStream fs = null;
+
 
                 Console.WriteLine("Start capture station {0}", station.StationName);
                 //StreamEntity streamEntity = null;
@@ -216,8 +218,8 @@ namespace StreamCapture
                     streamEntity.FileName = fs.Name;
                     streamEntity.StartTime = DateTime.Now;
 
-                    unitOfWork.StreamRepository.Insert(streamEntity);
-                    unitOfWork.Save();
+                    streamRepository.Insert(streamEntity);
+                    streamRepository.Save();
                     byte[] buffer = new byte[4096];
                     var total = 0;
                     var count = 0;
@@ -237,8 +239,8 @@ namespace StreamCapture
                             streamEntity.EndTime = DateTime.Now;
                             //unitOfWork.StreamRepository.Insert(stream);
                             //TODO: convert file
-                            streamEntity.FileNameTransformed = ConvertCurrentFile(station.LocalPath, station.TransformFolder);
-                            unitOfWork.Save();
+                            //streamEntity.FileNameTransformed = ConvertCurrentFile(station.LocalPath, station.TransformFolder);
+                            streamRepository.Save();
 
                             fs = createNewFile(station.LocalPath, "defaultStream");
 
@@ -246,14 +248,14 @@ namespace StreamCapture
                             streamEntity.StationId = station.Id;
                             streamEntity.FileName = fs.Name;
                             streamEntity.StartTime = DateTime.Now;
-                            unitOfWork.StreamRepository.Insert(streamEntity);
-                            unitOfWork.Save();
+                            streamRepository.Insert(streamEntity);
+                            streamRepository.Save();
                             curentHour = DateTime.Now.Hour;
                         }
                         int bytesRead = stream.Read(buffer, 0, buffer.Length);
                         fs.Write(buffer, 0, bytesRead);
                         streamEntity.EndTime = DateTime.Now;
-                        unitOfWork.Save();
+                        streamRepository.Save();
                         //if (count % 100 == 0)
                             fs.Flush();
                         count++;
@@ -262,8 +264,8 @@ namespace StreamCapture
                     streamEntity.EndTime = DateTime.Now;
                     //unitOfWork.StreamRepository.Insert(stream);
                     //TODO: convert file
-                    streamEntity.FileNameTransformed = ConvertCurrentFile(station.LocalPath, station.TransformFolder);
-                    unitOfWork.Save();
+                    //streamEntity.FileNameTransformed = ConvertCurrentFile(station.LocalPath, station.TransformFolder);
+                    streamRepository.Save();
                     
                     //return true;
 
@@ -284,8 +286,8 @@ namespace StreamCapture
                     {
                         streamEntity.EndTime = DateTime.Now;
                         //TODO: convert file
-                        streamEntity.FileNameTransformed= ConvertCurrentFile(station.LocalPath, station.TransformFolder);
-                        unitOfWork.Save();
+                        //streamEntity.FileNameTransformed= ConvertCurrentFile(station.LocalPath, station.TransformFolder);
+                        streamRepository.Save();
                         
                     }
 
@@ -446,6 +448,8 @@ namespace StreamCapture
 
         private string ConvertCurrentFile(string folder, string convertFolder)
         {
+            if (fs == null)
+                return null;
             AudioDecoder decoder = new AudioDecoder();
             FileInfo fi = new FileInfo(fs.Name);
             string dateFolder = fs.Name.Replace(folder, "").Replace(fi.Name, "");
@@ -461,7 +465,7 @@ namespace StreamCapture
         ~Capture()
         {
 
-            unitOfWork.Save();
+            //unitOfWork.Save();
         }
     }
 }

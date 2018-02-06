@@ -1,7 +1,8 @@
 ﻿using MusicIdentificationSystem.AdminLTE.Helpers;
 using MusicIdentificationSystem.AdminLTE.Models.ApplicationSetting;
 using MusicIdentificationSystem.DAL;
-using MusicIdentificationSystem.EF.Entities;
+using MusicIdentificationSystem.DAL.DbEntities;
+using MusicIdentificationSystem.DAL.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
 {
     public class ApplicationSettingController : BaseController
     {
-        private UnitOfWork unitOfWork = new UnitOfWork();
+        private UnitOfWork2 unitOfWork = new UnitOfWork2();
 
         #region List
         public ActionResult List()
@@ -157,7 +158,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
                 Value = Resources.Resources.Global_Lookup_IdZero
             });
 
-            model.AccountsList.AddRange(unitOfWork.AccountRepository.Get().Where(x => x.IsActive).Select(x => new SelectListItem()
+            model.AccountsList.AddRange(unitOfWork.AccountRepository.Get().Where(x => x.IsActive.Value).Select(x => new SelectListItem()
             {
                 Text = x.AccountName,
                 Value = x.Id.ToString()

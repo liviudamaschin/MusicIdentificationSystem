@@ -1,5 +1,5 @@
-﻿using MusicIdentificationSystem.EF.Context;
-using MusicIdentificationSystem.EF.Entities;
+﻿using MusicIdentificationSystem.DAL.Context;
+using MusicIdentificationSystem.DAL.DbEntities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,9 +10,10 @@ using System.Threading.Tasks;
 namespace MusicIdentificationSystem.DAL
 {
     public static class StreamStation    {
+
         public static bool AddStreamStation(StreamStationEntity entity) {
             int changesSaved=0;
-            using (var dbContext = new Db())
+            using (var dbContext = new DatabaseContext())
             {
                 var streamStation = new StreamStationEntity
                 {
@@ -31,7 +32,7 @@ namespace MusicIdentificationSystem.DAL
         public static BindingList<StreamStationEntity> GetStreamStations()
         {
             BindingList<StreamStationEntity> stations = new BindingList<StreamStationEntity>();
-            using (var db = new Db())
+            using (var db = new DatabaseContext())
             {
                 foreach (StreamStationEntity entity in db.StreamStations)
                 {

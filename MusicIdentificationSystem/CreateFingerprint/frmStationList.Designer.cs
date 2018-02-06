@@ -149,7 +149,7 @@
             // 
             // streamStationEntityBindingSource
             // 
-            this.streamStationEntityBindingSource.DataSource = typeof(MusicIdentificationSystem.EF.Entities.StreamStationEntity);
+            this.streamStationEntityBindingSource.DataSource = typeof(MusicIdentificationSystem.DAL.DbEntities.StreamStationEntity);
             // 
             // btnClose
             // 

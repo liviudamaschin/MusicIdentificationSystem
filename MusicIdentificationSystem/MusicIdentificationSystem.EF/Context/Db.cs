@@ -1,13 +1,12 @@
-﻿using MusicIdentificationSystem.EF.Entities;
-using MusicIdentificationSystem.EF.Interfaces;
-using MusicIdentificationSystem.EF.Mappings;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MusicIdentificationSystem.DAL.DbEntities;
+using MusicIdentificationSystem.EF.Interfaces;
 
 namespace MusicIdentificationSystem.EF.Context
 {
