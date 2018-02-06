@@ -23,15 +23,7 @@ namespace MusicIdentificationSystem.DAL.Repositories
             return streamStationEntityList;
         }
 
-        public List<UnprocessedStreams> GetUnprocessedStreams()
-        {
-            List<UnprocessedStreams> streamStationEntityList;
-                streamStationEntityList = this.ExecuteProcedure<UnprocessedStreams>("sp_GetUnprocessedStreams").ToList();
-
-            
-            return streamStationEntityList; 
-        }
-
+       
         //public StreamStationEntity GetById(int Id)
         //{
         //    using (var context = this.ResolveDbContext())

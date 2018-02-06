@@ -24,7 +24,7 @@ namespace MusicIdentificationSystem.GetResults.Console
                 Thread.Sleep(100);
             }
             UnitOfWork2 unitOfWork = new UnitOfWork2();
-            var unprocessedStreamStations = unitOfWork.StreamStationRepository.GetUnprocessedStreams();
+            var unprocessedStreamStations = unitOfWork.StreamRepository.GetUnprocessedStreams();
             foreach (var unprocessedStreamStation in unprocessedStreamStations)
             {
                 try
@@ -36,7 +36,7 @@ namespace MusicIdentificationSystem.GetResults.Console
                         new Task(() =>
                         {
                             List<ResultEntity> results = fingerprint.GetMatchSongsFromFolder(unprocessedStreamStation.FileNameTransformed);
-                            //safe results to db
+                            //save results to db
                             foreach (var result in results)
                             {
                                 var track = unitOfWork.TrackRepository.GetByID(result.TrackId);
@@ -59,7 +59,7 @@ namespace MusicIdentificationSystem.GetResults.Console
         private static void MatchStream()
         {
             UnitOfWork2 unitOfWork = new UnitOfWork2();
-            var unprocessedStreamStations = unitOfWork.StreamStationRepository.GetUnprocessedStreams();
+            var unprocessedStreamStations = unitOfWork.StreamRepository.GetUnprocessedStreams();
             foreach (var unprocessedStreamStation in unprocessedStreamStations)
             {
                 if (unprocessedStreamStation.FileNameTransformed != null)
