@@ -1,5 +1,4 @@
-﻿using MusicIdentification.Core;
-namespace MusicIdentificationSystem.MediaConvertor
+﻿namespace MusicIdentificationSystem.MediaConvertor
 {
     class Program
     {

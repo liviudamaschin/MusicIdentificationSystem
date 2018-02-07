@@ -4,10 +4,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.Threading;
-using MusicIdentificationSystem.DAL.UnitOfWork;
 using MusicIdentificationSystem.DAL.DbEntities;
-using MusicIdentificationSystem.DAL.DatabaseConfiguration;
-using MusicIdentificationSystem.DAL;
 using MusicIdentificationSystem.DAL.Repositories;
 using MusicIdentification.Core;
 

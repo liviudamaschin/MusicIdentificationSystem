@@ -1,11 +1,9 @@
 ﻿using MusicIdentification.Core;
+using MusicIdentificationSystem.DAL.DbEntities;
 using MusicIdentificationSystem.DAL.Repositories;
 using MusicIdentificationSystem.DAL.UnitOfWork;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,30 +14,33 @@ namespace MusicIdentificationSystem.MediaConvertor
         protected static readonly int Maxthreads = 2;
 
         protected static int BatchActiveThreadsCount = 0;
+        
 
         public static void ConvertFiles()
         {
             //UnitOfWork2 unitOfWork = new UnitOfWork2();
             StreamRepository streamRepository = new StreamRepository();
             StreamStationRepository streamStationRepository = new StreamStationRepository();
-            var streams = streamRepository.GetList(x => x.FileNameTransformed == null);
+            var streams = streamRepository.GetUnconvertedStreams();
             foreach (var stream in streams)
             {
                 string convertedFileName;
                 var streamStation = streamStationRepository.GetByID(stream.StationId);
                 Console.WriteLine($"Converting file {stream.FileName}");
-                convertedFileName=MediaConvertor.ConvertCurrentFile(stream.FileName, streamStation.LocalPath, streamStation.TransformFolder);
+                convertedFileName = MediaConvertor.ConvertCurrentFile(stream.Id, stream.FileName, streamStation.LocalPath, streamStation.TransformFolder);
+               
                 Console.WriteLine($"converted file = {convertedFileName}");
             }
 
         }
-        private static string ConvertCurrentFile(string sourceFile, string folder, string convertFolder)
+        private static string ConvertCurrentFile(int streamId, string sourceFile, string folder, string convertFolder)
         {
+            StreamRepository streamRepository = new StreamRepository();
             string retFile = string.Empty;
-            while (MediaConvertor.BatchActiveThreadsCount >= MediaConvertor.Maxthreads)
-            {
-                Thread.Sleep(100);
-            }
+            //while (MediaConvertor.BatchActiveThreadsCount >= MediaConvertor.Maxthreads)
+            //{
+            //    Thread.Sleep(100);
+            //}
             AudioDecoder decoder = new AudioDecoder();
             FileInfo fi = new FileInfo(sourceFile);
             string dateFolder = fi.FullName.Replace(folder, "").Replace(fi.Name, "");
@@ -50,12 +51,14 @@ namespace MusicIdentificationSystem.MediaConvertor
                 Directory.CreateDirectory(destinationFolder);
             try
             {
-                MediaConvertor.BatchActiveThreadsCount++;
-                new Task(() =>
-                {
+                //MediaConvertor.BatchActiveThreadsCount++;
+                
                     retFile = decoder.NormalizeMp3(sourceFile, destinationFolder);
-                    MediaConvertor.BatchActiveThreadsCount--;
-                }).Start();
+                    var convertedStream = streamRepository.GetByID(streamId);
+                    convertedStream.FileNameTransformed = retFile;
+                    streamRepository.Save();
+                  //  MediaConvertor.BatchActiveThreadsCount--;
+                
             }
             catch (Exception)
             {

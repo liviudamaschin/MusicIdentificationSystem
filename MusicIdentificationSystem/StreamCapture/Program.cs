@@ -187,7 +187,7 @@ namespace StreamCapture
         private static void MatchStream()
         {
             UnitOfWork2 unitOfWork = new UnitOfWork2();
-            var unprocessedStreamStations = unitOfWork.StreamStationRepository.GetUnprocessedStreams();
+            var unprocessedStreamStations = unitOfWork.StreamRepository.GetUnprocessedStreams();
             foreach (var unprocessedStreamStation in unprocessedStreamStations)
             {
                 if (unprocessedStreamStation.FileNameTransformed != null)

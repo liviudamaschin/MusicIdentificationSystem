@@ -113,13 +113,15 @@ namespace MusicIdentification.Core
 
         public string NormalizeMp3(string source, string destinationFolder)
         {
-            
+            string destinationFile = String.Empty;
             FileInfo fileInfo = new FileInfo(source);
-            string destinationFile = String.Format("{0}{1}", destinationFolder, fileInfo.Name.Replace(fileInfo.Extension, ".mp3"));
-            ConvertMp3ToWav(fileInfo.FullName, String.Format("{0}{1}", destinationFolder, fileInfo.Name.Replace(fileInfo.Extension, ".wav")));
-            ConvertWavToMp3(String.Format("{0}{1}", destinationFolder, fileInfo.Name.Replace(fileInfo.Extension, ".wav")), destinationFile);
-            File.Delete(String.Format("{0}{1}", destinationFolder, fileInfo.Name.Replace(fileInfo.Extension, ".wav")));
-
+            if (!String.IsNullOrWhiteSpace(fileInfo.Extension))
+            {
+                destinationFile = String.Format("{0}{1}", destinationFolder, fileInfo.Name.Replace(fileInfo.Extension, ".mp3"));
+                ConvertMp3ToWav(fileInfo.FullName, String.Format("{0}{1}", destinationFolder, fileInfo.Name.Replace(fileInfo.Extension, ".wav")));
+                ConvertWavToMp3(String.Format("{0}{1}", destinationFolder, fileInfo.Name.Replace(fileInfo.Extension, ".wav")), destinationFile);
+                File.Delete(String.Format("{0}{1}", destinationFolder, fileInfo.Name.Replace(fileInfo.Extension, ".wav")));
+            }
             return destinationFile;
         }
     }
