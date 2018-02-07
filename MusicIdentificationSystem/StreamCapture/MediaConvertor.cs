@@ -1,5 +1,6 @@
 ﻿using MusicIdentificationSystem.DAL.Repositories;
 using MusicIdentificationSystem.DAL.UnitOfWork;
+using MusicIdentificationSystem.DTO;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,14 +22,17 @@ namespace StreamCapture
             //UnitOfWork2 unitOfWork = new UnitOfWork2();
             StreamRepository streamRepository = new StreamRepository();
             StreamStationRepository streamStationRepository = new StreamStationRepository();
-            var streams = streamRepository.GetList(x => x.FileNameTransformed == null);
+            List<UnprocessedStreams> streams = streamRepository.GetUnconvertedStreams();
             foreach (var stream in streams)
             {
                 string convertedFileName;
                 var streamStation = streamStationRepository.GetByID(stream.StationId);
-                Console.WriteLine($"Converting file {stream.FileName}");
-                convertedFileName=MediaConvertor.ConvertCurrentFile(stream.FileName, streamStation.LocalPath, streamStation.TransformFolder);
-                Console.WriteLine($"converted file = {convertedFileName}");
+                if (streamStation.IsConvertionNeeded)
+                {
+                    Console.WriteLine($"Converting file {stream.FileName}");
+                    convertedFileName = MediaConvertor.ConvertCurrentFile(stream.FileName, streamStation.LocalPath, streamStation.TransformFolder);
+                    Console.WriteLine($"converted file = {convertedFileName}");
+                }
             }
 
         }

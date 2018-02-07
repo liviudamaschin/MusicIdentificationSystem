@@ -16,7 +16,7 @@ namespace MusicIdentificationSystem.DAL.DbEntities
         public string Description { get; set; } // Description (length: 250)
         public bool? Running { get; set; } // Running
         public string TransformFolder { get; set; } // TransformFolder
-
+        public bool IsConvertionNeeded { get; set; }
         // Reverse navigation
 
         /// <summary>
