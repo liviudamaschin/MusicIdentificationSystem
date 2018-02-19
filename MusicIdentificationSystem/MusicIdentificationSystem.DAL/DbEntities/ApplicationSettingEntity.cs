@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MusicIdentificationSystem.DAL.DbEntities
 {
-    [Table("dbo.ApplicationSetting")]
+    [Table("dbo.ApplicationSettings")]
     public class ApplicationSettingEntity
     {
         [Column("Id")]
@@ -15,10 +15,10 @@ namespace MusicIdentificationSystem.DAL.DbEntities
         [Column("KeyValue")]
         public string KeyValue { get; set; } // KeyValue (length: 250)
 
-        public int? AccountId { get; set; }
+        //public int? AccountId { get; set; }
 
-        public string Description { get; set; }
+        //public string Description { get; set; }
 
-        public bool IsActive { get; set; }
+        //public bool IsActive { get; set; }
     }
 }

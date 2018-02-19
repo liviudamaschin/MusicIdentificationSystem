@@ -7,6 +7,7 @@ using System.Threading;
 using MusicIdentificationSystem.DAL.DbEntities;
 using MusicIdentificationSystem.DAL.Repositories;
 using MusicIdentification.Core;
+using MusicIdentificationSystem.Common;
 
 namespace MusicIdentificationSystem.StreamCapture
 {
@@ -209,11 +210,12 @@ namespace MusicIdentificationSystem.StreamCapture
                     WebResponse resp = req.GetResponse();
                     stream = resp.GetResponseStream();
                     var curentHour = DateTime.Now.Hour;
-                    fs = createNewFile(station.LocalPath, "defaultStream");
+                    
+                    fs = createNewFile(Path.Combine(cApp.AppSettings["StreamPath"], station.LocalPath), "defaultStream");
                     //stream = new StreamEntity();
 
                     streamEntity.StationId = station.Id;
-                    streamEntity.FileName = fs.Name;
+                    streamEntity.FileName = fs.Name.Replace(cApp.AppSettings["StreamPath"],"");
                     streamEntity.StartTime = DateTime.Now;
 
                     streamRepository.Insert(streamEntity);
@@ -240,11 +242,11 @@ namespace MusicIdentificationSystem.StreamCapture
                             //streamEntity.FileNameTransformed = ConvertCurrentFile(station.LocalPath, station.TransformFolder);
                             streamRepository.Save();
 
-                            fs = createNewFile(station.LocalPath, "defaultStream");
+                            fs = createNewFile(Path.Combine(cApp.AppSettings["StreamPath"], station.LocalPath), "defaultStream");
 
                             streamEntity = new StreamEntity();
                             streamEntity.StationId = station.Id;
-                            streamEntity.FileName = fs.Name;
+                            streamEntity.FileName = fs.Name.Replace(cApp.AppSettings["StreamPath"], "");
                             streamEntity.StartTime = DateTime.Now;
                             streamRepository.Insert(streamEntity);
                             streamRepository.Save();

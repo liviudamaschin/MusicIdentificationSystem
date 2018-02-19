@@ -1,4 +1,5 @@
-﻿using MusicIdentificationSystem.DAL.Repositories;
+﻿using MusicIdentificationSystem.Common;
+using MusicIdentificationSystem.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -10,6 +11,7 @@ namespace MusicIdentificationSystem.StreamCapture
     {
         static void Main(string[] args)
         {
+            //Console.WriteLine(cApp.AppSettings["StreamPath"]);
             RecordStations();
         }
 

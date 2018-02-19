@@ -23,13 +23,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicIdentificationSystem.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{76EAE888-670F-4C6F-A3AD-30E1A834A354}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicIdentificationSystem.MediaConvertor.Console", "MusicIdentificationSystem.MediaConvertor.Console\MusicIdentificationSystem.MediaConvertor.Console.csproj", "{B8A81EFA-D490-4CAA-9547-A7BB8B1FDB89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicIdentificationSystem.MediaConvertor.Console", "MusicIdentificationSystem.MediaConvertor.Console\MusicIdentificationSystem.MediaConvertor.Console.csproj", "{B8A81EFA-D490-4CAA-9547-A7BB8B1FDB89}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicIdentificationSystem.DTO", "MusicIdentificationSystem.DTO\MusicIdentificationSystem.DTO.csproj", "{DF809875-22C1-4925-81ED-3B0A9B6BBB3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicIdentificationSystem.StreamCapture.Console", "MusicIdentificationSystem.StreamCapture\MusicIdentificationSystem.StreamCapture.Console.csproj", "{13E08E78-392E-4AA3-9312-D3D3589AD9DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicIdentificationSystem.StreamCapture.Console", "MusicIdentificationSystem.StreamCapture\MusicIdentificationSystem.StreamCapture.Console.csproj", "{13E08E78-392E-4AA3-9312-D3D3589AD9DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicIdentificationSystem.GetResults.Console", "MusicIdentificationSystem.GetResults.Console\MusicIdentificationSystem.GetResults.Console.csproj", "{F3E18C74-7918-48C6-AB99-90688438A9BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicIdentificationSystem.GetResults.Console", "MusicIdentificationSystem.GetResults.Console\MusicIdentificationSystem.GetResults.Console.csproj", "{F3E18C74-7918-48C6-AB99-90688438A9BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicIdentificationSystem.Common", "MusicIdentificationSystem.Common\MusicIdentificationSystem.Common.csproj", "{DD8A2EDE-BE82-4937-A327-3FC0F834DCA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{F3E18C74-7918-48C6-AB99-90688438A9BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3E18C74-7918-48C6-AB99-90688438A9BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3E18C74-7918-48C6-AB99-90688438A9BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD8A2EDE-BE82-4937-A327-3FC0F834DCA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD8A2EDE-BE82-4937-A327-3FC0F834DCA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD8A2EDE-BE82-4937-A327-3FC0F834DCA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD8A2EDE-BE82-4937-A327-3FC0F834DCA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
