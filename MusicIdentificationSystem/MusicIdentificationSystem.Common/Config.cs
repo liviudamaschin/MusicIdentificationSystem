@@ -18,12 +18,6 @@ namespace MusicIdentificationSystem.Common
             {
                 AppSettings.Add(item.KeyName, item.KeyValue);
             }
-            // the cApp.DAL is our data access layer and this just calls the stored proc and returns a table.
-            //foreach (DataRow dr in cApp.DAL.CommonData.GetConfig(environment).Rows)
-            //{
-            //    AppSettings.Add(dr["Key"].ToString(), dr["Value"].ToString());
-            //}
-
         }
 
     }

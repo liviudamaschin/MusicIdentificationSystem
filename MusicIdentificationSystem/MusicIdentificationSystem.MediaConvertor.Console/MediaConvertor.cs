@@ -1,4 +1,5 @@
 ﻿using MusicIdentification.Core;
+using MusicIdentificationSystem.Common;
 using MusicIdentificationSystem.DAL.DbEntities;
 using MusicIdentificationSystem.DAL.Repositories;
 using MusicIdentificationSystem.DAL.UnitOfWork;
@@ -41,10 +42,11 @@ namespace MusicIdentificationSystem.MediaConvertor
             //{
             //    Thread.Sleep(100);
             //}
+            string fullFilePath = Path.Combine(cApp.AppSettings["StreamPath"], sourceFile);
             AudioDecoder decoder = new AudioDecoder();
-            FileInfo fi = new FileInfo(sourceFile);
-            string dateFolder = fi.FullName.Replace(folder, "").Replace(fi.Name, "");
-            string destinationFolder = Path.Combine(folder, dateFolder);
+            FileInfo fi = new FileInfo(fullFilePath);
+            //string dateFolder = fi.FullName.Replace(folder, "").Replace(fi.Name, "");
+            string destinationFolder = fi.FullName.Replace(fi.Name, "");
             destinationFolder = Path.Combine(destinationFolder, convertFolder);
             // create directory, if it doesn't exist
             if (!Directory.Exists(destinationFolder))
@@ -53,7 +55,7 @@ namespace MusicIdentificationSystem.MediaConvertor
             {
                 //MediaConvertor.BatchActiveThreadsCount++;
                 
-                    retFile = decoder.NormalizeMp3(sourceFile, destinationFolder);
+                    retFile = decoder.NormalizeMp3(fullFilePath, destinationFolder);
                     var convertedStream = streamRepository.GetByID(streamId);
                     convertedStream.FileNameTransformed = retFile;
                     streamRepository.Save();
