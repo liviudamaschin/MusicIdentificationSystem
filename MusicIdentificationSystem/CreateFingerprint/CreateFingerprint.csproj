@@ -245,6 +245,10 @@
       <Project>{8de00346-07a2-4049-8d77-4c47f182ffcd}</Project>
       <Name>MdiHelper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MusicIdentificationSystem.Common\MusicIdentificationSystem.Common.csproj">
+      <Project>{DD8A2EDE-BE82-4937-A327-3FC0F834DCA1}</Project>
+      <Name>MusicIdentificationSystem.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MusicIdentificationSystem.DAL\MusicIdentificationSystem.DAL.csproj">
       <Project>{6D162B39-716A-4385-B543-7A0750B7F090}</Project>
       <Name>MusicIdentificationSystem.DAL</Name>

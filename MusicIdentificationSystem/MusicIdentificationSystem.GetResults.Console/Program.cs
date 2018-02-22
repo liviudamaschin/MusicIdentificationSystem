@@ -5,7 +5,7 @@ namespace MusicIdentificationSystem.GetResults.Console
     {
         static void Main(string[] args)
         {
-           
+            MatchResults.MatchResultsFromStream();
         }
 
             

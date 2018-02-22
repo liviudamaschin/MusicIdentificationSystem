@@ -54,11 +54,12 @@ namespace MusicIdentificationSystem.MediaConvertor
             try
             {
                 //MediaConvertor.BatchActiveThreadsCount++;
-                
-                    retFile = decoder.NormalizeMp3(fullFilePath, destinationFolder);
-                    var convertedStream = streamRepository.GetByID(streamId);
-                    convertedStream.FileNameTransformed = retFile;
-                    streamRepository.Save();
+
+                retFile = decoder.NormalizeMp3(fullFilePath, destinationFolder);
+                retFile = retFile.Replace(cApp.AppSettings["StreamPath"], "");
+                var convertedStream = streamRepository.GetByID(streamId);
+                convertedStream.FileNameTransformed = retFile;
+                streamRepository.Save();
                   //  MediaConvertor.BatchActiveThreadsCount--;
                 
             }

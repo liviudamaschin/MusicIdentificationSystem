@@ -1,11 +1,12 @@
 ﻿using MusicIdentification.Core;
-using MusicIdentificationSystem.DAL.Context;
+using MusicIdentificationSystem.Common;
 using MusicIdentificationSystem.DAL.DbEntities;
 using MusicIdentificationSystem.DAL.Repositories;
 using MusicIdentificationSystem.DAL.UnitOfWork;
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ namespace StreamCapture
         {
             //TestEntities();
             //RecordStations();
-            //MatchStream();
+            MatchStream();
 
             //ConvertFiles();
 
@@ -188,12 +189,28 @@ namespace StreamCapture
         {
             UnitOfWork2 unitOfWork = new UnitOfWork2();
             var unprocessedStreamStations = unitOfWork.StreamRepository.GetUnprocessedStreams();
+
+            //Parallel.ForEach(unprocessedStreamStations, unprocessedStreamStation => {
+            //    Fingerprint fingerprint = new Fingerprint();
+            //    string processFile = Path.Combine(cApp.AppSettings["StreamPath"], unprocessedStreamStation.ProcessFile);
+            //    List<ResultEntity> results = fingerprint.GetMatchSongsFromFolder(processFile);
+            //    foreach (var result in results)
+            //    {
+            //        var track = unitOfWork.TrackRepository.GetByID(result.TrackId);
+            //        StreamResultsEntity streamResult = new StreamResultsEntity();
+            //        //streamResult.ResultId = 
+            //        //unitOfWork.StreamResultsRepository.
+            //        //TrackList.Add(new ListItem(track.Isrc, string.Format("{0} - {1}", track.Artist, track.Title)));
+            //    }
+            //});
+            double confidfence = Convert.ToDouble(cApp.AppSettings["Confidfence"]);
             foreach (var unprocessedStreamStation in unprocessedStreamStations)
             {
-                if (unprocessedStreamStation.FileNameTransformed != null)
+                if (unprocessedStreamStation.ProcessFile != null)
                 {
                     Fingerprint fingerprint = new Fingerprint();
-                    List<ResultEntity> results = fingerprint.GetMatchSongsFromFolder(unprocessedStreamStation.FileNameTransformed);
+                    string processFile = Path.Combine(cApp.AppSettings["StreamPath"], unprocessedStreamStation.ProcessFile);
+                    List<ResultEntity> results = fingerprint.GetBestMatchForSong(processFile, confidfence);
                     foreach (var result in results)
                     {
                         var track = unitOfWork.TrackRepository.GetByID(result.TrackId);

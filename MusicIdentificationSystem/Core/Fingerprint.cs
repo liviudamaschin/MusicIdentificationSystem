@@ -66,7 +66,7 @@ namespace MusicIdentification.Core
             }
         }
 
-        public List<ResultEntity> GetBestMatchForSong(string queryAudioFile)
+        public List<ResultEntity> GetBestMatchForSong(string queryAudioFile, double confidence)
         {
             List<ResultEntity> tracks = new List<ResultEntity>();
             try
@@ -87,7 +87,7 @@ namespace MusicIdentification.Core
                
                 foreach (ResultEntry result in queryResult.ResultEntries)
                 {
-                    if (result.Confidence > 0.7)
+                    if (result.Confidence > confidence)
                     {
                         ResultEntity trackresult = new ResultEntity();
                         trackresult.Filename = queryAudioFile;
@@ -113,7 +113,7 @@ namespace MusicIdentification.Core
             }
         }
 
-        public List<ResultEntity> GetMatchSongsFromFolder(string sourcePath)
+        public List<ResultEntity> GetMatchSongsFromFolder(string sourcePath, double confidence)
         {
             List<ResultEntity> tracks = new List<ResultEntity>();
             if (!Directory.Exists(sourcePath))
@@ -126,7 +126,7 @@ namespace MusicIdentification.Core
                 if (fileInfo.Extension.ToLower() == ".mp3")
                 {
                     List<ResultEntity> matchedTracks = null;
-                    matchedTracks = GetBestMatchForSong(fileInfo.FullName);
+                    matchedTracks = GetBestMatchForSong(fileInfo.FullName, confidence);
                     if (matchedTracks != null && matchedTracks.Count>0)
                         tracks.AddRange(matchedTracks);
                 }

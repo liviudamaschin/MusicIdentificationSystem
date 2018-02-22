@@ -12,5 +12,6 @@ namespace MusicIdentificationSystem.DTO
         public string FileNameTransformed { get; set; }
         public bool IsConvertionNeeded { get; set; }
         public string TransformFolder { get; set; }
+        public string ProcessFile { get; set; }
     }
 }

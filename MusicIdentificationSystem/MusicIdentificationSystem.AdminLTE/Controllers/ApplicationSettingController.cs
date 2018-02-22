@@ -29,19 +29,19 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
             var applicationSettingsList = unitOfWork.ApplicationSettingRepository.Get();
             var accountsList = unitOfWork.AccountRepository.Get();
 
-            applicationSettingListModel.ApplicationSettingModelsList = (from AS in applicationSettingsList
-                                                                        join A in accountsList on AS.AccountId equals A.Id into AA
-                                                                        from ALJ in AA.DefaultIfEmpty()
-                                                                        select new ApplicationSettingModel
-                                                                        {
-                                                                            Id = AS.Id,
-                                                                            AccountId = AS.AccountId,
-                                                                            KeyName = AS.KeyName,
-                                                                            KeyValue = AS.KeyValue,
-                                                                            Description = AS.Description,
-                                                                            IsActive = AS.IsActive,
-                                                                            AccountName = ALJ != null ? ALJ.AccountName : Resources.Resources.Global_Lookup_All
-                                                                        }).ToList();
+            //applicationSettingListModel.ApplicationSettingModelsList = (from AS in applicationSettingsList
+            //                                                            join A in accountsList on AS.AccountId equals A.Id into AA
+            //                                                            from ALJ in AA.DefaultIfEmpty()
+            //                                                            select new ApplicationSettingModel
+            //                                                            {
+            //                                                                Id = AS.Id,
+            //                                                                AccountId = AS.AccountId,
+            //                                                                KeyName = AS.KeyName,
+            //                                                                KeyValue = AS.KeyValue,
+            //                                                                Description = AS.Description,
+            //                                                                IsActive = AS.IsActive,
+            //                                                                AccountName = ALJ != null ? ALJ.AccountName : Resources.Resources.Global_Lookup_All
+            //                                                            }).ToList();
 
             return View("ApplicationSettingList", applicationSettingListModel);
         }
@@ -69,8 +69,8 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
                     //var setting = model.ToEntity();
                     ApplicationSettingEntity setting = new ApplicationSettingEntity(); // to be deleted
 
-                    if (setting.AccountId == 0)
-                        setting.AccountId = null;
+                    //if (setting.AccountId == 0)
+                    //    setting.AccountId = null;
 
                     unitOfWork.ApplicationSettingRepository.Insert(setting);
                     unitOfWork.Save();
@@ -125,8 +125,8 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
                     //var setting = model.ToEntity();
                     ApplicationSettingEntity setting = new ApplicationSettingEntity(); // to be deleted
 
-                    if (setting.AccountId == 0)
-                        setting.AccountId = null;
+                    //if (setting.AccountId == 0)
+                    //    setting.AccountId = null;
 
                     unitOfWork.ApplicationSettingRepository.Update(setting);
                     unitOfWork.Save();
