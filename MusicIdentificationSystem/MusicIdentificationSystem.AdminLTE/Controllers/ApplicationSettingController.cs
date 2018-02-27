@@ -1,7 +1,9 @@
-﻿using MusicIdentificationSystem.AdminLTE.Helpers;
+﻿using MusicIdentificationSystem.AdminLTE.AutoMapperConfig;
+using MusicIdentificationSystem.AdminLTE.Helpers;
 using MusicIdentificationSystem.AdminLTE.Models.ApplicationSetting;
 using MusicIdentificationSystem.DAL;
 using MusicIdentificationSystem.DAL.DbEntities;
+using MusicIdentificationSystem.DAL.Repositories;
 using MusicIdentificationSystem.DAL.UnitOfWork;
 using System;
 using System.Collections.Generic;
@@ -13,7 +15,8 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
 {
     public class ApplicationSettingController : BaseController
     {
-        private UnitOfWork2 unitOfWork = new UnitOfWork2();
+        private ApplicationSettingRepository applicationSettingRepository = new ApplicationSettingRepository();
+        private AccountRepository accountRepository = new AccountRepository();
 
         #region List
         public ActionResult List()
@@ -26,22 +29,22 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
         {
             var applicationSettingListModel = new ApplicationSettingListModel();
 
-            var applicationSettingsList = unitOfWork.ApplicationSettingRepository.Get();
-            var accountsList = unitOfWork.AccountRepository.Get();
+            var applicationSettingsList = applicationSettingRepository.Get();
+            var accountsList = accountRepository.Get();
 
-            //applicationSettingListModel.ApplicationSettingModelsList = (from AS in applicationSettingsList
-            //                                                            join A in accountsList on AS.AccountId equals A.Id into AA
-            //                                                            from ALJ in AA.DefaultIfEmpty()
-            //                                                            select new ApplicationSettingModel
-            //                                                            {
-            //                                                                Id = AS.Id,
-            //                                                                AccountId = AS.AccountId,
-            //                                                                KeyName = AS.KeyName,
-            //                                                                KeyValue = AS.KeyValue,
-            //                                                                Description = AS.Description,
-            //                                                                IsActive = AS.IsActive,
-            //                                                                AccountName = ALJ != null ? ALJ.AccountName : Resources.Resources.Global_Lookup_All
-            //                                                            }).ToList();
+            applicationSettingListModel.ApplicationSettingModelsList = (from AS in applicationSettingsList
+                                                                        join A in accountsList on AS.AccountId equals A.Id into AA
+                                                                        from ALJ in AA.DefaultIfEmpty()
+                                                                        select new ApplicationSettingModel
+                                                                        {
+                                                                            Id = AS.Id,
+                                                                            AccountId = AS.AccountId,
+                                                                            KeyName = AS.KeyName,
+                                                                            KeyValue = AS.KeyValue,
+                                                                            Description = AS.Description,
+                                                                            IsActive = AS.IsActive,
+                                                                            AccountName = ALJ != null ? ALJ.AccountName : Resources.Resources.Global_Lookup_All
+                                                                        }).ToList();
 
             return View("ApplicationSettingList", applicationSettingListModel);
         }
@@ -66,28 +69,30 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
             {
                 try
                 {
-                    //var setting = model.ToEntity();
-                    ApplicationSettingEntity setting = new ApplicationSettingEntity(); // to be deleted
+                    var setting = model.ToEntity();
 
-                    //if (setting.AccountId == 0)
-                    //    setting.AccountId = null;
+                    if (setting.AccountId == 0)
+                        setting.AccountId = null;
 
-                    unitOfWork.ApplicationSettingRepository.Insert(setting);
-                    unitOfWork.Save();
+                    applicationSettingRepository.Insert(setting);
+                    applicationSettingRepository.Save();
 
                     SuccessNotification(Resources.Resources.ApplicationSetting_SuccessfullyCreated);
 
-                    return continueEditing ? RedirectToAction("Edit", new { id = model.Id }) : RedirectToAction("List");
+                    return continueEditing ? RedirectToAction("Edit", new { id = setting.Id }) : RedirectToAction("List");
                 }
                 catch (Exception ex)
                 {
-                    ErrorNotification(ex.InnerException != null ? ex.InnerException.Message : ex.Message);
+                    ErrorNotification(Utils.UnwrapException(ex).Message);
                     CreateLookups(model);
                     return View("CreateApplicationSetting", model);
                 }
             }
-            CreateLookups(model);
-            return View("CreateApplicationSetting", model);
+            else
+            {
+                CreateLookups(model);
+                return View("CreateApplicationSetting", model);
+            }
         }
 
         #endregion
@@ -97,12 +102,11 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var setting = unitOfWork.ApplicationSettingRepository.GetByID(id);
+            var setting = applicationSettingRepository.GetByID(id);
 
             if (setting != null)
             {
-                //var model = setting.ToModel();
-                ApplicationSettingModel model = new ApplicationSettingModel(); // to be deleted
+                var model = setting.ToModel();
 
                 if (model.AccountId == null)
                     model.AccountId = 0;
@@ -122,27 +126,29 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
             {
                 try
                 {
-                    //var setting = model.ToEntity();
-                    ApplicationSettingEntity setting = new ApplicationSettingEntity(); // to be deleted
+                    var setting = model.ToEntity();
 
-                    //if (setting.AccountId == 0)
-                    //    setting.AccountId = null;
+                    if (setting.AccountId == 0)
+                        setting.AccountId = null;
 
-                    unitOfWork.ApplicationSettingRepository.Update(setting);
-                    unitOfWork.Save();
+                    applicationSettingRepository.Update(setting);
+                    applicationSettingRepository.Save();
 
                     SuccessNotification(Resources.Resources.ApplicationSetting_SuccessfullyUpdated);
                     return continueEditing ? RedirectToAction("Edit", new { id = model.Id }) : RedirectToAction("List");
                 }
                 catch (Exception ex)
                 {
-                    ErrorNotification(ex.InnerException != null ? ex.InnerException.Message : ex.Message);
+                    ErrorNotification(Utils.UnwrapException(ex).Message);
                     CreateLookups(model);
-                    return View("EditSetting", model);
+                    return View("EditApplicationSetting", model);
                 }
             }
-            CreateLookups(model);
-            return View("EditSetting", model);
+            else
+            {
+                CreateLookups(model);
+                return View("EditApplicationSetting", model);
+            }
         }
 
         #endregion
@@ -158,7 +164,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
                 Value = Resources.Resources.Global_Lookup_IdZero
             });
 
-            model.AccountsList.AddRange(unitOfWork.AccountRepository.Get().Where(x => x.IsActive.Value).Select(x => new SelectListItem()
+            model.AccountsList.AddRange(accountRepository.Get().Where(x => x.IsActive.Value).Select(x => new SelectListItem()
             {
                 Text = x.AccountName,
                 Value = x.Id.ToString()

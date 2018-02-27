@@ -1,10 +1,5 @@
 ﻿@model MusicIdentificationSystem.AdminLTE.Models.ApplicationSetting.ApplicationSettingModel
 
-@{
-    ViewBag.Title = "_CreateOrUpdateSetting";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
         <div class="form-horizontal">
@@ -14,15 +9,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.AccountName, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.ApplicationSetting_AccountId">
-                    @*@if (Model.Id > 0)
-                        {
-                            @Html.HiddenFor(model => model.AccountId)
-                            @Html.DisplayFor(model => model.AccountName)
-                        }
-                        else
-                        {*@
-
-                    @Html.DropDownListFor(model => model.AccountId, Model.AccountsList)
+                    @Html.DropDownListFor(model => model.AccountId, Model.AccountsList, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.AccountId, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -32,12 +19,11 @@
                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.ApplicationSetting_KeyName">
                     @if (Model.Id > 0)
                     {
-                        @Html.HiddenFor(model => model.KeyName)
-                        @Html.DisplayFor(model => model.KeyName)
+                        @Html.TextBoxFor(model => model.KeyName, new { @class = "form-control", @readonly = "readonly" })
                     }
                     else
                     {
-                        @Html.EditorFor(model => model.KeyName)
+                        @Html.TextBoxFor(model => model.KeyName, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.KeyName, "", new { @class = "text-danger" })
                     }
                 </div>
@@ -46,8 +32,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.KeyValue, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.ApplicationSetting_KeyValue">
-                    @Html.EditorFor(model => model.KeyValue)
-                    <span><small id="value-type-info"></small></span><br />
+                    @Html.TextBoxFor(model => model.KeyValue, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.KeyValue, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -55,7 +40,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.ApplicationSetting_Description">
-                    @Html.EditorFor(model => model.Description)
+                    @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 </div>
             </div>

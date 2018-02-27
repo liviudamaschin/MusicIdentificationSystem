@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace MusicIdentificationSystem.AdminLTE.Models.ApplicationSetting
         public bool IsActive { get; set; }
 
         [Display(ResourceType = typeof(Resources.Resources), Name = "ApplicationSetting_AccountsList")]
-        //[IgnoreMap]
+        [IgnoreMap]
         public List<SelectListItem> AccountsList { get; set; }
         //public IEnumerable<SelectListItem> AccountsList { get; set; }
     }

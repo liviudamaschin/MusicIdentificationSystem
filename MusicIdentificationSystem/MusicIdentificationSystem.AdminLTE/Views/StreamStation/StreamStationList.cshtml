@@ -1,0 +1,42 @@
+﻿@model MusicIdentificationSystem.AdminLTE.Models.StreamStation.StreamStationListModel
+
+@using GridMvc.Html
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    ViewBag.Title = Resources.Resources.StreamStation_Title_StreamStationList;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content">
+    <div class="row">
+
+        <div class="col-xs-2">
+            <button type="button" class="btn btn-block btn-primary" onclick="location.href='@Url.Action("Create", "StreamStation")'">@Resources.Resources.Global_Button_Create</button>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="force-scrollbar">
+                @Html.Grid(Model.StreamStationModelsList).Named("StreamStationGrid").Columns(columns =>
+                {
+                    columns.Add()
+                        .Encoded(false)
+                        .Sanitized(false)
+                        .SetWidth(80)
+                        .RenderValueAs(c => Html.ActionLink(@Resources.Resources.Global_Button_Edit, "Edit", new { id = c.Id }, new { @class = "btn btn-block btn-primary" }).ToHtmlString());
+
+                    columns.Add(c => c.StationName).Titled(Resources.Resources.StreamStation_StationName).Filterable(true);
+                    columns.Add(c => c.Url).Titled(Resources.Resources.StreamStation_Url).Filterable(true);
+                    columns.Add(c => c.Description).Titled(Resources.Resources.StreamStation_Description).Filterable(true);
+                    columns.Add(c => c.IsActive).Titled(Resources.Resources.StreamStation_IsActive).Filterable(true);
+                    columns.Add(c => c.Running).Titled(Resources.Resources.StreamStation_Running).Filterable(true);
+                    columns.Add(c => c.LocalPath).Titled(Resources.Resources.StreamStation_LocalPath);
+                    columns.Add(c => c.TransformFolder).Titled(Resources.Resources.StreamStation_TransformFolder);
+                    columns.Add(c => c.IsConvertionNeeded).Titled(Resources.Resources.StreamStation_IsConvertionNeeded).Filterable(true);
+                }).WithPaging(10).Sortable(true)
+            </div>
+        </div>
+    </div>
+</section>

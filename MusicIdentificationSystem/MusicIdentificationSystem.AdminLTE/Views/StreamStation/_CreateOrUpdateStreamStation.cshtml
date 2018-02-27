@@ -1,0 +1,83 @@
+﻿@model MusicIdentificationSystem.AdminLTE.Models.StreamStation.StreamStationModel
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StationName, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.StreamStation_StationName">
+                    @Html.TextBoxFor(model => model.StationName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.StationName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Url, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.StreamStation_Url">
+                    @Html.TextBoxFor(model => model.Url, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.StreamStation_Description">
+                    @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.StreamStation_IsActive">
+                    @Html.CheckBoxFor(model => model.IsActive)
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Running, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.StreamStation_Running">
+                    @Html.CheckBoxFor(model => model.Running)
+                    @Html.ValidationMessageFor(model => model.Running, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LocalPath, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.StreamStation_LocalPath">
+                    @Html.TextBoxFor(model => model.LocalPath, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LocalPath, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TransformFolder, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.StreamStation_TransformFolder">
+                    @Html.TextBoxFor(model => model.TransformFolder, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TransformFolder, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IsConvertionNeeded, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.StreamStation_IsConvertionNeeded">
+                    @Html.CheckBoxFor(model => model.IsConvertionNeeded)
+                    @Html.ValidationMessageFor(model => model.IsConvertionNeeded, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#Phone').setMask({ mask: '+099 99 99 9999[9]-9999' });
+    }
+</script>
+
+

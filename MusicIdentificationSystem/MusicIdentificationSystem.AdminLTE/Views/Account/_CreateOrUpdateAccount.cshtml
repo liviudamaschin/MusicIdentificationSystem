@@ -1,0 +1,66 @@
+﻿@model MusicIdentificationSystem.AdminLTE.Models.Account.AccountModel
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AccountName, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Account_AccountName">
+                    @Html.TextBoxFor(model => model.AccountName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AccountName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Account_FullName">
+                    @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Account_Email">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @type = "email" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Account_Address">
+                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Account_Phone">
+                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Account_IsActive">
+                    @Html.CheckBoxFor(model => model.IsActive)
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Phone").inputmask({ mask: "+099 99 99 9999[9]-9999" });
+    });
+</script>
+
+

@@ -62,5 +62,19 @@ namespace MusicIdentificationSystem.DAL
                 return oType;
             }
         }
+
+        public static Exception UnwrapException(Exception exception)
+        {
+            var aggregateException = exception as AggregateException;
+            if (aggregateException != null)
+            {
+                return aggregateException.Flatten().InnerException;
+            }
+            else if (exception.InnerException != null)
+            {
+                return UnwrapException(exception.InnerException);
+            }
+            else return exception;
+        }
     }
 }

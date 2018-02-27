@@ -37,6 +37,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="GridMvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
       <Private>True</Private>
@@ -128,6 +140,15 @@
     <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
     <Content Include="Grid.mvc.readme" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
+    <Content Include="Views\Account\AccountList.cshtml" />
+    <Content Include="Views\Account\CreateAccount.cshtml" />
+    <Content Include="Views\Account\EditAccount.cshtml" />
+    <Content Include="Views\Account\_CreateOrUpdateAccount.cshtml" />
+    <Content Include="Views\StreamStation\EditStreamStation.cshtml" />
+    <Content Include="Views\StreamStation\CreateStreamStation.cshtml" />
+    <Content Include="Views\StreamStation\StreamStationList.cshtml" />
+    <Content Include="Views\StreamStation\_CreateOrUpdateStreamStation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -136,11 +157,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapperConfig\AutoMapperStartupTask.cs" />
+    <Compile Include="AutoMapperConfig\MappingExtensions.cs" />
+    <Compile Include="Controllers\StreamStationController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationSettingController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Helpers\NotificationType.cs" />
     <Compile Include="Helpers\ParameterBasedOnFormNameAttribute.cs" />
+    <Compile Include="Models\StreamStation\StreamStationListModel.cs" />
+    <Compile Include="Models\StreamStation\StreamStationModel.cs" />
     <Compile Include="Models\Account\AccountModel.cs" />
+    <Compile Include="Models\Account\AccountListModel.cs" />
     <Compile Include="Models\ApplicationSetting\ApplicationSettingListModel.cs" />
     <Compile Include="Models\ApplicationSetting\ApplicationSettingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -310,4 +338,5 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
 </Project>

@@ -1,21 +1,21 @@
-﻿@model MusicIdentificationSystem.AdminLTE.Models.ApplicationSetting.ApplicationSettingModel
+﻿@model MusicIdentificationSystem.AdminLTE.Models.StreamStation.StreamStationModel
 
 @{
     Html.EnableClientValidation();
     Html.EnableUnobtrusiveJavaScript();
 
-    ViewBag.Title = Resources.Resources.ApplicationSetting_Title_CreateApplicationSetting;
+    ViewBag.Title = Resources.Resources.StreamStation_Title_CreateStreamStation;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "ApplicationSetting-form" }))
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "StreamStation-form" }))
 {
     <div class="row">
         <hr class="thicker" />
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="container-fluid">
                 <div class="pull-right">
-                    <a href="@Url.Action("List", "ApplicationSetting")" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Global_Button_Back">
+                    <a href="@Url.Action("List", "StreamStation")" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Global_Button_Back">
                         <span class="glyphicon glyphicon-arrow-left"></span>
                         @Resources.Resources.Global_Button_Back
                     </a>
@@ -28,5 +28,5 @@
         </div>
     </div>
     <br>
-    @Html.Partial("_CreateOrUpdateApplicationSetting", Model)
+    @Html.Partial("_CreateOrUpdateStreamStation", Model)
 }

@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using MusicIdentificationSystem.AdminLTE.App_Start;
+using MusicIdentificationSystem.AdminLTE.AutoMapperConfig;
 using MusicIdentificationSystem.AdminLTE.Controllers;
 
 namespace MusicIdentificationSystem.AdminLTE
@@ -16,6 +17,8 @@ namespace MusicIdentificationSystem.AdminLTE
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            AutoMapperStartupTask.Execute();
         }
 
         protected void Application_Error(object sender, EventArgs e)

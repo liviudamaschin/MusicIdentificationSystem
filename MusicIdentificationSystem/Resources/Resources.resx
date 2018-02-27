@@ -117,6 +117,42 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Account_AccountName" xml:space="preserve">
+    <value>Nume cont</value>
+  </data>
+  <data name="Account_Address" xml:space="preserve">
+    <value>Adresa</value>
+  </data>
+  <data name="Account_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Account_FullName" xml:space="preserve">
+    <value>Nume</value>
+  </data>
+  <data name="Account_Id" xml:space="preserve">
+    <value>Id cont</value>
+  </data>
+  <data name="Account_IsActive" xml:space="preserve">
+    <value>Este activ</value>
+  </data>
+  <data name="Account_Phone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="Account_SuccessfullyCreated" xml:space="preserve">
+    <value>Contul a fost creat cu succes!</value>
+  </data>
+  <data name="Account_SuccessfullyUpdated" xml:space="preserve">
+    <value>Contul a fost actualizat cu succes!</value>
+  </data>
+  <data name="Account_Title_AccountList" xml:space="preserve">
+    <value>Lista conturi</value>
+  </data>
+  <data name="Account_Title_CreateAccount" xml:space="preserve">
+    <value>Creeaza cont</value>
+  </data>
+  <data name="Account_Title_EditAccount" xml:space="preserve">
+    <value>Modifica cont</value>
+  </data>
   <data name="ApplicationSetting_AccountId" xml:space="preserve">
     <value>Id cont</value>
   </data>
@@ -127,7 +163,7 @@
     <value>Descriere</value>
   </data>
   <data name="ApplicationSetting_Id" xml:space="preserve">
-    <value>Id cheie</value>
+    <value>Id setare</value>
   </data>
   <data name="ApplicationSetting_IsActive" xml:space="preserve">
     <value>Este activa</value>
@@ -183,7 +219,49 @@
   <data name="Global_NavBar_StationAccountAllocation" xml:space="preserve">
     <value>Alocare posturi per cont</value>
   </data>
-  <data name="Global_NavBar_Stations" xml:space="preserve">
+  <data name="Global_NavBar_StreamStations" xml:space="preserve">
     <value>Posturi</value>
+  </data>
+  <data name="StreamStation_Description" xml:space="preserve">
+    <value>Descriere</value>
+  </data>
+  <data name="StreamStation_Id" xml:space="preserve">
+    <value>Id post</value>
+  </data>
+  <data name="StreamStation_IsActive" xml:space="preserve">
+    <value>Este activa</value>
+  </data>
+  <data name="StreamStation_IsConvertionNeeded" xml:space="preserve">
+    <value>Este necesara concersia</value>
+  </data>
+  <data name="StreamStation_LocalPath" xml:space="preserve">
+    <value>Directorul local</value>
+  </data>
+  <data name="StreamStation_Running" xml:space="preserve">
+    <value>Functioneaza</value>
+  </data>
+  <data name="StreamStation_StationName" xml:space="preserve">
+    <value>Denumire post</value>
+  </data>
+  <data name="StreamStation_SuccessfullyCreated" xml:space="preserve">
+    <value>Postul a fost creat cu succes!</value>
+  </data>
+  <data name="StreamStation_SuccessfullyUpdated" xml:space="preserve">
+    <value>Postul a fost actualizat cu succes!</value>
+  </data>
+  <data name="StreamStation_Title_CreateStreamStation" xml:space="preserve">
+    <value>Creaza post</value>
+  </data>
+  <data name="StreamStation_Title_EditStreamStation" xml:space="preserve">
+    <value>Modifica post</value>
+  </data>
+  <data name="StreamStation_Title_StreamStationList" xml:space="preserve">
+    <value>Lista posturi</value>
+  </data>
+  <data name="StreamStation_TransformFolder" xml:space="preserve">
+    <value>Directorul unde se face transformarea</value>
+  </data>
+  <data name="StreamStation_Url" xml:space="preserve">
+    <value>URL</value>
   </data>
 </root>

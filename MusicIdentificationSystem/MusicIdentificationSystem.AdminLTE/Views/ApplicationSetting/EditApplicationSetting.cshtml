@@ -1,8 +1,33 @@
-﻿
+﻿@model MusicIdentificationSystem.AdminLTE.Models.ApplicationSetting.ApplicationSettingModel
+
 @{
-    ViewBag.Title = "EditApplicationSetting";
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    ViewBag.Title = ViewBag.Title = Resources.Resources.ApplicationSetting_Title_EditApplicationSetting;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EditApplicationSetting</h2>
 
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "ApplicationSetting-form" }))
+{
+    <div class="row">
+        <hr class="thicker" />
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="container-fluid">
+                <div class="pull-right">
+                    <a href="@Url.Action("List", "ApplicationSetting")" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Global_Button_Back">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                        @Resources.Resources.Global_Button_Back
+                    </a>
+                    @*@if (Model.HasAdminAccess || Model.HasCreateAccess)
+                        {*@
+                    <input type="submit" name="save" value="@Resources.Resources.Global_Button_Save" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Global_Button_Save" />
+                    <input type="submit" name="save-continue" value="@Resources.Resources.Global_Button_SaveContinue" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Global_Button_SaveContinue" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    @Html.Partial("_CreateOrUpdateApplicationSetting", Model)
+}

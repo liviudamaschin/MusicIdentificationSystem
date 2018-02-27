@@ -14,11 +14,18 @@ namespace MusicIdentificationSystem.DAL.DbEntities
         public string KeyName { get; set; } // KeyName (length: 250)
         [Column("KeyValue")]
         public string KeyValue { get; set; } // KeyValue (length: 250)
+        [Column("AccountId")]
+        public int? AccountId { get; set; }
+        [Column("Description")]
+        public string Description { get; set; }
+        [Column("IsActive")]
+        public bool IsActive { get; set; }
 
-        //public int? AccountId { get; set; }
+        // Foreign keys
 
-        //public string Description { get; set; }
-
-        //public bool IsActive { get; set; }
+        /// <summary>
+        /// Parent Account pointed by [Fingerprints].([AccountId]) (FK_Fingerprints_Accounts)
+        /// </summary>
+        public virtual AccountEntity Account { get; set; } // FK_Fingerprints_Accounts
     }
 }

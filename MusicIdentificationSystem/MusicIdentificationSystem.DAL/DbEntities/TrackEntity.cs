@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MusicIdentificationSystem.DAL.DbEntities
 {
-    [Table("dbo.Tracks")]
+    [Table("dbo.Track")]
     public class TrackEntity
     {
         public int Id { get; set; } // Id (Primary key)

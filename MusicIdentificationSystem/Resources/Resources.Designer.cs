@@ -19,7 +19,7 @@ namespace Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -61,6 +61,114 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nume cont.
+        /// </summary>
+        public static string Account_AccountName {
+            get {
+                return ResourceManager.GetString("Account_AccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adresa.
+        /// </summary>
+        public static string Account_Address {
+            get {
+                return ResourceManager.GetString("Account_Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Account_Email {
+            get {
+                return ResourceManager.GetString("Account_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nume.
+        /// </summary>
+        public static string Account_FullName {
+            get {
+                return ResourceManager.GetString("Account_FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id cont.
+        /// </summary>
+        public static string Account_Id {
+            get {
+                return ResourceManager.GetString("Account_Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Este activ.
+        /// </summary>
+        public static string Account_IsActive {
+            get {
+                return ResourceManager.GetString("Account_IsActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telefon.
+        /// </summary>
+        public static string Account_Phone {
+            get {
+                return ResourceManager.GetString("Account_Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contul a fost creat cu succes!.
+        /// </summary>
+        public static string Account_SuccessfullyCreated {
+            get {
+                return ResourceManager.GetString("Account_SuccessfullyCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contul a fost actualizat cu succes!.
+        /// </summary>
+        public static string Account_SuccessfullyUpdated {
+            get {
+                return ResourceManager.GetString("Account_SuccessfullyUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lista conturi.
+        /// </summary>
+        public static string Account_Title_AccountList {
+            get {
+                return ResourceManager.GetString("Account_Title_AccountList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creeaza cont.
+        /// </summary>
+        public static string Account_Title_CreateAccount {
+            get {
+                return ResourceManager.GetString("Account_Title_CreateAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modifica cont.
+        /// </summary>
+        public static string Account_Title_EditAccount {
+            get {
+                return ResourceManager.GetString("Account_Title_EditAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Id cont.
         /// </summary>
         public static string ApplicationSetting_AccountId {
@@ -88,7 +196,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Id cheie.
+        ///   Looks up a localized string similar to Id setare.
         /// </summary>
         public static string ApplicationSetting_Id {
             get {
@@ -261,9 +369,135 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Posturi.
         /// </summary>
-        public static string Global_NavBar_Stations {
+        public static string Global_NavBar_StreamStations {
             get {
-                return ResourceManager.GetString("Global_NavBar_Stations", resourceCulture);
+                return ResourceManager.GetString("Global_NavBar_StreamStations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Descriere.
+        /// </summary>
+        public static string StreamStation_Description {
+            get {
+                return ResourceManager.GetString("StreamStation_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id post.
+        /// </summary>
+        public static string StreamStation_Id {
+            get {
+                return ResourceManager.GetString("StreamStation_Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Este activa.
+        /// </summary>
+        public static string StreamStation_IsActive {
+            get {
+                return ResourceManager.GetString("StreamStation_IsActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Este necesara concersia.
+        /// </summary>
+        public static string StreamStation_IsConvertionNeeded {
+            get {
+                return ResourceManager.GetString("StreamStation_IsConvertionNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Directorul local.
+        /// </summary>
+        public static string StreamStation_LocalPath {
+            get {
+                return ResourceManager.GetString("StreamStation_LocalPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Functioneaza.
+        /// </summary>
+        public static string StreamStation_Running {
+            get {
+                return ResourceManager.GetString("StreamStation_Running", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Denumire post.
+        /// </summary>
+        public static string StreamStation_StationName {
+            get {
+                return ResourceManager.GetString("StreamStation_StationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postul a fost creat cu succes!.
+        /// </summary>
+        public static string StreamStation_SuccessfullyCreated {
+            get {
+                return ResourceManager.GetString("StreamStation_SuccessfullyCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postul a fost actualizat cu succes!.
+        /// </summary>
+        public static string StreamStation_SuccessfullyUpdated {
+            get {
+                return ResourceManager.GetString("StreamStation_SuccessfullyUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creaza post.
+        /// </summary>
+        public static string StreamStation_Title_CreateStreamStation {
+            get {
+                return ResourceManager.GetString("StreamStation_Title_CreateStreamStation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modifica post.
+        /// </summary>
+        public static string StreamStation_Title_EditStreamStation {
+            get {
+                return ResourceManager.GetString("StreamStation_Title_EditStreamStation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lista posturi.
+        /// </summary>
+        public static string StreamStation_Title_StreamStationList {
+            get {
+                return ResourceManager.GetString("StreamStation_Title_StreamStationList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Directorul unde se face transformarea.
+        /// </summary>
+        public static string StreamStation_TransformFolder {
+            get {
+                return ResourceManager.GetString("StreamStation_TransformFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to URL.
+        /// </summary>
+        public static string StreamStation_Url {
+            get {
+                return ResourceManager.GetString("StreamStation_Url", resourceCulture);
             }
         }
     }
