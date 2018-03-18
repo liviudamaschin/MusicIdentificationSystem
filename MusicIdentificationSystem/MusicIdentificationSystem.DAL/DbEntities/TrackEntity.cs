@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MusicIdentificationSystem.DAL.DbEntities
 {
-    [Table("dbo.Track")]
+    [Table("dbo.Tracks")]
     public class TrackEntity
     {
         public int Id { get; set; } // Id (Primary key)
@@ -13,7 +13,7 @@ namespace MusicIdentificationSystem.DAL.DbEntities
         public string Album { get; set; } // Album (length: 255)
         public int? ReleaseYear { get; set; } // ReleaseYear
         public double? Length { get; set; } // Length
-        public bool? IsActive { get; set; } // IsActive
+        public bool IsActive { get; set; } // IsActive
 
         // Reverse navigation
 

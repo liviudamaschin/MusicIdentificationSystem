@@ -1,0 +1,66 @@
+﻿@model MusicIdentificationSystem.AdminLTE.Models.Track.TrackModel
+
+@*<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>*@
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Isrc)
+            @Html.HiddenFor(model => model.Length)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Track_Title">
+                    @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Artist, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Track_Artist">
+                    @Html.TextBoxFor(model => model.Artist, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Artist, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Album, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Track_Album">
+                    @Html.TextBoxFor(model => model.Album, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Album, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ReleaseYear, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Track_ReleaseYear">
+                    @Html.TextBoxFor(model => model.ReleaseYear, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ReleaseYear, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Length, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Track_Length">
+                    <div class="bootstrap-timepicker">
+                        @Html.TextBoxFor(model => model.LengthText, new { @class = "form-control timepicker" })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.LengthText, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label control-label-fix col-xs-4 col-sm-4 col-md-4 col-lg-4" })
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Track_IsActive">
+                    @Html.CheckBoxFor(model => model.IsActive)
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

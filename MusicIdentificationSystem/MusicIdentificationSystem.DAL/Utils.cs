@@ -76,5 +76,28 @@ namespace MusicIdentificationSystem.DAL
             }
             else return exception;
         }
+
+        public static double GetTotalSecondsFromText(string text)
+        {
+            var hourMinuteSecondMillisecond = text.Split(':');
+
+            if (hourMinuteSecondMillisecond != null && hourMinuteSecondMillisecond.Length > 0)
+            {
+                int hours = 0;
+                int.TryParse(string.IsNullOrEmpty(hourMinuteSecondMillisecond[0]) ? "0" : hourMinuteSecondMillisecond[0], out hours);
+                int minutes = 0;
+                int.TryParse(string.IsNullOrEmpty(hourMinuteSecondMillisecond[1]) ? "0" : hourMinuteSecondMillisecond[1], out minutes);
+                int seconds = 0;
+                int.TryParse(string.IsNullOrEmpty(hourMinuteSecondMillisecond[2]) ? "0" : hourMinuteSecondMillisecond[2], out seconds);
+                int milliseconds = 0;
+                int.TryParse(string.IsNullOrEmpty(hourMinuteSecondMillisecond[3]) ? "0" : hourMinuteSecondMillisecond[3], out milliseconds);
+
+                var timespan = new TimeSpan(0, hours, minutes, seconds, milliseconds);
+
+                return timespan.TotalSeconds;
+            }
+            else
+                return 0;
+        }
     }
 }

@@ -123,6 +123,9 @@
   <data name="Account_Address" xml:space="preserve">
     <value>Adresa</value>
   </data>
+  <data name="Account_Button_AccountTrackList" xml:space="preserve">
+    <value>Lista melodii</value>
+  </data>
   <data name="Account_Email" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -222,6 +225,9 @@
   <data name="Global_NavBar_StreamStations" xml:space="preserve">
     <value>Posturi</value>
   </data>
+  <data name="Global_NavBar_Tracks" xml:space="preserve">
+    <value>Melodii</value>
+  </data>
   <data name="StreamStation_Description" xml:space="preserve">
     <value>Descriere</value>
   </data>
@@ -232,7 +238,7 @@
     <value>Este activa</value>
   </data>
   <data name="StreamStation_IsConvertionNeeded" xml:space="preserve">
-    <value>Este necesara concersia</value>
+    <value>Necesara conversie</value>
   </data>
   <data name="StreamStation_LocalPath" xml:space="preserve">
     <value>Directorul local</value>
@@ -263,5 +269,44 @@
   </data>
   <data name="StreamStation_Url" xml:space="preserve">
     <value>URL</value>
+  </data>
+  <data name="Track_Album" xml:space="preserve">
+    <value>Nume album</value>
+  </data>
+  <data name="Track_Artist" xml:space="preserve">
+    <value>Nume artist</value>
+  </data>
+  <data name="Track_Id" xml:space="preserve">
+    <value>Id melodie</value>
+  </data>
+  <data name="Track_IsActive" xml:space="preserve">
+    <value>Este activa</value>
+  </data>
+  <data name="Track_Isrc" xml:space="preserve">
+    <value>ISRC</value>
+  </data>
+  <data name="Track_Length" xml:space="preserve">
+    <value>Durata melodie</value>
+  </data>
+  <data name="Track_ReleaseYear" xml:space="preserve">
+    <value>An aparitie</value>
+  </data>
+  <data name="Track_SuccessfullyCreated" xml:space="preserve">
+    <value>Melodia a fost salvata cu succes!</value>
+  </data>
+  <data name="Track_SuccessfullyUpdated" xml:space="preserve">
+    <value>Melodia a fost modificata cu succes!</value>
+  </data>
+  <data name="Track_Title" xml:space="preserve">
+    <value>Titlu melodie</value>
+  </data>
+  <data name="Track_Title_CreateTrack" xml:space="preserve">
+    <value>Creaza melodie</value>
+  </data>
+  <data name="Track_Title_EditTrack" xml:space="preserve">
+    <value>Modifica melodie</value>
+  </data>
+  <data name="Track_Title_TrackList" xml:space="preserve">
+    <value>Lista melodii</value>
   </data>
 </root>

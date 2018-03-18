@@ -42,7 +42,7 @@ namespace CreateFingerprint
                 txtAlbum.Text = entity.Album;
                 txtReleaseYear.Text = entity.ReleaseYear.Value.ToString();
                 txtLength.Text = entity.Length.Value.ToString();
-                chkActive.Checked = entity.IsActive.HasValue? entity.IsActive.Value:false;
+                chkActive.Checked = entity.IsActive;
 
             }
 

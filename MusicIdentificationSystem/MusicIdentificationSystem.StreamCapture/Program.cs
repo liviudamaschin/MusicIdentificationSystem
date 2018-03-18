@@ -30,7 +30,7 @@ namespace MusicIdentificationSystem.StreamCapture
                 //ForEach()
                 foreach (var station in streamStations)
                 {
-                    if (station.IsActive.HasValue && station.IsActive.Value)
+                    if (station.IsActive)
                     {
                         if (!runningStations.ContainsKey(station.Id))
                         {

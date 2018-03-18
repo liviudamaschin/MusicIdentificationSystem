@@ -149,6 +149,10 @@
     <Content Include="Views\StreamStation\CreateStreamStation.cshtml" />
     <Content Include="Views\StreamStation\StreamStationList.cshtml" />
     <Content Include="Views\StreamStation\_CreateOrUpdateStreamStation.cshtml" />
+    <Content Include="Views\Track\EditTrack.cshtml" />
+    <Content Include="Views\Track\CreateTrack.cshtml" />
+    <Content Include="Views\Track\TrackList.cshtml" />
+    <Content Include="Views\Track\_CreateOrUpdateTrack.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,12 +163,15 @@
   <ItemGroup>
     <Compile Include="AutoMapperConfig\AutoMapperStartupTask.cs" />
     <Compile Include="AutoMapperConfig\MappingExtensions.cs" />
+    <Compile Include="Controllers\TrackController.cs" />
     <Compile Include="Controllers\StreamStationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationSettingController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Helpers\NotificationType.cs" />
     <Compile Include="Helpers\ParameterBasedOnFormNameAttribute.cs" />
+    <Compile Include="Models\Track\TrackListModel.cs" />
+    <Compile Include="Models\Track\TrackModel.cs" />
     <Compile Include="Models\StreamStation\StreamStationListModel.cs" />
     <Compile Include="Models\StreamStation\StreamStationModel.cs" />
     <Compile Include="Models\Account\AccountModel.cs" />

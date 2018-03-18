@@ -1,36 +1,32 @@
-﻿@model MusicIdentificationSystem.AdminLTE.Models.Account.AccountModel
+﻿@model MusicIdentificationSystem.AdminLTE.Models.Track.TrackModel
 
 @{
     Html.EnableClientValidation();
     Html.EnableUnobtrusiveJavaScript();
 
-    ViewBag.Title = ViewBag.Title = Resources.Resources.Account_Title_EditAccount;
+    ViewBag.Title = Resources.Resources.Track_Title_CreateTrack;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "Account-form" }))
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "Track-form" }))
 {
 <div class="row">
     <hr class="thicker" />
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="container-fluid">
-            <div class="pull-left">
-                <button type="button" class="btn btn-block btn-primary" onclick="location.href='@Url.Action("AccountTrackList", "Track", new { accountId = Model.Id })'">@Resources.Resources.Account_Button_AccountTrackList</button>
-            </div>
             <div class="pull-right">
-                <a href="@Url.Action("List", "Account")" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Global_Button_Back">
+                <a href="@Url.Action(" List", "Track" )" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Global_Button_Back">
                     <span class="glyphicon glyphicon-arrow-left"></span>
                     @Resources.Resources.Global_Button_Back
                 </a>
                 @*@if (Model.HasAdminAccess || Model.HasCreateAccess)
-                    {*@
+                {*@
                 <input type="submit" name="save" value="@Resources.Resources.Global_Button_Save" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Global_Button_Save" />
                 <input type="submit" name="save-continue" value="@Resources.Resources.Global_Button_SaveContinue" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Global_Button_SaveContinue" />
             </div>
         </div>
     </div>
 </div>
-    <br>
-    @Html.Partial("_CreateOrUpdateAccount", Model)
+<br>
+    @Html.Partial("_CreateOrUpdateTrack", Model)
 }

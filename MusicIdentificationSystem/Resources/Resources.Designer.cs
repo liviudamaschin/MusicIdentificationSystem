@@ -79,6 +79,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lista melodii.
+        /// </summary>
+        public static string Account_Button_AccountTrackList {
+            get {
+                return ResourceManager.GetString("Account_Button_AccountTrackList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Account_Email {
@@ -376,6 +385,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Melodii.
+        /// </summary>
+        public static string Global_NavBar_Tracks {
+            get {
+                return ResourceManager.GetString("Global_NavBar_Tracks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Descriere.
         /// </summary>
         public static string StreamStation_Description {
@@ -403,7 +421,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Este necesara concersia.
+        ///   Looks up a localized string similar to Necesara conversie.
         /// </summary>
         public static string StreamStation_IsConvertionNeeded {
             get {
@@ -498,6 +516,123 @@ namespace Resources {
         public static string StreamStation_Url {
             get {
                 return ResourceManager.GetString("StreamStation_Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nume album.
+        /// </summary>
+        public static string Track_Album {
+            get {
+                return ResourceManager.GetString("Track_Album", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nume artist.
+        /// </summary>
+        public static string Track_Artist {
+            get {
+                return ResourceManager.GetString("Track_Artist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id melodie.
+        /// </summary>
+        public static string Track_Id {
+            get {
+                return ResourceManager.GetString("Track_Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Este activa.
+        /// </summary>
+        public static string Track_IsActive {
+            get {
+                return ResourceManager.GetString("Track_IsActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ISRC.
+        /// </summary>
+        public static string Track_Isrc {
+            get {
+                return ResourceManager.GetString("Track_Isrc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Durata melodie.
+        /// </summary>
+        public static string Track_Length {
+            get {
+                return ResourceManager.GetString("Track_Length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An aparitie.
+        /// </summary>
+        public static string Track_ReleaseYear {
+            get {
+                return ResourceManager.GetString("Track_ReleaseYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Melodia a fost salvata cu succes!.
+        /// </summary>
+        public static string Track_SuccessfullyCreated {
+            get {
+                return ResourceManager.GetString("Track_SuccessfullyCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Melodia a fost modificata cu succes!.
+        /// </summary>
+        public static string Track_SuccessfullyUpdated {
+            get {
+                return ResourceManager.GetString("Track_SuccessfullyUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Titlu melodie.
+        /// </summary>
+        public static string Track_Title {
+            get {
+                return ResourceManager.GetString("Track_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creaza melodie.
+        /// </summary>
+        public static string Track_Title_CreateTrack {
+            get {
+                return ResourceManager.GetString("Track_Title_CreateTrack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modifica melodie.
+        /// </summary>
+        public static string Track_Title_EditTrack {
+            get {
+                return ResourceManager.GetString("Track_Title_EditTrack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lista melodii.
+        /// </summary>
+        public static string Track_Title_TrackList {
+            get {
+                return ResourceManager.GetString("Track_Title_TrackList", resourceCulture);
             }
         }
     }

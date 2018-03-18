@@ -41,6 +41,8 @@ namespace MusicIdentificationSystem.DAL.Context
         public DbSet<StreamStationEntity> StreamStations { get; set; }
         public DbSet<SubFingerprintEntity> SubFingerprints { get; set; }
         public DbSet<TrackEntity> Tracks { get; set; }
+        public DbSet<AccountTrackEntity> AccountTracks { get; set; }
+        public DbSet<StreamStationTrackEntity> StreamStationTracks { get; set; }
 
         public static implicit operator Func<object>(DatabaseContext v)
         {

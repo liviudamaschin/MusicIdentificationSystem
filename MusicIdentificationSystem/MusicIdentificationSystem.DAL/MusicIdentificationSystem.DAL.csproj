@@ -62,6 +62,8 @@
     <Compile Include="DatabaseConfiguration\DatabaseConfigurationManager.cs" />
     <Compile Include="DatabaseConfiguration\IDatabaseConfigurationManager.cs" />
     <Compile Include="DbEntities\AccountEntity.cs" />
+    <Compile Include="DbEntities\StreamStationTrackEntity.cs" />
+    <Compile Include="DbEntities\AccountTrackEntity.cs" />
     <Compile Include="DbEntities\AccountStreamStationEntity.cs" />
     <Compile Include="DbEntities\ApplicationSettingEntity.cs" />
     <Compile Include="DbEntities\ClientEntity.cs" />
@@ -80,6 +82,8 @@
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Repositories\StreamRepository.cs" />
     <Compile Include="Repositories\StreamStationRepository.cs" />
+    <Compile Include="Repositories\AccountTrackRepository.cs" />
+    <Compile Include="Repositories\StreamStationTrackRepository.cs" />
     <Compile Include="Repositories\TrackRepository.cs" />
     <Compile Include="StreamStation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

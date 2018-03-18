@@ -12,9 +12,9 @@ namespace MusicIdentificationSystem.DAL.DbEntities
         public string StationName { get; set; } // StationName (length: 250)
         public string Url { get; set; } // URL
         public string LocalPath { get; set; } // LocalPath
-        public bool? IsActive { get; set; } // IsActive
+        public bool IsActive { get; set; } // IsActive
         public string Description { get; set; } // Description (length: 250)
-        public bool? Running { get; set; } // Running
+        public bool Running { get; set; } // Running
         public string TransformFolder { get; set; } // TransformFolder
         public bool IsConvertionNeeded { get; set; }
         // Reverse navigation

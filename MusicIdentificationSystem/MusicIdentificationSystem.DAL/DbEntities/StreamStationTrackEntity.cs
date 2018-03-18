@@ -3,23 +3,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MusicIdentificationSystem.DAL.DbEntities
 {
-    [Table("dbo.AccountStreamStations")]
-    public class AccountStreamStationEntity
+    [Table("dbo.StreamStationTracks")]
+    public class StreamStationTrackEntity
     {
         [Column("Id")]
         [Key]
         public int Id { get; set; } // Id (Primary key)
-        [Column("AccountId")]
-        public int AccountId { get; set; } // AccountId
         [Column("StreamStationId")]
         public int StreamStationId { get; set; } // StreamStationId
+        [Column("TrackId")]
+        public int TrackId { get; set; } // TrackId
         [Column("IsActive")]
         public bool IsActive { get; set; } // IsActive
 
         // Foreign keys
 
-        public virtual AccountEntity Account { get; set; } // FK_AccountStreamStations_Accounts
+        public virtual StreamStationEntity StreamStation { get; set; } // FK_StreamStationTracks_StreamStations
 
-        public virtual StreamStationEntity StreamStation { get; set; } // FK_AccountStreamStations_StreamStations
+        public virtual TrackEntity Track { get; set; } // FK_StreamStationTracks_Tracks
     }
 }

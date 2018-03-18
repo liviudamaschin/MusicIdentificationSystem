@@ -60,7 +60,7 @@ namespace CreateFingerprint
                 rtbDescription.Text = entity.Description;
                 txtStationName.Text = entity.StationName;
                 txtLocalPath.Text = entity.LocalPath;
-                chkActive.Checked = entity.IsActive?? entity.IsActive.Value;
+                chkActive.Checked = entity.IsActive;
                 txtUrl.Text=entity.Url;
             }
 
