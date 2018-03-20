@@ -6,7 +6,7 @@
     Html.EnableClientValidation();
     Html.EnableUnobtrusiveJavaScript();
 
-    ViewBag.Title = Resources.Resources.Track_Title_TrackList;
+    ViewBag.Title = ViewBag.AccountName != null ? ViewBag.AccountName + " - " + Resources.Resources.Track_Title_TrackList : Resources.Resources.Track_Title_TrackList;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 

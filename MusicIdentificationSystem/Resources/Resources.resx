@@ -123,6 +123,9 @@
   <data name="Account_Address" xml:space="preserve">
     <value>Adresa</value>
   </data>
+  <data name="Account_Button_AccountStreamStationList" xml:space="preserve">
+    <value>Lista posturi</value>
+  </data>
   <data name="Account_Button_AccountTrackList" xml:space="preserve">
     <value>Lista melodii</value>
   </data>

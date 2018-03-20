@@ -79,6 +79,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lista posturi.
+        /// </summary>
+        public static string Account_Button_AccountStreamStationList {
+            get {
+                return ResourceManager.GetString("Account_Button_AccountStreamStationList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lista melodii.
         /// </summary>
         public static string Account_Button_AccountTrackList {

@@ -17,6 +17,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
     {
         private TrackRepository trackRepository = new TrackRepository();
         private AccountTrackRepository accountTrackRepository = new AccountTrackRepository();
+        private AccountRepository accountRepository = new AccountRepository();
 
         #region List
         public ActionResult List()
@@ -39,6 +40,10 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
         [HttpGet]
         public ActionResult AccountTrackList(int accountId)
         {
+            var account = accountRepository.GetByID(accountId);
+
+            ViewBag.AccountName = account != null ? account.AccountName : null;
+
             var trackListModel = new TrackListModel();
 
             var tracksList = trackRepository.Get();

@@ -15,7 +15,10 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
 {
     public class StreamStationController : BaseController
     {
-        private StreamStationRepository StreamStationRepository = new StreamStationRepository();
+        private StreamStationRepository streamStationRepository = new StreamStationRepository();
+        private AccountRepository accountRepository = new AccountRepository();
+        private AccountTrackRepository accountTrackRepository = new AccountTrackRepository();
+        private StreamStationTrackRepository streamStationTrackRepository = new StreamStationTrackRepository();
 
         #region List
         public ActionResult List()
@@ -26,13 +29,38 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
         [HttpGet]
         public ActionResult StreamStationList()
         {
-            var StreamStationListModel = new StreamStationListModel();
+            var streamStationListModel = new StreamStationListModel();
 
-            var StreamStationsList = StreamStationRepository.Get();
+            var streamStationsList = streamStationRepository.Get();
 
-            StreamStationListModel.StreamStationModelsList = StreamStationsList.Select(x => x.ToModel()).ToList();
+            streamStationListModel.StreamStationModelsList = streamStationsList.Select(x => x.ToModel()).ToList();
 
-            return View("StreamStationList", StreamStationListModel);
+            return View("StreamStationList", streamStationListModel);
+        }
+
+        [HttpGet]
+        public ActionResult AccountStreamStationList(int accountId)
+        {
+            var account = accountRepository.GetByID(accountId);
+
+            ViewBag.AccountName = account != null ? account.AccountName : null;
+
+            var streamStationListModel = new StreamStationListModel();
+
+            var streamStationsList = streamStationRepository.Get();
+
+            var accountTracksList = accountTrackRepository.Get(x => x.AccountId == accountId);
+
+            var streamStationTracksList = streamStationTrackRepository.Get();
+
+            streamStationListModel.StreamStationModelsList = (from at in accountTracksList
+                                                              join st in streamStationTracksList
+                                                              on at.TrackId equals st.TrackId
+                                                              join s in streamStationsList
+                                                              on st.StreamStationId equals s.Id
+                                                              select s).Select(x => x.ToModel()).ToList();
+
+            return View("StreamStationList", streamStationListModel);
         }
         #endregion List
 
@@ -56,8 +84,8 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
                 {
                     var StreamStation = model.ToEntity();
 
-                    StreamStationRepository.Insert(StreamStation);
-                    StreamStationRepository.Save();
+                    streamStationRepository.Insert(StreamStation);
+                    streamStationRepository.Save();
 
                     SuccessNotification(Resources.Resources.StreamStation_SuccessfullyCreated);
 
@@ -82,11 +110,11 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var StreamStation = StreamStationRepository.GetByID(id);
+            var streamStation = streamStationRepository.GetByID(id);
 
-            if (StreamStation != null)
+            if (streamStation != null)
             {
-                var model = StreamStation.ToModel();
+                var model = streamStation.ToModel();
 
                 return View("EditStreamStation", model);
             }
@@ -103,8 +131,8 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
                 {
                     var setting = model.ToEntity();
 
-                    StreamStationRepository.Update(setting);
-                    StreamStationRepository.Save();
+                    streamStationRepository.Update(setting);
+                    streamStationRepository.Save();
 
                     SuccessNotification(Resources.Resources.StreamStation_SuccessfullyUpdated);
                     return continueEditing ? RedirectToAction("Edit", new { id = model.Id }) : RedirectToAction("List");

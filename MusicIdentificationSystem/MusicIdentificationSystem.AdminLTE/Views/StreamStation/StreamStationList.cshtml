@@ -6,7 +6,7 @@
     Html.EnableClientValidation();
     Html.EnableUnobtrusiveJavaScript();
 
-    ViewBag.Title = Resources.Resources.StreamStation_Title_StreamStationList;
+    ViewBag.Title = ViewBag.AccountName != null ? ViewBag.AccountName + " - " + Resources.Resources.StreamStation_Title_StreamStationList : Resources.Resources.StreamStation_Title_StreamStationList;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
