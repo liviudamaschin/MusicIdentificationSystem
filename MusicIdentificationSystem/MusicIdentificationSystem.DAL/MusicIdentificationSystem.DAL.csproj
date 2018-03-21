@@ -62,9 +62,8 @@
     <Compile Include="DatabaseConfiguration\DatabaseConfigurationManager.cs" />
     <Compile Include="DatabaseConfiguration\IDatabaseConfigurationManager.cs" />
     <Compile Include="DbEntities\AccountEntity.cs" />
-    <Compile Include="DbEntities\StreamStationTrackEntity.cs" />
-    <Compile Include="DbEntities\AccountTrackEntity.cs" />
-    <Compile Include="DbEntities\AccountStreamStationEntity.cs" />
+    <Compile Include="DbEntities\StreamStationXTrackEntity.cs" />
+    <Compile Include="DbEntities\AccountXTrackEntity.cs" />
     <Compile Include="DbEntities\ApplicationSettingEntity.cs" />
     <Compile Include="DbEntities\ClientEntity.cs" />
     <Compile Include="DbEntities\FingerprintEntity.cs" />

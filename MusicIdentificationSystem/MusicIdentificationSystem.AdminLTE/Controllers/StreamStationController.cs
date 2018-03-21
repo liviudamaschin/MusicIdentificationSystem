@@ -17,8 +17,8 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
     {
         private StreamStationRepository streamStationRepository = new StreamStationRepository();
         private AccountRepository accountRepository = new AccountRepository();
-        private AccountTrackRepository accountTrackRepository = new AccountTrackRepository();
-        private StreamStationTrackRepository streamStationTrackRepository = new StreamStationTrackRepository();
+        private AccountXTrackRepository accountXTrackRepository = new AccountXTrackRepository();
+        private StreamStationXTrackRepository streamStationXTrackRepository = new StreamStationXTrackRepository();
 
         #region List
         public ActionResult List()
@@ -39,7 +39,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
         }
 
         [HttpGet]
-        public ActionResult AccountStreamStationList(int accountId)
+        public ActionResult AccountXStreamStationList(int accountId)
         {
             var account = accountRepository.GetByID(accountId);
 
@@ -49,12 +49,12 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
 
             var streamStationsList = streamStationRepository.Get();
 
-            var accountTracksList = accountTrackRepository.Get(x => x.AccountId == accountId);
+            var accountXTracksList = accountXTrackRepository.Get(x => x.AccountId == accountId && x.IsActive == true);
 
-            var streamStationTracksList = streamStationTrackRepository.Get();
+            var streamStationXTracksList = streamStationXTrackRepository.Get(x => x.IsActive == true);
 
-            streamStationListModel.StreamStationModelsList = (from at in accountTracksList
-                                                              join st in streamStationTracksList
+            streamStationListModel.StreamStationModelsList = (from at in accountXTracksList
+                                                              join st in streamStationXTracksList
                                                               on at.TrackId equals st.TrackId
                                                               join s in streamStationsList
                                                               on st.StreamStationId equals s.Id

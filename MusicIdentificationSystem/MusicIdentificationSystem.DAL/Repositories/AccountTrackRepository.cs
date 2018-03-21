@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MusicIdentificationSystem.DAL.Repositories
 {
-    public class AccountTrackRepository : GenericRepository2<AccountTrackEntity>
+    public class AccountXTrackRepository : GenericRepository2<AccountXTrackEntity>
     {
     }
 }

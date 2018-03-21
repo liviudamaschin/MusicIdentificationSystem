@@ -16,7 +16,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
     public class TrackController : BaseController
     {
         private TrackRepository trackRepository = new TrackRepository();
-        private AccountTrackRepository accountTrackRepository = new AccountTrackRepository();
+        private AccountXTrackRepository accountXTrackRepository = new AccountXTrackRepository();
         private AccountRepository accountRepository = new AccountRepository();
 
         #region List
@@ -38,7 +38,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
         }
 
         [HttpGet]
-        public ActionResult AccountTrackList(int accountId)
+        public ActionResult AccountXTrackList(int accountId)
         {
             var account = accountRepository.GetByID(accountId);
 
@@ -47,10 +47,10 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
             var trackListModel = new TrackListModel();
 
             var tracksList = trackRepository.Get();
-            var accountTracksList = accountTrackRepository.Get(x => x.AccountId == accountId);
+            var accountXTracksList = accountXTrackRepository.Get(x => x.AccountId == accountId);
 
             trackListModel.TrackModelsList = (from t in tracksList
-                                              join at in accountTracksList
+                                              join at in accountXTracksList
                                               on t.Id equals at.TrackId
                                               select t).Select(x => x.ToModel()).ToList();
 

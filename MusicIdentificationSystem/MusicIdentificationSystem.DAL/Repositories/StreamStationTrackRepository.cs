@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MusicIdentificationSystem.DAL.Repositories
 {
-    public class StreamStationTrackRepository : GenericRepository2<StreamStationTrackEntity>
+    public class StreamStationXTrackRepository : GenericRepository2<StreamStationXTrackEntity>
     {
     }
 }
