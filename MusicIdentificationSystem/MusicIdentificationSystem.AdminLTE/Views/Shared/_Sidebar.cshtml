@@ -19,9 +19,6 @@
             <li class="@Url.IsLinkActive("Index", "Home")">
                 <a href="@Url.Action("Index", "Home")"><i class="fa fa-link"></i> <span>Home</span></a>
             </li>
-            <li class="@Url.IsLinkActive("AnotherLink", "Home")">
-                <a href="@Url.Action("AnotherLink", "Home")"><i class="fa fa-link"></i> <span>Another Link</span></a>
-            </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>@Resources.Resources.Global_NavBar_Accounts</span>
@@ -33,7 +30,6 @@
                     <li><a href="@Url.Action("List", "Account")"><i class="fa fa-users"></i>@Resources.Resources.Global_NavBar_Accounts</a></li>
                     <li><a href="@Url.Action("List", "StreamStation")"><i class="fa fa-tv"></i>@Resources.Resources.Global_NavBar_StreamStations</a></li>
                     <li><a href="@Url.Action("List", "Track")"><i class="fa fa-music"></i>@Resources.Resources.Global_NavBar_Tracks</a></li>
-                    <li><a href="#">Link in level 2</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -45,7 +41,6 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="@Url.Action("List", "ApplicationSetting")"><i class="fa fa-wrench"></i>@Resources.Resources.Global_NavBar_ApplicationSettings</a></li>
-                    <li><a href="#">Link in level 2</a></li>
                 </ul>
             </li>
         </ul>
