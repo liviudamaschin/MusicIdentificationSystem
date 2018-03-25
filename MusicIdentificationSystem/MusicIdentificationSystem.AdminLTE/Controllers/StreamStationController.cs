@@ -47,9 +47,9 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
 
             var streamStationListModel = new StreamStationListModel();
 
-            var streamStationsList = streamStationRepository.Get();
+            var streamStationsList = streamStationRepository.Get(x => x.IsActive == true);
 
-            var accountXTracksList = accountXTrackRepository.Get(x => x.AccountId == accountId && x.IsActive == true);
+            var accountXTracksList = accountXTrackRepository.Get(x => x.AccountId == accountId);
 
             var streamStationXTracksList = streamStationXTrackRepository.Get(x => x.IsActive == true);
 

@@ -421,7 +421,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Este activa.
+        ///   Looks up a localized string similar to Este activ.
         /// </summary>
         public static string StreamStation_IsActive {
             get {

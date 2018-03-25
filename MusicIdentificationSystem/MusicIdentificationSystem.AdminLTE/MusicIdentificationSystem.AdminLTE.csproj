@@ -125,11 +125,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\css\Gridmvc.css" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\gridmvc.js" />
-    <Content Include="Scripts\gridmvc.lang.ru.js" />
-    <Content Include="Scripts\gridmvc.min.js" />
+    <Content Include="Content\js\Scripts\gridmvc.js" />
+    <Content Include="Content\js\Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Content\js\Scripts\gridmvc.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

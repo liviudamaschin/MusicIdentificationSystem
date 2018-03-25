@@ -46,7 +46,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
 
             var trackListModel = new TrackListModel();
 
-            var tracksList = trackRepository.Get();
+            var tracksList = trackRepository.Get(x => x.IsActive == true);
             var accountXTracksList = accountXTrackRepository.Get(x => x.AccountId == accountId);
 
             trackListModel.TrackModelsList = (from t in tracksList

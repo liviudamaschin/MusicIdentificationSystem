@@ -238,7 +238,7 @@
     <value>Id post</value>
   </data>
   <data name="StreamStation_IsActive" xml:space="preserve">
-    <value>Este activa</value>
+    <value>Este activ</value>
   </data>
   <data name="StreamStation_IsConvertionNeeded" xml:space="preserve">
     <value>Necesara conversie</value>
