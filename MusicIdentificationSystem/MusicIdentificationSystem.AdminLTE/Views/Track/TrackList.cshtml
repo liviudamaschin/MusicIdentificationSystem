@@ -35,18 +35,18 @@
                     columns.Add()
                         .Encoded(false)
                         .Sanitized(false)
-                        .RenderValueAs(c => Html.CheckBox("checked", c.IsActive, htmlAttributes: new { @readonly = "readonly" }))
+                        .RenderValueAs(c => Html.CheckBox("checked", c.IsActive))
                         .Titled(Resources.Resources.Track_IsActive)
                         .Filterable(true);
-                }).WithPaging(10).Sortable(true).WithMultipleFilters()
+                }).WithPaging(10).Sortable(true).WithMultipleFilters().Selectable(false)
             </div>
         </div>
 
     </div>
 </section>
 
-@*<script>
-    $(':checkbox[readonly]').click(function () {
-        return false;
+<script>
+    $(document).ready(function () {
+        $("input:checkbox").attr('disabled', true);
     });
-</script>*@
+</script>
