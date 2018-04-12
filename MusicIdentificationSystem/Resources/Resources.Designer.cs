@@ -304,6 +304,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activeaza-le pe toate.
+        /// </summary>
+        public static string Global_Button_CheckAll {
+            get {
+                return ResourceManager.GetString("Global_Button_CheckAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
         public static string Global_Button_Create {
@@ -336,6 +345,15 @@ namespace Resources {
         public static string Global_Button_SaveContinue {
             get {
                 return ResourceManager.GetString("Global_Button_SaveContinue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debifeaza toate.
+        /// </summary>
+        public static string Global_Button_UncheckAll {
+            get {
+                return ResourceManager.GetString("Global_Button_UncheckAll", resourceCulture);
             }
         }
         
