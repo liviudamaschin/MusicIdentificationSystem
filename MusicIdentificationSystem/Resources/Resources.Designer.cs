@@ -97,6 +97,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amprenteaza.
+        /// </summary>
+        public static string Account_Button_CreateFingerprints {
+            get {
+                return ResourceManager.GetString("Account_Button_CreateFingerprints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Account_Email {
@@ -295,11 +304,47 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to La crearea amprentelor a aparut o eroare!.
+        /// </summary>
+        public static string CreateFingerprint_Error {
+            get {
+                return ResourceManager.GetString("CreateFingerprint_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amprentele au fost create cu succes!.
+        /// </summary>
+        public static string CreateFingerprint_Success {
+            get {
+                return ResourceManager.GetString("CreateFingerprint_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creeaza amprente.
+        /// </summary>
+        public static string CreateFingerprint_Title_FingerprintList {
+            get {
+                return ResourceManager.GetString("CreateFingerprint_Title_FingerprintList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
         public static string Global_Button_Back {
             get {
                 return ResourceManager.GetString("Global_Button_Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ....
+        /// </summary>
+        public static string Global_Button_Browse {
+            get {
+                return ResourceManager.GetString("Global_Button_Browse", resourceCulture);
             }
         }
         
@@ -318,6 +363,15 @@ namespace Resources {
         public static string Global_Button_Create {
             get {
                 return ResourceManager.GetString("Global_Button_Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amprenteaza.
+        /// </summary>
+        public static string Global_Button_CreateFingerprint {
+            get {
+                return ResourceManager.GetString("Global_Button_CreateFingerprint", resourceCulture);
             }
         }
         
@@ -579,6 +633,15 @@ namespace Resources {
         public static string Track_IsActive {
             get {
                 return ResourceManager.GetString("Track_IsActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Este noua.
+        /// </summary>
+        public static string Track_IsNew {
+            get {
+                return ResourceManager.GetString("Track_IsNew", resourceCulture);
             }
         }
         

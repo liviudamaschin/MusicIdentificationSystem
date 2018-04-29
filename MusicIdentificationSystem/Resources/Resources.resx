@@ -129,6 +129,9 @@
   <data name="Account_Button_AccountTrackList" xml:space="preserve">
     <value>Lista melodii</value>
   </data>
+  <data name="Account_Button_CreateFingerprints" xml:space="preserve">
+    <value>Amprenteaza</value>
+  </data>
   <data name="Account_Email" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -195,14 +198,29 @@
   <data name="ApplicationSetting_Title_EditApplicationSetting" xml:space="preserve">
     <value>Modifica setarea</value>
   </data>
+  <data name="CreateFingerprint_Error" xml:space="preserve">
+    <value>La crearea amprentelor a aparut o eroare!</value>
+  </data>
+  <data name="CreateFingerprint_Success" xml:space="preserve">
+    <value>Amprentele au fost create cu succes!</value>
+  </data>
+  <data name="CreateFingerprint_Title_FingerprintList" xml:space="preserve">
+    <value>Creeaza amprente</value>
+  </data>
   <data name="Global_Button_Back" xml:space="preserve">
     <value>Back</value>
+  </data>
+  <data name="Global_Button_Browse" xml:space="preserve">
+    <value>...</value>
   </data>
   <data name="Global_Button_CheckAll" xml:space="preserve">
     <value>Activeaza-le pe toate</value>
   </data>
   <data name="Global_Button_Create" xml:space="preserve">
     <value>Create</value>
+  </data>
+  <data name="Global_Button_CreateFingerprint" xml:space="preserve">
+    <value>Amprenteaza</value>
   </data>
   <data name="Global_Button_Edit" xml:space="preserve">
     <value>Edit</value>
@@ -290,6 +308,9 @@
   </data>
   <data name="Track_IsActive" xml:space="preserve">
     <value>Este activa</value>
+  </data>
+  <data name="Track_IsNew" xml:space="preserve">
+    <value>Este noua</value>
   </data>
   <data name="Track_Isrc" xml:space="preserve">
     <value>ISRC</value>

@@ -25,5 +25,7 @@ namespace MusicIdentificationSystem.AdminLTE.Models.Track
         public string LengthText { get; set; } // Length
         [Display(ResourceType = typeof(Resources.Resources), Name = "Track_IsActive")]
         public bool IsActive { get; set; } // IsActive
+        [Display(ResourceType = typeof(Resources.Resources), Name = "Track_IsNew")]
+        public bool IsNew { get; set; } // IsNew
     }
 }

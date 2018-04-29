@@ -1,0 +1,105 @@
+﻿@model MusicIdentificationSystem.AdminLTE.Models.CreateFingerprint.FingerprintListModel
+
+@using GridMvc.Html
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    ViewBag.Title = ViewBag.AccountName + " - " + Resources.Resources.CreateFingerprint_Title_FingerprintList;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="pull-left">
+                <input type="file" id="inputFolder" class="btn btn-primary" multiple directory webkitdirectory mozdirectory />
+            </div>
+        </div>
+    </div> 
+
+    <br>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="pull-left">
+                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" onclick="OnCreateFingerprintClick()">@Resources.Resources.Global_Button_CreateFingerprint</button>
+            </div>
+            <div class="pull-right">
+                <a href="@Url.Action("Edit", "Account", new { Id = Model.AccountId })" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.Global_Button_Back">
+                    <span class="glyphicon glyphicon-arrow-left"></span>
+                    @Resources.Resources.Global_Button_Back
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="force-scrollbar">
+                @Html.Grid(Model.FingerprintModelsList).Named("FingerprintGrid").Columns(columns =>
+                     {
+                         columns.Add()
+                             .Encoded(false)
+                             .Sanitized(false)
+                             .SetWidth(80)
+                             .RenderValueAs(c => Html.ActionLink(@Resources.Resources.Global_Button_Edit, "Edit", new { id = c.Id }, new { @class = "btn btn-block btn-primary" }).ToHtmlString());
+
+                         columns.Add(c => c.Title).Titled(Resources.Resources.Track_Title).Filterable(true);
+                         columns.Add(c => c.Artist).Titled(Resources.Resources.Track_Artist).Filterable(true);
+                         columns.Add(c => c.Album).Titled(Resources.Resources.Track_Album).Filterable(true);
+                         columns.Add(c => c.ReleaseYear).Titled(Resources.Resources.Track_ReleaseYear).Filterable(true);
+                         columns.Add(c => c.Length).Titled(Resources.Resources.Track_Length).Filterable(true);
+                         columns.Add()
+                             .Encoded(false)
+                             .Sanitized(false)
+                             .RenderValueAs(c => Html.CheckBox("checked", c.IsActive))
+                             .Titled(Resources.Resources.Track_IsActive)
+                             .Filterable(true);
+                     }).SetRowCssClasses(item => item.IsNew ? "warning" : string.Empty).WithPaging(10).Sortable(true).WithMultipleFilters().Selectable(false)
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("input:checkbox").attr('disabled', true);
+    });
+
+    function OnCreateFingerprintClick() {
+        var files = document.getElementById('inputFolder').files;
+
+        if (files.length > 0) {
+            if (window.FormData !== undefined) {
+                var data = new FormData();
+                for (var x = 0; x < files.length; x++) {
+                    data.append("file" + x, files[x]);
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/CreateFingerprint/CreateFingerprint?accountId=' + @Model.AccountId,
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (result) {
+                        alert(result);
+                        window.location.reload();
+                    },
+                    error: function (xhr, status, p3, p4) {
+                        var err = "Error " + " " + status + " " + p3 + " " + p4;
+                        if (xhr.responseText && xhr.responseText[0] == "{")
+                            err = JSON.parse(xhr.responseText).Message;
+                        alert(err);
+                    }
+                });
+            } else {
+                alert("This browser doesn't support HTML5 file uploads!");
+            }
+        }
+    };
+</script>

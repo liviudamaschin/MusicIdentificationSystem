@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using MusicIdentificationSystem.DAL.DbEntities;
 using MusicIdentificationSystem.DAL.DatabaseConfiguration;
 using MusicIdentificationSystem.DAL.UnitOfWork;
+using MusicIdentificationSystem.DAL.Repositories;
+using System.Linq;
 
 namespace MusicIdentification.Core
 {
@@ -24,6 +26,8 @@ namespace MusicIdentification.Core
         private readonly IQueryCommandBuilder queryCommandBuilder = new QueryCommandBuilder();
         //private UnitOfWork2 unitOfWork;
         private IDatabaseConfigurationManager config;
+        private readonly AccountXTrackRepository accountXTrackRepository = new AccountXTrackRepository();
+        private readonly TrackRepository trackRepository = new TrackRepository();
 
         public Fingerprint()
         {
@@ -31,7 +35,7 @@ namespace MusicIdentification.Core
             //this.unitOfWork = new UnitOfWork2();
         }
 
-        public void StoreAudioFileFingerprintsInStorageForLaterRetrieval(string pathToAudioFile)
+        public void StoreAudioFileFingerprintsInStorageForLaterRetrieval(string pathToAudioFile, int? accountId = null)
         {
             try
             {
@@ -46,7 +50,6 @@ namespace MusicIdentification.Core
                 TrackData track = new TrackData(isrc, artist, title, album, year, length);
 
                 // store track metadata in the datasource
-                //var trackReference = modelService.InsertTrack(track);
                 var trackReference = modelService.InsertTrack(track);
                 // create hashed fingerprints
                 var hashedFingerprints = fingerprintCommandBuilder
@@ -59,9 +62,26 @@ namespace MusicIdentification.Core
                 // store hashes in the database for later retrieval
                 modelService.InsertHashDataForTrack(hashedFingerprints, trackReference);
 
+                // create link between track and account
+                var trackEntity = trackRepository.Get(x => x.Isrc == isrc).FirstOrDefault();
+
+                if (trackEntity != null && accountId.HasValue)
+                {
+                    var accountXTrackEntity = new AccountXTrackEntity()
+                    {
+                        AccountId = accountId.Value,
+                        TrackId = trackEntity.Id,
+                        IsActive = true
+                    };
+
+                    accountXTrackRepository.Insert(accountXTrackEntity);
+                    accountXTrackRepository.Save();
+                }
+
             }
             catch (Exception ex)
             {
+                throw ex;
                 //MessageBox.Show(ex.Message);
             }
         }
