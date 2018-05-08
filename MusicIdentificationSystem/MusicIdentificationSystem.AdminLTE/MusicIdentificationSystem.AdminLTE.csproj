@@ -154,6 +154,7 @@
     <Content Include="Views\Track\TrackList.cshtml" />
     <Content Include="Views\Track\_CreateOrUpdateTrack.cshtml" />
     <Content Include="Views\CreateFingerprint\CreateFingerprintList.cshtml" />
+    <Content Include="Views\Dashboard\StreamStationStatusList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -165,6 +166,7 @@
     <Compile Include="AutoMapperConfig\AutoMapperStartupTask.cs" />
     <Compile Include="AutoMapperConfig\MappingExtensions.cs" />
     <Compile Include="Controllers\CreateFingerprintController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\TrackController.cs" />
     <Compile Include="Controllers\StreamStationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -173,6 +175,8 @@
     <Compile Include="Helpers\NotificationType.cs" />
     <Compile Include="Helpers\ParameterBasedOnFormNameAttribute.cs" />
     <Compile Include="Models\CreateFingerprint\FingerprintListModel.cs" />
+    <Compile Include="Models\Dashboard\StreamStationStatusListModel.cs" />
+    <Compile Include="Models\Dashboard\StreamStationStatusModel.cs" />
     <Compile Include="Models\Track\TrackListModel.cs" />
     <Compile Include="Models\Track\TrackModel.cs" />
     <Compile Include="Models\StreamStation\StreamStationListModel.cs" />
@@ -313,7 +317,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Reports\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Reports\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">

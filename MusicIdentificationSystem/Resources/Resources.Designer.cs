@@ -331,6 +331,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Status posturi.
+        /// </summary>
+        public static string Dashboard_Title_StreamStationStatusList {
+            get {
+                return ResourceManager.GetString("Dashboard_Title_StreamStationStatusList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
         public static string Global_Button_Back {
@@ -444,6 +453,24 @@ namespace Resources {
         public static string Global_NavBar_ApplicationSettings {
             get {
                 return ResourceManager.GetString("Global_NavBar_ApplicationSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dashboard.
+        /// </summary>
+        public static string Global_NavBar_Dashboard {
+            get {
+                return ResourceManager.GetString("Global_NavBar_Dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Global_NavBar_Home {
+            get {
+                return ResourceManager.GetString("Global_NavBar_Home", resourceCulture);
             }
         }
         

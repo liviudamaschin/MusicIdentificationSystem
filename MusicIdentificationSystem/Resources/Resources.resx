@@ -207,6 +207,9 @@
   <data name="CreateFingerprint_Title_FingerprintList" xml:space="preserve">
     <value>Creeaza amprente</value>
   </data>
+  <data name="Dashboard_Title_StreamStationStatusList" xml:space="preserve">
+    <value>Status posturi</value>
+  </data>
   <data name="Global_Button_Back" xml:space="preserve">
     <value>Back</value>
   </data>
@@ -245,6 +248,12 @@
   </data>
   <data name="Global_NavBar_ApplicationSettings" xml:space="preserve">
     <value>Setari</value>
+  </data>
+  <data name="Global_NavBar_Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Global_NavBar_Home" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="Global_NavBar_StationAccountAllocation" xml:space="preserve">
     <value>Alocare posturi per cont</value>

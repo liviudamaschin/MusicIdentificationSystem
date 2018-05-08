@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MusicIdentificationSystem.AdminLTE.Models.Account;
 using MusicIdentificationSystem.AdminLTE.Models.ApplicationSetting;
+using MusicIdentificationSystem.AdminLTE.Models.Dashboard;
 using MusicIdentificationSystem.AdminLTE.Models.StreamStation;
 using MusicIdentificationSystem.AdminLTE.Models.Track;
 using MusicIdentificationSystem.DAL.DbEntities;
@@ -32,6 +33,10 @@ namespace MusicIdentificationSystem.AdminLTE.AutoMapperConfig
                 .ForMember(x => x.Fingerprints, action => action.Ignore())
                 .ForMember(x => x.Results, action => action.Ignore())
                 .ForMember(x => x.SubFingerprints, action => action.Ignore());
+
+            Mapper.CreateMap<StreamStationEntity, StreamStationStatusModel>();
+
+            Mapper.CreateMap<StreamStationStatusModel, StreamStationEntity>();
 
             Mapper.AssertConfigurationIsValid();
         }
