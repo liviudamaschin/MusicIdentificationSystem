@@ -15,15 +15,6 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="container-fluid">
-                <div class="pull-right">
-                    <button type="button" class="btn btn-block btn-primary" id="CheckAll" onclick="toggleChecked(@ViewBag.Check);">@Resources.Resources.Global_Button_CheckAll</button>
-                    @*<button type="button" class="btn btn-block btn-primary" id="CheckAll">@Resources.Resources.Global_Button_CheckAll</button>*@
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="force-scrollbar" style="overflow: auto">
                 @Html.Grid(Model.StreamStationStatusModelsList).Named("StreamStationStatusGrid").Columns(columns =>
                 {
@@ -50,8 +41,7 @@
                         .RenderValueAs(c => Html.CheckBox("checked", c.IsConvertionNeeded))
                         .Titled(Resources.Resources.StreamStation_IsConvertionNeeded)
                         .Filterable(true);
-                }).SetRowCssClasses(item => item.IsActive ? (item.Running ? "success" : "danger") : string.Empty)
-                .WithPaging(10).Sortable(true).WithMultipleFilters().Selectable(false)
+                }).SetRowCssClasses(item => item.IsActive ? (item.Running ? "success" : "danger") : string.Empty).WithPaging(10).Sortable(true).WithMultipleFilters().Selectable(false)
             </div>
         </div>
     </div>

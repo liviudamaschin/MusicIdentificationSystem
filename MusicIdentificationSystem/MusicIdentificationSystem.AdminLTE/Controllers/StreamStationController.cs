@@ -49,7 +49,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
 
             var streamStationsList = streamStationRepository.Get(x => x.IsActive == true);
 
-            var accountXTracksList = accountXTrackRepository.Get(x => x.AccountId == accountId);
+            var accountXTracksList = accountXTrackRepository.Get(x => x.AccountId == accountId && x.IsActive == true);
 
             var streamStationXTracksList = streamStationXTrackRepository.Get(x => x.IsActive == true);
 
@@ -58,7 +58,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
                                                               on at.TrackId equals st.TrackId
                                                               join s in streamStationsList
                                                               on st.StreamStationId equals s.Id
-                                                              select s).Select(x => x.ToModel()).ToList();
+                                                              select s).Distinct().Select(x => x.ToModel()).ToList();
 
             return View("StreamStationList", streamStationListModel);
         }

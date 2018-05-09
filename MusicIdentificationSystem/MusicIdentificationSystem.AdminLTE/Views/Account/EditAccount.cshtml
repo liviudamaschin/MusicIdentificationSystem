@@ -16,6 +16,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="container-fluid">
             <div class="pull-left">
+                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" onclick="location.href='@Url.Action("AccountXStreamStationStatusList", "Dashboard", new { accountId = Model.Id })'">@Resources.Resources.Account_Button_Dashboard</button>
                 <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" onclick="location.href='@Url.Action("CreateFingerprintList", "CreateFingerprint", new { accountId = Model.Id })'">@Resources.Resources.Account_Button_CreateFingerprints</button>
                 <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" onclick="location.href='@Url.Action("AccountXTrackList", "Track", new { accountId = Model.Id })'">@Resources.Resources.Account_Button_AccountTrackList</button>
                 <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" onclick="location.href='@Url.Action("AccountXStreamStationList", "StreamStation", new { accountId = Model.Id })'">@Resources.Resources.Account_Button_AccountStreamStationList</button>

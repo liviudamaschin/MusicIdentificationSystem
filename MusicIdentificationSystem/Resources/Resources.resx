@@ -132,6 +132,9 @@
   <data name="Account_Button_CreateFingerprints" xml:space="preserve">
     <value>Amprenteaza</value>
   </data>
+  <data name="Account_Button_Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
   <data name="Account_Email" xml:space="preserve">
     <value>Email</value>
   </data>
