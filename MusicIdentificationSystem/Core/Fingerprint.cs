@@ -106,15 +106,22 @@ namespace MusicIdentification.Core
                                                      .UsingServices(modelService, audioService)
                                                      .Query()
                                                      .Result;
-
+                
                 foreach (ResultEntry result in queryResult.ResultEntries)
                 {
+                    
                     if (result.Confidence > confidence)
                     {
                         ResultEntity trackresult = new ResultEntity();
                         trackresult.Filename = queryAudioFile;
                         trackresult.TrackId = Convert.ToInt32(result.Track.TrackReference.Id);
-                        trackresult.MatchStartAt = Convert.ToDecimal(result.TrackMatchStartsAt);
+                        trackresult.TrackMatchStartAt = Convert.ToDecimal(result.TrackMatchStartsAt);
+                        trackresult.QueryMatchStartsAt = Convert.ToDecimal(result.QueryMatchStartsAt);
+                        trackresult.QueryMatchLength = Convert.ToDecimal(result.QueryMatchLength);
+                        trackresult.TrackStartsAt = Convert.ToDecimal(result.TrackStartsAt);
+                        trackresult.Coverage = Convert.ToDecimal(result.Coverage);
+                        trackresult.Confidence = Convert.ToDecimal(result.Confidence);
+
                         //trackresult.Track = unitOfWork.TrackRepository.GetByID(trackresult.TrackId);
                         tracks.Add(trackresult);
                     }

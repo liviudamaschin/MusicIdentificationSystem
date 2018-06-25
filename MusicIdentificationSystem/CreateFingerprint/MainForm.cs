@@ -121,7 +121,7 @@ namespace CreateFingerprint
             MessageBox.Show(String.Format("Time elapsed {0}:{1}", sw.Elapsed.TotalMinutes, sw.Elapsed.TotalSeconds));
             foreach (ResultEntity result in results)
             {
-                TrackList.Add(new ListItem(result.Id.ToString() , $"{result.Track.Artist}, {result.Track.Title}, {result.MatchStartAt}"));
+                TrackList.Add(new ListItem(result.Id.ToString() , $"{result.Track.Artist}, {result.Track.Title}, {result.TrackMatchStartAt}"));
             }
         }
         //public TrackData GetBestMatchForSong2(string queryAudioFile)

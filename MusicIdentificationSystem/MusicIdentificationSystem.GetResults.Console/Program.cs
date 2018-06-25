@@ -1,5 +1,5 @@
 ﻿
-namespace MusicIdentificationSystem.GetResults.Console
+namespace MusicIdentificationSystem.GetResults
 {
     class Program
     {

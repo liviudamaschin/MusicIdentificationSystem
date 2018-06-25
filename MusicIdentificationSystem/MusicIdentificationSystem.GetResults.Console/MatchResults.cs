@@ -9,7 +9,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MusicIdentificationSystem.GetResults.Console
+namespace MusicIdentificationSystem.GetResults
 {
     public class MatchResults
     {
@@ -68,21 +68,30 @@ namespace MusicIdentificationSystem.GetResults.Console
             ResultRepository resultRepository = new ResultRepository();
             double confidfence = Convert.ToDouble(cApp.AppSettings["Confidfence"]);
             var unprocessedStreamStations = streamRepository.GetUnprocessedStreams();
+            Console.WriteLine("Start matching streams:");
             foreach (var unprocessedStreamStation in unprocessedStreamStations)
             {
+                Console.WriteLine($"matching  = {unprocessedStreamStation.FileName}");
                 if (unprocessedStreamStation.ProcessFile != null)
                 {
                     Fingerprint fingerprint = new Fingerprint();
                     List<ResultEntity> results = fingerprint.GetBestMatchForSong(Path.Combine(cApp.AppSettings["StreamPath"], unprocessedStreamStation.ProcessFile), confidfence);
+                    Console.WriteLine($"matched results:  = {results.Count}");
                     foreach (var result in results)
                     {
+                        Console.WriteLine($"result:  = {result.TrackId.Value}.{result.Track?.Artist} - {result.Track?.Title}");
                         var track = trackRepository.GetByID(result.TrackId);
 
                         ResultEntity resultEntity = new ResultEntity();
                         resultEntity.StreamId = unprocessedStreamStation.Id;
                         resultEntity.TrackId = result.TrackId;
                         resultEntity.Filename = unprocessedStreamStation.ProcessFile;
-                        resultEntity.MatchStartAt = result.MatchStartAt;
+                        resultEntity.TrackMatchStartAt = result.TrackMatchStartAt;
+                        resultEntity.QueryMatchStartsAt =result.QueryMatchStartsAt;
+                        resultEntity.QueryMatchLength = result.QueryMatchLength;
+                        resultEntity.TrackStartsAt = result.TrackStartsAt;
+                        resultEntity.Coverage = result.Coverage;
+                        resultEntity.Confidence = result.Confidence;
 
                         resultRepository.Insert(resultEntity);
                         resultRepository.Save();

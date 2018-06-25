@@ -18,8 +18,8 @@ namespace StreamCapture
         static void Main(string[] args)
         {
             //TestEntities();
-            //RecordStations();
-            MatchStream();
+            RecordStations();
+            //MatchStream();
 
             //ConvertFiles();
 
