@@ -31,7 +31,6 @@ namespace MusicIdentificationSystem.DAL.Context
 
         #region Db Sets
         public DbSet<AccountEntity> Accounts { get; set; }
-        public DbSet<AccountStreamStationEntity> AccountStreamStations { get; set; }
         public DbSet<ApplicationSettingEntity> ApplicationSettings { get; set; }
         public DbSet<ClientEntity> Clients { get; set; }
         public DbSet<FingerprintEntity> Fingerprints { get; set; }
@@ -41,8 +40,8 @@ namespace MusicIdentificationSystem.DAL.Context
         public DbSet<StreamStationEntity> StreamStations { get; set; }
         public DbSet<SubFingerprintEntity> SubFingerprints { get; set; }
         public DbSet<TrackEntity> Tracks { get; set; }
-        public DbSet<AccountTrackEntity> AccountTracks { get; set; }
-        public DbSet<StreamStationTrackEntity> StreamStationTracks { get; set; }
+        public DbSet<AccountXTrackEntity> AccountXTracks { get; set; }
+        public DbSet<StreamStationXTrackEntity> StreamStationXTracks { get; set; }
         public DbSet<StreamStationVideoEntity> StreamStationVideo { get; set; }
         public DbSet<StreamVideoEntity> StreamVideo { get; set; }
         public static implicit operator Func<object>(DatabaseContext v)

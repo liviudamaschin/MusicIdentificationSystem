@@ -73,7 +73,7 @@ namespace MusicIdentificationSystem.DAL
 
         public virtual TEntity Insert(TEntity entity)
         {
-            TEntity insertedEntity=dbSet.Add(entity);
+            TEntity insertedEntity = dbSet.Add(entity);
             return insertedEntity;
         }
 

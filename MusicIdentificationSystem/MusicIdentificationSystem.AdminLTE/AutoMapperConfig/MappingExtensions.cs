@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MusicIdentificationSystem.AdminLTE.Models.Account;
 using MusicIdentificationSystem.AdminLTE.Models.ApplicationSetting;
+using MusicIdentificationSystem.AdminLTE.Models.Dashboard;
 using MusicIdentificationSystem.AdminLTE.Models.StreamStation;
 using MusicIdentificationSystem.AdminLTE.Models.Track;
 using MusicIdentificationSystem.DAL.DbEntities;
@@ -47,6 +48,16 @@ namespace MusicIdentificationSystem.AdminLTE.AutoMapperConfig
         public static TrackEntity ToEntity(this TrackModel model)
         {
             return Mapper.Map<TrackModel, TrackEntity>(model);
+        }
+
+        public static StreamStationStatusModel ToStatusModel(this StreamStationEntity entity)
+        {
+            return Mapper.Map<StreamStationEntity, StreamStationStatusModel>(entity);
+        }
+
+        public static StreamStationEntity ToStatusEntity(this StreamStationStatusModel model)
+        {
+            return Mapper.Map<StreamStationStatusModel, StreamStationEntity>(model);
         }
     }
 }

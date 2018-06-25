@@ -1,0 +1,75 @@
+﻿@model MusicIdentificationSystem.AdminLTE.Models.Dashboard.StreamStationStatusListModel
+
+@using GridMvc.Html
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    ViewBag.Title = ViewBag.AccountName != null ? ViewBag.AccountName + " - " + Resources.Resources.Dashboard_Title_StreamStationStatusList : Resources.Resources.Dashboard_Title_StreamStationStatusList;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.Check = true;
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="force-scrollbar" style="overflow: auto">
+                @Html.Grid(Model.StreamStationStatusModelsList).Named("StreamStationStatusGrid").Columns(columns =>
+                {
+                    columns.Add(c => c.StationName).Titled(Resources.Resources.StreamStation_StationName).Filterable(true);
+                    columns.Add(c => c.Url).Titled(Resources.Resources.StreamStation_Url).Filterable(true);
+                    columns.Add(c => c.Description).Titled(Resources.Resources.StreamStation_Description).Filterable(true);
+                    columns.Add()
+                        .Encoded(false)
+                        .Sanitized(false)
+                        .RenderValueAs(c => Html.CheckBox("checked", c.IsActive))
+                        .Titled(Resources.Resources.StreamStation_IsActive)
+                        .Filterable(true);
+                    columns.Add()
+                        .Encoded(false)
+                        .Sanitized(false)
+                        .RenderValueAs(c => Html.CheckBox("checked", c.Running))
+                        .Titled(Resources.Resources.StreamStation_Running)
+                        .Filterable(true);
+                    columns.Add(c => c.LocalPath).Titled(Resources.Resources.StreamStation_LocalPath);
+                    columns.Add(c => c.TransformFolder).Titled(Resources.Resources.StreamStation_TransformFolder);
+                    columns.Add()
+                        .Encoded(false)
+                        .Sanitized(false)
+                        .RenderValueAs(c => Html.CheckBox("checked", c.IsConvertionNeeded))
+                        .Titled(Resources.Resources.StreamStation_IsConvertionNeeded)
+                        .Filterable(true);
+                }).SetRowCssClasses(item => item.IsActive ? (item.Running ? "success" : "danger") : string.Empty).WithPaging(10).Sortable(true).WithMultipleFilters().Selectable(false)
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("input:checkbox").attr('disabled', true);
+    });
+
+    function toggleChecked(status) {
+        $("input:checkbox").each(function () {
+            // Set the checked status of each to match the
+            // checked status of the check all checkbox:
+            $(this).prop("checked", status);
+        });
+    }
+    //function toggleChecked(status) {
+    //    $('#StreamStationGrid [name=IsActive]:checked').each(function () {
+    //        // Set the checked status of each to match the
+    //        // checked status of the check all checkbox:
+    //        $(this).prop("checked", status);
+    //    });
+    //}
+
+    //$('#CheckAll').click(function () {
+    //    var arr = $('#StreamStationGrid [name=IsActive]:checked').map(function () {
+    //        return $(this).val();
+    //    }).get();
+    //});
+</script>

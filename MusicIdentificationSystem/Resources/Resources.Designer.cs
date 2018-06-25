@@ -97,6 +97,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amprenteaza.
+        /// </summary>
+        public static string Account_Button_CreateFingerprints {
+            get {
+                return ResourceManager.GetString("Account_Button_CreateFingerprints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dashboard.
+        /// </summary>
+        public static string Account_Button_Dashboard {
+            get {
+                return ResourceManager.GetString("Account_Button_Dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Account_Email {
@@ -295,6 +313,42 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to La crearea amprentelor a aparut o eroare!.
+        /// </summary>
+        public static string CreateFingerprint_Error {
+            get {
+                return ResourceManager.GetString("CreateFingerprint_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amprentele au fost create cu succes!.
+        /// </summary>
+        public static string CreateFingerprint_Success {
+            get {
+                return ResourceManager.GetString("CreateFingerprint_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creeaza amprente.
+        /// </summary>
+        public static string CreateFingerprint_Title_FingerprintList {
+            get {
+                return ResourceManager.GetString("CreateFingerprint_Title_FingerprintList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status posturi.
+        /// </summary>
+        public static string Dashboard_Title_StreamStationStatusList {
+            get {
+                return ResourceManager.GetString("Dashboard_Title_StreamStationStatusList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
         public static string Global_Button_Back {
@@ -304,11 +358,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ....
+        /// </summary>
+        public static string Global_Button_Browse {
+            get {
+                return ResourceManager.GetString("Global_Button_Browse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activeaza-le pe toate.
+        /// </summary>
+        public static string Global_Button_CheckAll {
+            get {
+                return ResourceManager.GetString("Global_Button_CheckAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
         public static string Global_Button_Create {
             get {
                 return ResourceManager.GetString("Global_Button_Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amprenteaza.
+        /// </summary>
+        public static string Global_Button_CreateFingerprint {
+            get {
+                return ResourceManager.GetString("Global_Button_CreateFingerprint", resourceCulture);
             }
         }
         
@@ -336,6 +417,15 @@ namespace Resources {
         public static string Global_Button_SaveContinue {
             get {
                 return ResourceManager.GetString("Global_Button_SaveContinue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debifeaza toate.
+        /// </summary>
+        public static string Global_Button_UncheckAll {
+            get {
+                return ResourceManager.GetString("Global_Button_UncheckAll", resourceCulture);
             }
         }
         
@@ -372,6 +462,24 @@ namespace Resources {
         public static string Global_NavBar_ApplicationSettings {
             get {
                 return ResourceManager.GetString("Global_NavBar_ApplicationSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dashboard.
+        /// </summary>
+        public static string Global_NavBar_Dashboard {
+            get {
+                return ResourceManager.GetString("Global_NavBar_Dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Global_NavBar_Home {
+            get {
+                return ResourceManager.GetString("Global_NavBar_Home", resourceCulture);
             }
         }
         
@@ -421,7 +529,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Este activa.
+        ///   Looks up a localized string similar to Este activ.
         /// </summary>
         public static string StreamStation_IsActive {
             get {
@@ -561,6 +669,15 @@ namespace Resources {
         public static string Track_IsActive {
             get {
                 return ResourceManager.GetString("Track_IsActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Este noua.
+        /// </summary>
+        public static string Track_IsNew {
+            get {
+                return ResourceManager.GetString("Track_IsNew", resourceCulture);
             }
         }
         

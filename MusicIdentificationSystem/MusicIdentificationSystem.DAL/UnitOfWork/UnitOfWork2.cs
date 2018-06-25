@@ -17,7 +17,6 @@ namespace MusicIdentificationSystem.DAL.UnitOfWork
         private GenericRepository2<SubFingerprintEntity> subFingerprintRepository;
         private TrackRepository trackRepository;
         private AccountRepository accountRepository;
-        private GenericRepository2<AccountStreamStationEntity> accountStreamStationRepository;
         private ApplicationSettingRepository applicationSettingRepository;
         private ClientRepository clientRepository;
         private GenericRepository2<StreamResultsEntity> streamResultsRepository;

@@ -14,6 +14,7 @@ namespace MusicIdentificationSystem.AdminLTE.App_Start
                 .Include("~/Content/css/font-awesome.min.css", new CssRewriteUrlTransformAbsolute())
                 .Include("~/Content/css/icheck/blue.min.css", new CssRewriteUrlTransformAbsolute())
                 .Include("~/Content/css/AdminLTE.css", new CssRewriteUrlTransformAbsolute())
+                .Include("~/Content/css/Gridmvc.css", new CssRewriteUrlTransformAbsolute())
                 .Include("~/Content/css/skins/skin-blue.css"));
 
             bundles.Add(new ScriptBundle("~/Bundles/js")
@@ -28,6 +29,7 @@ namespace MusicIdentificationSystem.AdminLTE.App_Start
                 .Include("~/Content/js/plugins/validator.js")
                 .Include("~/Content/js/plugins/inputmask/jquery.inputmask.bundle.js")
                 .Include("~/Content/js/adminlte.js")
+                .Include("~/Content/js/Scripts/gridmvc.js")
                 .Include("~/Content/js/init.js"));
 
 #if DEBUG

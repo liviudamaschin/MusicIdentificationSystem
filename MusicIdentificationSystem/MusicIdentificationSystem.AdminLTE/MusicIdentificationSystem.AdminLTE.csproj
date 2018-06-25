@@ -125,11 +125,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\css\Gridmvc.css" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\gridmvc.js" />
-    <Content Include="Scripts\gridmvc.lang.ru.js" />
-    <Content Include="Scripts\gridmvc.min.js" />
+    <Content Include="Content\js\Scripts\gridmvc.js" />
+    <Content Include="Content\js\Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Content\js\Scripts\gridmvc.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -153,6 +153,8 @@
     <Content Include="Views\Track\CreateTrack.cshtml" />
     <Content Include="Views\Track\TrackList.cshtml" />
     <Content Include="Views\Track\_CreateOrUpdateTrack.cshtml" />
+    <Content Include="Views\CreateFingerprint\CreateFingerprintList.cshtml" />
+    <Content Include="Views\Dashboard\StreamStationStatusList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,6 +165,8 @@
   <ItemGroup>
     <Compile Include="AutoMapperConfig\AutoMapperStartupTask.cs" />
     <Compile Include="AutoMapperConfig\MappingExtensions.cs" />
+    <Compile Include="Controllers\CreateFingerprintController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\TrackController.cs" />
     <Compile Include="Controllers\StreamStationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -170,6 +174,9 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Helpers\NotificationType.cs" />
     <Compile Include="Helpers\ParameterBasedOnFormNameAttribute.cs" />
+    <Compile Include="Models\CreateFingerprint\FingerprintListModel.cs" />
+    <Compile Include="Models\Dashboard\StreamStationStatusListModel.cs" />
+    <Compile Include="Models\Dashboard\StreamStationStatusModel.cs" />
     <Compile Include="Models\Track\TrackListModel.cs" />
     <Compile Include="Models\Track\TrackModel.cs" />
     <Compile Include="Models\StreamStation\StreamStationListModel.cs" />
@@ -310,9 +317,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Reports\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Reports\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{1a1942c3-a252-4256-a438-db060a3e4036}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MusicIdentificationSystem.Common\MusicIdentificationSystem.Common.csproj">
+      <Project>{dd8a2ede-be82-4937-a327-3fc0f834dca1}</Project>
+      <Name>MusicIdentificationSystem.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MusicIdentificationSystem.DAL\MusicIdentificationSystem.DAL.csproj">
       <Project>{6d162b39-716a-4385-b543-7a0750b7f090}</Project>
       <Name>MusicIdentificationSystem.DAL</Name>

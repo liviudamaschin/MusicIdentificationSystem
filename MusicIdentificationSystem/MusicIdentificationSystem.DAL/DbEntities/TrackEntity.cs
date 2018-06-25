@@ -14,6 +14,7 @@ namespace MusicIdentificationSystem.DAL.DbEntities
         public int? ReleaseYear { get; set; } // ReleaseYear
         public double? Length { get; set; } // Length
         public bool IsActive { get; set; } // IsActive
+        public bool IsNew { get; set; } // IsNew
 
         // Reverse navigation
 
@@ -35,6 +36,7 @@ namespace MusicIdentificationSystem.DAL.DbEntities
             ReleaseYear = 0;
             Length = 0;
             IsActive = true;
+            IsNew = true;
             Fingerprints = new List<FingerprintEntity>();
             Results = new List<ResultEntity>();
             SubFingerprints = new List<SubFingerprintEntity>();

@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MusicIdentificationSystem.DAL.DbEntities
 {
-    [Table("dbo.AccountXTracks")]
-    public class AccountTrackEntity
+    [Table("dbo.StreamStationXTracks")]
+    public class StreamStationXTrackEntity
     {
         [Column("Id")]
         [Key]
         public int Id { get; set; } // Id (Primary key)
-        [Column("AccountId")]
-        public int AccountId { get; set; } // AccountId
+        [Column("StreamStationId")]
+        public int StreamStationId { get; set; } // StreamStationId
         [Column("TrackId")]
         public int TrackId { get; set; } // TrackId
         [Column("IsActive")]
@@ -18,8 +18,8 @@ namespace MusicIdentificationSystem.DAL.DbEntities
 
         // Foreign keys
 
-        public virtual AccountEntity Account { get; set; } // FK_AccountTracks_Accounts
+        public virtual StreamStationEntity StreamStation { get; set; } // FK_StreamStationXTracks_StreamStations
 
-        public virtual TrackEntity Track { get; set; } // FK_AccountTracks_Tracks
+        public virtual TrackEntity Track { get; set; } // FK_StreamStationXTracks_Tracks
     }
 }

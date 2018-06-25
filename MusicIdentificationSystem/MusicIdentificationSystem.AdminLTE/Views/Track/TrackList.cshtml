@@ -14,28 +14,39 @@
     <div class="row">
 
         @*<div class="col-xs-2">
-            <button type="button" class="btn btn-block btn-primary" onclick="location.href='@Url.Action("Create", "Track")'">@Resources.Resources.Global_Button_Create</button>
-        </div>*@
+                <button type="button" class="btn btn-block btn-primary" onclick="location.href='@Url.Action("Create", "Track")'">@Resources.Resources.Global_Button_Create</button>
+            </div>*@
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="force-scrollbar">
                 @Html.Grid(Model.TrackModelsList).Named("TrackGrid").Columns(columns =>
-           {
-               columns.Add()
-                   .Encoded(false)
-                   .Sanitized(false)
-                   .SetWidth(80)
-                   .RenderValueAs(c => Html.ActionLink(@Resources.Resources.Global_Button_Edit, "Edit", new { id = c.Id }, new { @class = "btn btn-block btn-primary" }).ToHtmlString());
+                {
+                    columns.Add()
+                        .Encoded(false)
+                        .Sanitized(false)
+                        .SetWidth(80)
+                        .RenderValueAs(c => Html.ActionLink(@Resources.Resources.Global_Button_Edit, "Edit", new { id = c.Id }, new { @class = "btn btn-block btn-primary" }).ToHtmlString());
 
-               columns.Add(c => c.Title).Titled(Resources.Resources.Track_Title).Filterable(true);
-               columns.Add(c => c.Artist).Titled(Resources.Resources.Track_Artist).Filterable(true);
-               columns.Add(c => c.Album).Titled(Resources.Resources.Track_Album).Filterable(true);
-               columns.Add(c => c.ReleaseYear).Titled(Resources.Resources.Track_ReleaseYear).Filterable(true);
-               columns.Add(c => c.Length).Titled(Resources.Resources.Track_Length).Filterable(true);
-               columns.Add(c => c.IsActive).Titled(Resources.Resources.Track_IsActive).Filterable(true);
-           }).WithPaging(10).Sortable(true)
+                    columns.Add(c => c.Title).Titled(Resources.Resources.Track_Title).Filterable(true);
+                    columns.Add(c => c.Artist).Titled(Resources.Resources.Track_Artist).Filterable(true);
+                    columns.Add(c => c.Album).Titled(Resources.Resources.Track_Album).Filterable(true);
+                    columns.Add(c => c.ReleaseYear).Titled(Resources.Resources.Track_ReleaseYear).Filterable(true);
+                    columns.Add(c => c.Length).Titled(Resources.Resources.Track_Length).Filterable(true);
+                    columns.Add()
+                        .Encoded(false)
+                        .Sanitized(false)
+                        .RenderValueAs(c => Html.CheckBox("checked", c.IsActive))
+                        .Titled(Resources.Resources.Track_IsActive)
+                        .Filterable(true);
+                }).WithPaging(10).Sortable(true).WithMultipleFilters().Selectable(false)
             </div>
         </div>
 
     </div>
 </section>
+
+<script>
+    $(document).ready(function () {
+        $("input:checkbox").attr('disabled', true);
+    });
+</script>
