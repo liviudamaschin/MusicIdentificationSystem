@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MusicIdentificationSystem.DAL.DbEntities
 {
-    [Table("dbo.Result")]
+    [Table("dbo.Results")]
     public class ResultEntity
     {
         [Column("Id")]
@@ -12,7 +12,7 @@ namespace MusicIdentificationSystem.DAL.DbEntities
         public int Id { get; set; } // Id (Primary key)
         [Column("StreamId")]
         public int? StreamId { get; set; } // StreamId
-        [Column("IdTrackId")]
+        [Column("TrackId")]
         public int? TrackId { get; set; } // TrackId
         [Column("Filename")]
         public string Filename { get; set; } // filename (length: 250)

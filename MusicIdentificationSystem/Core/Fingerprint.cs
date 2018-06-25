@@ -69,9 +69,11 @@ namespace MusicIdentification.Core
         public List<ResultEntity> GetBestMatchForSong(string queryAudioFile, double confidence)
         {
             List<ResultEntity> tracks = new List<ResultEntity>();
+            if (!File.Exists(queryAudioFile))
+                return tracks;
             try
             {
-                
+
                 int startAtSecond = 0; // start at the begining
 
                 Mp3FileReader reader = new Mp3FileReader(queryAudioFile);
@@ -84,7 +86,7 @@ namespace MusicIdentification.Core
                                                      .UsingServices(modelService, audioService)
                                                      .Query()
                                                      .Result;
-               
+
                 foreach (ResultEntry result in queryResult.ResultEntries)
                 {
                     if (result.Confidence > confidence)
@@ -96,7 +98,7 @@ namespace MusicIdentification.Core
                         //trackresult.Track = unitOfWork.TrackRepository.GetByID(trackresult.TrackId);
                         tracks.Add(trackresult);
                     }
-                   
+
                 }
 
                 return tracks;

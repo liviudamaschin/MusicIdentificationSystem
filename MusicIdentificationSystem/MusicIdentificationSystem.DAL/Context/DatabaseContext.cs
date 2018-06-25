@@ -37,13 +37,14 @@ namespace MusicIdentificationSystem.DAL.Context
         public DbSet<FingerprintEntity> Fingerprints { get; set; }
         public DbSet<ResultEntity> Results { get; set; }
         public DbSet<StreamEntity> Streams { get; set; }
-        public DbSet<StreamResultsEntity> StreamResults { get; set; }
+        //public DbSet<StreamResultsEntity> StreamResults { get; set; }
         public DbSet<StreamStationEntity> StreamStations { get; set; }
         public DbSet<SubFingerprintEntity> SubFingerprints { get; set; }
         public DbSet<TrackEntity> Tracks { get; set; }
         public DbSet<AccountTrackEntity> AccountTracks { get; set; }
         public DbSet<StreamStationTrackEntity> StreamStationTracks { get; set; }
-
+        public DbSet<StreamStationVideoEntity> StreamStationVideo { get; set; }
+        public DbSet<StreamVideoEntity> StreamVideo { get; set; }
         public static implicit operator Func<object>(DatabaseContext v)
         {
             throw new NotImplementedException();

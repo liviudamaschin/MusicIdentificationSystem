@@ -16,4 +16,14 @@
     <ProjectReference Include="..\MusicIdentificationSystem.DAL\MusicIdentificationSystem.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="DirectX.Capture">
+      <HintPath>DirectX.Capture.dll</HintPath>
+    </Reference>
+    <Reference Include="DShowNET">
+      <HintPath>DShowNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
 </Project>

@@ -26,9 +26,10 @@ namespace MusicIdentificationSystem.MediaConvertor
             foreach (var stream in streams)
             {
                 string convertedFileName;
+                string fileName = Path.Combine(cApp.AppSettings["StreamPath"], stream.FileName);
                 var streamStation = streamStationRepository.GetByID(stream.StationId);
-                Console.WriteLine($"Converting file {stream.FileName}");
-                convertedFileName = MediaConvertor.ConvertCurrentFile(stream.Id, stream.FileName, streamStation.LocalPath, streamStation.TransformFolder);
+                Console.WriteLine($"Converting file {fileName}");
+                convertedFileName = MediaConvertor.ConvertCurrentFile(stream.Id, fileName, streamStation.LocalPath, streamStation.TransformFolder);
                
                 Console.WriteLine($"converted file = {convertedFileName}");
             }

@@ -124,5 +124,31 @@ namespace MusicIdentification.Core
             }
             return destinationFile;
         }
+
+        public string ExtractAudioFromVideo(string sourceFile, string destinationFile)
+        {
+            //Process process = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            //startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.FileName = "ffmpeg.exe";
+            startInfo.Arguments = String.Format(@"-i {0} -f mp3 -ab 192000 -vn {1}", sourceFile, destinationFile);
+            //.StartInfo.Arguments = "-threads 2"
+            //process.StartInfo = startInfo;
+            //process.Start();
+            try
+            {
+                // Start the process with the info we specified.
+                // Call WaitForExit and then the using statement will close.
+                using (Process exeProcess = Process.Start(startInfo))
+                {
+                    exeProcess.WaitForExit();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log error.
+            }
+            return string.Empty;
+        }
     }
 }

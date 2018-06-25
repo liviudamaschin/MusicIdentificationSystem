@@ -13,5 +13,6 @@ namespace MusicIdentificationSystem.DTO
         public bool IsConvertionNeeded { get; set; }
         public string TransformFolder { get; set; }
         public string ProcessFile { get; set; }
+        public DateTime ProcessDate { get; set; }
     }
 }

@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="ffmpeg.exe">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
 

@@ -21,6 +21,8 @@ namespace MusicIdentificationSystem.DAL.DbEntities
         public string FileName { get; set; } // FileName (length: 250)
         //[Column("FileNameTransformed")]
         public string FileNameTransformed { get; set; }
+        public DateTime? ProcessDate { get; set; }
+
         // Reverse navigation
 
         /// <summary>

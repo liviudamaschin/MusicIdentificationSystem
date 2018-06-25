@@ -11,7 +11,7 @@ namespace MusicIdentificationSystem.DAL.UnitOfWork
     {
         private DatabaseContext context;
         private GenericRepository2<FingerprintEntity> fingerprintRepository;
-        private GenericRepository2<ResultEntity> resultRepository;
+        private ResultRepository resultRepository;
         private StreamRepository streamRepository;
         private StreamStationRepository streamStationRepository;
         private GenericRepository2<SubFingerprintEntity> subFingerprintRepository;
@@ -46,13 +46,14 @@ namespace MusicIdentificationSystem.DAL.UnitOfWork
         //        return this.fingerprintRepository ?? new GenericRepository<FingerprintEntity>(context);
         //    }
         //}
-        //public GenericRepository<ResultEntity> ResultRepository
-        //{
-        //    get
-        //    {
-        //        return this.resultRepository ?? new GenericRepository<ResultEntity>(context);
-        //    }
-        //}
+        
+        public ResultRepository ResultRepository
+        {
+            get
+            {
+                return this.resultRepository ?? new ResultRepository();
+            }
+        }
         
         public StreamRepository StreamRepository
         {

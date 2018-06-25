@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MusicIdentificationSystem.DAL.DbEntities
 {
-    [Table("dbo.StreamStationTracks")]
+    [Table("[dbo].[StreamStationXTracks]")]
     public class StreamStationTrackEntity
     {
         [Column("Id")]

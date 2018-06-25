@@ -72,6 +72,8 @@
     <Compile Include="DbEntities\StreamEntity.cs" />
     <Compile Include="DbEntities\StreamResultsEntity.cs" />
     <Compile Include="DbEntities\StreamStationEntity.cs" />
+    <Compile Include="DbEntities\StreamStationVideoEntity.cs" />
+    <Compile Include="DbEntities\StreamVideoEntity.cs" />
     <Compile Include="DbEntities\SubFingerprintEntity.cs" />
     <Compile Include="DbEntities\TrackEntity.cs" />
     <Compile Include="GenericRepository2.cs" />
@@ -80,10 +82,13 @@
     <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IGenericRepository.cs" />
+    <Compile Include="Repositories\ResultRepository.cs" />
     <Compile Include="Repositories\StreamRepository.cs" />
     <Compile Include="Repositories\StreamStationRepository.cs" />
     <Compile Include="Repositories\AccountTrackRepository.cs" />
     <Compile Include="Repositories\StreamStationTrackRepository.cs" />
+    <Compile Include="Repositories\StreamStationVideoRepository.cs" />
+    <Compile Include="Repositories\StreamVideoRepository.cs" />
     <Compile Include="Repositories\TrackRepository.cs" />
     <Compile Include="StreamStation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
