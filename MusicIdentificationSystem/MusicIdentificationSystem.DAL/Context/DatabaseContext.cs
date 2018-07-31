@@ -44,6 +44,7 @@ namespace MusicIdentificationSystem.DAL.Context
         public DbSet<StreamStationXTrackEntity> StreamStationXTracks { get; set; }
         public DbSet<StreamStationVideoEntity> StreamStationVideo { get; set; }
         public DbSet<StreamVideoEntity> StreamVideo { get; set; }
+
         public static implicit operator Func<object>(DatabaseContext v)
         {
             throw new NotImplementedException();

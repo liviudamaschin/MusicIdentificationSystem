@@ -82,6 +82,7 @@
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Repositories\ResultRepository.cs" />
+    <Compile Include="Repositories\ReportsRepository.cs" />
     <Compile Include="Repositories\StreamRepository.cs" />
     <Compile Include="Repositories\StreamStationRepository.cs" />
     <Compile Include="Repositories\AccountTrackRepository.cs" />

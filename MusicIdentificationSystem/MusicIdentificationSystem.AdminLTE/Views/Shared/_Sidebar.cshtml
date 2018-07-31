@@ -20,11 +20,22 @@
                 <a href="@Url.Action("Index", "Home")"><i class="fa fa-link"></i> <span>@Resources.Resources.Global_NavBar_Home</span></a>
             </li>
             <li class="@Url.IsLinkActive("Dashboard", "Dashboard")">
-                <a href="@Url.Action("Dashboard", "Dashboard")"><i class="fa fa-heartbeat"></i> <span>@Resources.Resources.Global_NavBar_Dashboard</span></a>
+                <a href="@Url.Action("Dashboard", "Dashboard")"><i class="fa fa-dashboard"></i> <span>@Resources.Resources.Global_NavBar_Dashboard</span></a>
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i> <span>@Resources.Resources.Global_NavBar_Accounts</span>
+                    <i class="fa fa-area-chart"></i> <span>@Resources.Resources.Global_NavBar_Reports</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("List", "Reports")"><i class="fa fa-pie-chart"></i>@Resources.Resources.Global_NavBar_Reports_Time</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-gears"></i> <span>@Resources.Resources.Global_NavBar_Accounts</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>

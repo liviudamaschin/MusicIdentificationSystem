@@ -126,6 +126,9 @@
   <data name="Account_Button_AccountStreamStationList" xml:space="preserve">
     <value>Lista posturi</value>
   </data>
+  <data name="Account_Button_AccountTimeReport" xml:space="preserve">
+    <value>Raport perioada</value>
+  </data>
   <data name="Account_Button_AccountTrackList" xml:space="preserve">
     <value>Lista melodii</value>
   </data>
@@ -258,6 +261,12 @@
   <data name="Global_NavBar_Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="Global_NavBar_Reports" xml:space="preserve">
+    <value>Rapoarte</value>
+  </data>
+  <data name="Global_NavBar_Reports_Time" xml:space="preserve">
+    <value>Raport perioada</value>
+  </data>
   <data name="Global_NavBar_StationAccountAllocation" xml:space="preserve">
     <value>Alocare posturi per cont</value>
   </data>
@@ -266,6 +275,9 @@
   </data>
   <data name="Global_NavBar_Tracks" xml:space="preserve">
     <value>Melodii</value>
+  </data>
+  <data name="Reports_Title_TimeReport" xml:space="preserve">
+    <value>Raport perioada</value>
   </data>
   <data name="StreamStation_Description" xml:space="preserve">
     <value>Descriere</value>
@@ -309,6 +321,69 @@
   <data name="StreamStation_Url" xml:space="preserve">
     <value>URL</value>
   </data>
+  <data name="TimeReport_AccountId" xml:space="preserve">
+    <value>Id cont</value>
+  </data>
+  <data name="TimeReport_AccountName" xml:space="preserve">
+    <value>Nume cont</value>
+  </data>
+  <data name="TimeReport_AccountPercent" xml:space="preserve">
+    <value>Procent cont</value>
+  </data>
+  <data name="TimeReport_AccountResultsInSeconds" xml:space="preserve">
+    <value>Rezultate cont</value>
+  </data>
+  <data name="TimeReport_Accounts" xml:space="preserve">
+    <value>Conturi</value>
+  </data>
+  <data name="TimeReport_ChoosePeriod" xml:space="preserve">
+    <value>Alegeti perioada</value>
+  </data>
+  <data name="TimeReport_QueryMatchLength" xml:space="preserve">
+    <value>Perioada identificata</value>
+  </data>
+  <data name="TimeReport_ResultId" xml:space="preserve">
+    <value>Id rezultat</value>
+  </data>
+  <data name="TimeReport_SelectAccounts" xml:space="preserve">
+    <value>Alegeti conturile</value>
+  </data>
+  <data name="TimeReport_SelectStreamStations" xml:space="preserve">
+    <value>Alegeti posturile</value>
+  </data>
+  <data name="TimeReport_SelectTracks" xml:space="preserve">
+    <value>Alegeti melodiile</value>
+  </data>
+  <data name="TimeReport_StreamId" xml:space="preserve">
+    <value>Id inregistrare</value>
+  </data>
+  <data name="TimeReport_StreamStationId" xml:space="preserve">
+    <value>Id post</value>
+  </data>
+  <data name="TimeReport_StreamStationName" xml:space="preserve">
+    <value>Nume post</value>
+  </data>
+  <data name="TimeReport_StreamStations" xml:space="preserve">
+    <value>Posturi</value>
+  </data>
+  <data name="TimeReport_TotalTimeInSeconds" xml:space="preserve">
+    <value>Timp total</value>
+  </data>
+  <data name="TimeReport_TrackArtist" xml:space="preserve">
+    <value>Nume artist</value>
+  </data>
+  <data name="TimeReport_TrackId" xml:space="preserve">
+    <value>Id melodie</value>
+  </data>
+  <data name="TimeReport_TrackLength" xml:space="preserve">
+    <value>Durata melodie</value>
+  </data>
+  <data name="TimeReport_Tracks" xml:space="preserve">
+    <value>Melodii</value>
+  </data>
+  <data name="TimeReport_TrackTitle" xml:space="preserve">
+    <value>Titlu melodie</value>
+  </data>
   <data name="Track_Album" xml:space="preserve">
     <value>Nume album</value>
   </data>
@@ -350,5 +425,32 @@
   </data>
   <data name="Track_Title_TrackList" xml:space="preserve">
     <value>Lista melodii</value>
+  </data>
+  <data name="TimeReport_Button_GenerateReport_TimeReportDetails" xml:space="preserve">
+    <value>Genereaza raport detaliat</value>
+  </data>
+  <data name="TimeReport_Button_GenerateReport_CountReportFirstAggregation" xml:space="preserve">
+    <value>Genereaza raport numar aparitii</value>
+  </data>
+  <data name="TimeReport_Button_GenerateReport_CountReportMaximumAggregation" xml:space="preserve">
+    <value>Genereaza raport numar aparitii agregare maxima</value>
+  </data>
+  <data name="TimeReport_Button_GenerateReport_TimeReportFirstAggregation" xml:space="preserve">
+    <value>Genereaza raport procentual agregat</value>
+  </data>
+  <data name="TimeReport_Button_GenerateReport_TimeReportMaximumAggregation" xml:space="preserve">
+    <value>Genereaza raport agregare maxima</value>
+  </data>
+  <data name="TimeReport_EndTime" xml:space="preserve">
+    <value>Data final</value>
+  </data>
+  <data name="TimeReport_FileName" xml:space="preserve">
+    <value>Nume fisier</value>
+  </data>
+  <data name="TimeReport_QueryMatchStartsAt" xml:space="preserve">
+    <value>Melodia a fost gasita la</value>
+  </data>
+  <data name="TimeReport_StartTime" xml:space="preserve">
+    <value>Data start</value>
   </data>
 </root>

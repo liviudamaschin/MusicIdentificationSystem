@@ -125,7 +125,79 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bootstrap-datepicker.css" />
+    <Content Include="Content\css\daterangepicker.css" />
     <Content Include="Content\css\Gridmvc.css" />
+    <Content Include="Content\css\select2\select2.css" />
+    <Content Include="Content\css\select2\select2.min.css" />
+    <Content Include="Content\css\timepicker\bootstrap-timepicker.css" />
+    <Content Include="Content\js\timepicker\bootstrap-timepicker.js" />
+    <Content Include="Content\css\timepicker\bootstrap-timepicker.min.css" />
+    <Content Include="Content\js\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Content\js\daterangepicker.js" />
+    <Content Include="Content\js\Flot\.gitignore" />
+    <Content Include="Content\js\Flot\examples\ajax\index.html" />
+    <Content Include="Content\js\Flot\examples\annotating\index.html" />
+    <Content Include="Content\js\Flot\examples\axes-interacting\index.html" />
+    <Content Include="Content\js\Flot\examples\axes-multiple\index.html" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\date.js" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\index.html" />
+    <Content Include="Content\js\Flot\examples\axes-time\index.html" />
+    <Content Include="Content\js\Flot\examples\background.png" />
+    <Content Include="Content\js\Flot\examples\basic-options\index.html" />
+    <Content Include="Content\js\Flot\examples\basic-usage\index.html" />
+    <Content Include="Content\js\Flot\examples\canvas\index.html" />
+    <Content Include="Content\js\Flot\examples\categories\index.html" />
+    <Content Include="Content\js\Flot\examples\examples.css" />
+    <Content Include="Content\js\Flot\examples\image\hs-2004-27-a-large-web.jpg" />
+    <Content Include="Content\js\Flot\examples\image\index.html" />
+    <Content Include="Content\js\Flot\examples\index.html" />
+    <Content Include="Content\js\Flot\examples\interacting\index.html" />
+    <Content Include="Content\js\Flot\examples\navigate\arrow-down.gif" />
+    <Content Include="Content\js\Flot\examples\navigate\arrow-left.gif" />
+    <Content Include="Content\js\Flot\examples\navigate\arrow-right.gif" />
+    <Content Include="Content\js\Flot\examples\navigate\arrow-up.gif" />
+    <Content Include="Content\js\Flot\examples\navigate\index.html" />
+    <Content Include="Content\js\Flot\examples\percentiles\index.html" />
+    <Content Include="Content\js\Flot\examples\realtime\index.html" />
+    <Content Include="Content\js\Flot\examples\resize\index.html" />
+    <Content Include="Content\js\Flot\examples\selection\index.html" />
+    <Content Include="Content\js\Flot\examples\series-errorbars\index.html" />
+    <Content Include="Content\js\Flot\examples\series-pie\index.html" />
+    <Content Include="Content\js\Flot\examples\series-toggle\index.html" />
+    <Content Include="Content\js\Flot\examples\series-types\index.html" />
+    <Content Include="Content\js\Flot\examples\shared\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Content\js\Flot\examples\stacking\index.html" />
+    <Content Include="Content\js\Flot\examples\symbols\index.html" />
+    <Content Include="Content\js\Flot\examples\threshold\index.html" />
+    <Content Include="Content\js\Flot\examples\tracking\index.html" />
+    <Content Include="Content\js\Flot\examples\visitors\index.html" />
+    <Content Include="Content\js\Flot\examples\zooming\index.html" />
+    <Content Include="Content\js\Flot\excanvas.js" />
+    <Content Include="Content\js\Flot\excanvas.min.js" />
+    <Content Include="Content\js\Flot\jquery.colorhelpers.js" />
+    <Content Include="Content\js\Flot\jquery.flot.canvas.js" />
+    <Content Include="Content\js\Flot\jquery.flot.categories.js" />
+    <Content Include="Content\js\Flot\jquery.flot.crosshair.js" />
+    <Content Include="Content\js\Flot\jquery.flot.errorbars.js" />
+    <Content Include="Content\js\Flot\jquery.flot.fillbetween.js" />
+    <Content Include="Content\js\Flot\jquery.flot.image.js" />
+    <Content Include="Content\js\Flot\jquery.flot.js" />
+    <Content Include="Content\js\Flot\jquery.flot.navigate.js" />
+    <Content Include="Content\js\Flot\jquery.flot.pie.js" />
+    <Content Include="Content\js\Flot\jquery.flot.resize.js" />
+    <Content Include="Content\js\Flot\jquery.flot.selection.js" />
+    <Content Include="Content\js\Flot\jquery.flot.stack.js" />
+    <Content Include="Content\js\Flot\jquery.flot.symbol.js" />
+    <Content Include="Content\js\Flot\jquery.flot.threshold.js" />
+    <Content Include="Content\js\Flot\jquery.flot.time.js" />
+    <Content Include="Content\js\Flot\jquery.js" />
+    <Content Include="Content\js\Flot\LICENSE.txt" />
+    <Content Include="Content\js\moment.min.js" />
+    <Content Include="Content\js\select2\select2.full.js" />
+    <Content Include="Content\js\select2\select2.full.min.js" />
+    <Content Include="Content\js\select2\select2.js" />
+    <Content Include="Content\js\select2\select2.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\Scripts\gridmvc.js" />
     <Content Include="Content\js\Scripts\gridmvc.lang.ru.js" />
@@ -155,6 +227,47 @@
     <Content Include="Views\Track\_CreateOrUpdateTrack.cshtml" />
     <Content Include="Views\CreateFingerprint\CreateFingerprintList.cshtml" />
     <Content Include="Views\Dashboard\StreamStationStatusList.cshtml" />
+    <Content Include="Views\Reports\TimeReportChart.cshtml" />
+    <Content Include="Content\js\Flot\.bower.json" />
+    <Content Include="Content\js\Flot\.travis.yml" />
+    <Content Include="Content\js\Flot\API.md" />
+    <Content Include="Content\js\Flot\component.json" />
+    <Content Include="Content\js\Flot\CONTRIBUTING.md" />
+    <Content Include="Content\js\Flot\examples\ajax\data-eu-gdp-growth-1.json" />
+    <Content Include="Content\js\Flot\examples\ajax\data-eu-gdp-growth-2.json" />
+    <Content Include="Content\js\Flot\examples\ajax\data-eu-gdp-growth-3.json" />
+    <Content Include="Content\js\Flot\examples\ajax\data-eu-gdp-growth-4.json" />
+    <Content Include="Content\js\Flot\examples\ajax\data-eu-gdp-growth-5.json" />
+    <Content Include="Content\js\Flot\examples\ajax\data-eu-gdp-growth.json" />
+    <Content Include="Content\js\Flot\examples\ajax\data-japan-gdp-growth.json" />
+    <Content Include="Content\js\Flot\examples\ajax\data-usa-gdp-growth.json" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\africa" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\antarctica" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\asia" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\australasia" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\backward" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\etcetera" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\europe" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\factory" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\iso3166.tab" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\leapseconds" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\northamerica" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\pacificnew" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\solar87" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\solar88" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\solar89" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\southamerica" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\systemv" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\yearistype.sh" />
+    <Content Include="Content\js\Flot\examples\axes-time-zones\tz\zone.tab" />
+    <Content Include="Content\js\Flot\FAQ.md" />
+    <Content Include="Content\js\Flot\flot.jquery.json" />
+    <Content Include="Content\js\Flot\Makefile" />
+    <Content Include="Content\js\Flot\NEWS.md" />
+    <Content Include="Content\js\Flot\package.json" />
+    <Content Include="Content\js\Flot\PLUGINS.md" />
+    <Content Include="Content\js\Flot\README.md" />
+    <Content Include="Views\Reports\TimeReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -167,6 +280,7 @@
     <Compile Include="AutoMapperConfig\MappingExtensions.cs" />
     <Compile Include="Controllers\CreateFingerprintController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\TrackController.cs" />
     <Compile Include="Controllers\StreamStationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -177,6 +291,8 @@
     <Compile Include="Models\CreateFingerprint\FingerprintListModel.cs" />
     <Compile Include="Models\Dashboard\StreamStationStatusListModel.cs" />
     <Compile Include="Models\Dashboard\StreamStationStatusModel.cs" />
+    <Compile Include="Models\Reports\TimeReportListModel.cs" />
+    <Compile Include="Models\Reports\TimeReportModel.cs" />
     <Compile Include="Models\Track\TrackListModel.cs" />
     <Compile Include="Models\Track\TrackModel.cs" />
     <Compile Include="Models\StreamStation\StreamStationListModel.cs" />
@@ -317,9 +433,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Reports\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Reports\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
@@ -333,6 +447,10 @@
     <ProjectReference Include="..\MusicIdentificationSystem.DAL\MusicIdentificationSystem.DAL.csproj">
       <Project>{6d162b39-716a-4385-b543-7a0750b7f090}</Project>
       <Name>MusicIdentificationSystem.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MusicIdentificationSystem.DTO\MusicIdentificationSystem.DTO.csproj">
+      <Project>{df809875-22c1-4925-81ed-3b0a9b6bbb3e}</Project>
+      <Name>MusicIdentificationSystem.DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Resources\Resources.csproj">
       <Project>{76eae888-670f-4c6f-a3ad-30e1a834a354}</Project>

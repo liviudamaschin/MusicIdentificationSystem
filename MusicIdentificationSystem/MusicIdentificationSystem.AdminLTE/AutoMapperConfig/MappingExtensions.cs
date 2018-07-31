@@ -2,9 +2,11 @@
 using MusicIdentificationSystem.AdminLTE.Models.Account;
 using MusicIdentificationSystem.AdminLTE.Models.ApplicationSetting;
 using MusicIdentificationSystem.AdminLTE.Models.Dashboard;
+using MusicIdentificationSystem.AdminLTE.Models.Reports;
 using MusicIdentificationSystem.AdminLTE.Models.StreamStation;
 using MusicIdentificationSystem.AdminLTE.Models.Track;
 using MusicIdentificationSystem.DAL.DbEntities;
+using MusicIdentificationSystem.DTO;
 
 namespace MusicIdentificationSystem.AdminLTE.AutoMapperConfig
 {
@@ -58,6 +60,16 @@ namespace MusicIdentificationSystem.AdminLTE.AutoMapperConfig
         public static StreamStationEntity ToStatusEntity(this StreamStationStatusModel model)
         {
             return Mapper.Map<StreamStationStatusModel, StreamStationEntity>(model);
+        }
+
+        public static TimeReportModel ToModel(this Sp_TimeReport entity)
+        {
+            return Mapper.Map<Sp_TimeReport, TimeReportModel>(entity);
+        }
+
+        public static Sp_TimeReport ToEntity(this TimeReportModel model)
+        {
+            return Mapper.Map<TimeReportModel, Sp_TimeReport>(model);
         }
     }
 }

@@ -1,0 +1,270 @@
+﻿@model MusicIdentificationSystem.AdminLTE.Models.Reports.TimeReportListModel
+
+@using GridMvc.Html
+
+@{
+    Html.EnableClientValidation();
+    Html.EnableUnobtrusiveJavaScript();
+
+    ViewBag.Title = Resources.Resources.Reports_Title_TimeReport;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("GenerateReport", "Reports", FormMethod.Post, new { id = "TimeReport-form" }))
+{
+
+    @Html.HiddenFor(x => x.Period);
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <!-- Date and time range -->
+            <div class="form-group">
+                <label>@Resources.Resources.TimeReport_ChoosePeriod</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="reservationtime">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.HiddenFor(x => x.AccountIds);
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+                <label>@Resources.Resources.TimeReport_Accounts</label>
+                <select class="form-control select2"
+                        multiple="multiple"
+                        id="AccountModelsList"
+                        data-placeholder=@Resources.Resources.TimeReport_SelectAccounts
+                        style="width: 100%;"></select>
+            </div>
+        </div>
+    </div>
+
+    @Html.HiddenFor(x => x.StreamStationIds);
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+                <label>@Resources.Resources.TimeReport_StreamStations</label>
+                <select class="form-control select2"
+                        multiple="multiple"
+                        id="StreamStationModelsList"
+                        data-placeholder=@Resources.Resources.TimeReport_SelectStreamStations
+                        style="width: 100%;"></select>
+            </div>
+        </div>
+    </div>
+
+    @Html.HiddenFor(x => x.TrackIds);
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+                <label>@Resources.Resources.TimeReport_Tracks</label>
+                <select class="form-control select2"
+                        multiple="multiple"
+                        id="TrackModelsList"
+                        data-placeholder=@Resources.Resources.TimeReport_SelectTracks
+                        style="width: 100%;"></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="container-fluid">
+                <div class="pull-right">
+                    <div class="form-group">
+                        <input type="submit" name="time-report-details" value="@Resources.Resources.TimeReport_Button_GenerateReport_TimeReportDetails" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.TimeReport_Button_GenerateReport_TimeReportDetails" />
+                        <input type="submit" name="time-report-first-aggregation" value="@Resources.Resources.TimeReport_Button_GenerateReport_TimeReportFirstAggregation" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.TimeReport_Button_GenerateReport_TimeReportFirstAggregation" />
+                        <input type="submit" name="time-report-maximum-aggregation" value="@Resources.Resources.TimeReport_Button_GenerateReport_TimeReportMaximumAggregation" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.TimeReport_Button_GenerateReport_TimeReportMaximumAggregation" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="container-fluid">
+                <div class="pull-right">
+                    <div class="form-group">
+                        <input type="submit" name="count-report-first-aggregation" value="@Resources.Resources.TimeReport_Button_GenerateReport_CountReportFirstAggregation" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.TimeReport_Button_GenerateReport_CountReportFirstAggregation" />
+                        <input type="submit" name="count-report-maximum-aggregation" value="@Resources.Resources.TimeReport_Button_GenerateReport_CountReportMaximumAggregation" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.TimeReport_Button_GenerateReport_CountReportMaximumAggregation" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="force-scrollbar" style="overflow: auto">
+            @Html.Grid(Model.TimeReportModelsList).Named("TimeReportGrid").Columns(columns =>
+            {
+                columns.Add(c => c.AccountId).Titled(Resources.Resources.TimeReport_AccountId).Filterable(true);
+                columns.Add(c => c.AccountName).Titled(Resources.Resources.TimeReport_AccountName).Filterable(true);
+                columns.Add(c => c.StreamStationId).Titled(Resources.Resources.TimeReport_StreamStationId).Filterable(true);
+                columns.Add(c => c.StreamStationName).Titled(Resources.Resources.TimeReport_StreamStationName).Filterable(true);
+                columns.Add(c => c.TrackId).Titled(Resources.Resources.TimeReport_TrackId).Filterable(true);
+                columns.Add(c => c.Title).Titled(Resources.Resources.TimeReport_TrackTitle).Filterable(true);
+                columns.Add(c => c.Artist).Titled(Resources.Resources.TimeReport_TrackArtist).Filterable(true);
+                columns.Add(c => c.Length).Titled(Resources.Resources.TimeReport_TrackLength).Filterable(true);
+                columns.Add(c => c.QueryMatchLength).Titled(Resources.Resources.TimeReport_QueryMatchLength).Filterable(true);
+                columns.Add(c => c.StreamId).Titled(Resources.Resources.TimeReport_StreamId).Filterable(true);
+                columns.Add(c => c.ResultId).Titled(Resources.Resources.TimeReport_ResultId).Filterable(true);
+                columns.Add(c => c.AccountResultsInSeconds).Titled(Resources.Resources.TimeReport_AccountResultsInSeconds).Filterable(true);
+                columns.Add(c => c.TotalTimeInSeconds).Titled(Resources.Resources.TimeReport_TotalTimeInSeconds).Filterable(true);
+                columns.Add(c => c.AccountPercent).Titled(Resources.Resources.TimeReport_AccountPercent).Filterable(true);
+            }).WithPaging(10).Sortable(true).WithMultipleFilters().Selectable(false)
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function () {
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("GetAccountsList", "Reports")',
+        success: (function (data) {
+            for (i = 0; i < data.length; i++) {
+                $('#AccountModelsList').append($("<option/>", {
+                    value: data[i].Id,
+                    text: data[i].AccountName,
+                    selected: false
+                }));
+            };
+            $('#AccountModelsList').select2();
+        })
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("GetStreamStationsList", "Reports")',
+        success: (function (data) {
+            for (i = 0; i < data.length; i++) {
+                $('#StreamStationModelsList').append($("<option/>", {
+                    value: data[i].Id,
+                    text: data[i].StationName,
+                    selected: false
+                }));
+            };
+            $('#StreamStationModelsList').select2();
+        })
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("GetTracksList", "Reports")',
+        success: (function (data) {
+            for (i = 0; i < data.length; i++) {
+                $('#TrackModelsList').append($("<option/>", {
+                    value: data[i].Id,
+                    text: data[i].Artist + " - " + data[i].Title,
+                    selected: false
+                }));
+            };
+            $('#TrackModelsList').select2();
+        })
+    });
+});
+
+$(function () {
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 15, format: 'MM/DD/YYYY h:mm A' })
+    });
+
+    $('#reservationtime').on("change", function (event) {
+        $('#Period').val($(event.currentTarget)[0].value);
+    });
+
+    $('#AccountModelsList').on("change", function (event) {
+        var choice;
+        var values = [];
+
+        $(event.currentTarget).find("option:selected").each(function (i, selected) {
+            //values[i] = $(selected).text();
+            values[i] = $(selected).val();
+        });
+
+        // This is assuming the value will be an array of strings.
+        // Convert to a comma-delimited string to set the value.
+        if (values !== null && values.length > 0) {
+            for (var i = 0; i < values.length; i++) {
+                if (typeof choice !== 'undefined') {
+                    choice += ",";
+                    choice += values[i];
+                }
+                else {
+                    choice = values[i];
+                }
+            }
+        }
+
+        // Set the value so that MVC will load the form values in the postback.
+        $('#AccountIds').val(choice);
+    });
+
+    $('#StreamStationModelsList').on("change", function (event) {
+        var choice;
+        var values = [];
+
+        $(event.currentTarget).find("option:selected").each(function (i, selected) {
+            //values[i] = $(selected).text();
+            values[i] = $(selected).val();
+        });
+
+        // This is assuming the value will be an array of strings.
+        // Convert to a comma-delimited string to set the value.
+        if (values !== null && values.length > 0) {
+            for (var i = 0; i < values.length; i++) {
+                if (typeof choice !== 'undefined') {
+                    choice += ",";
+                    choice += values[i];
+                }
+                else {
+                    choice = values[i];
+                }
+            }
+        }
+
+        // Set the value so that MVC will load the form values in the postback.
+        $('#StreamStationIds').val(choice);
+    });
+
+    $('#TrackModelsList').on("change", function (event) {
+        var choice;
+        var values = [];
+
+        $(event.currentTarget).find("option:selected").each(function (i, selected) {
+            //values[i] = $(selected).text();
+            values[i] = $(selected).val();
+        });
+
+        // This is assuming the value will be an array of strings.
+        // Convert to a comma-delimited string to set the value.
+        if (values !== null && values.length > 0) {
+            for (var i = 0; i < values.length; i++) {
+                if (typeof choice !== 'undefined') {
+                    choice += ",";
+                    choice += values[i];
+                }
+                else {
+                    choice = values[i];
+                }
+            }
+        }
+
+        // Set the value so that MVC will load the form values in the postback.
+        $('#TrackIds').val(choice);
+    });
+</script>

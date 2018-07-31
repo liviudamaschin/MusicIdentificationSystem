@@ -2,9 +2,11 @@
 using MusicIdentificationSystem.AdminLTE.Models.Account;
 using MusicIdentificationSystem.AdminLTE.Models.ApplicationSetting;
 using MusicIdentificationSystem.AdminLTE.Models.Dashboard;
+using MusicIdentificationSystem.AdminLTE.Models.Reports;
 using MusicIdentificationSystem.AdminLTE.Models.StreamStation;
 using MusicIdentificationSystem.AdminLTE.Models.Track;
 using MusicIdentificationSystem.DAL.DbEntities;
+using MusicIdentificationSystem.DTO;
 
 namespace MusicIdentificationSystem.AdminLTE.AutoMapperConfig
 {
@@ -37,6 +39,10 @@ namespace MusicIdentificationSystem.AdminLTE.AutoMapperConfig
             Mapper.CreateMap<StreamStationEntity, StreamStationStatusModel>();
 
             Mapper.CreateMap<StreamStationStatusModel, StreamStationEntity>();
+
+            Mapper.CreateMap<Sp_TimeReport, TimeReportModel>();
+
+            Mapper.CreateMap<TimeReportModel, Sp_TimeReport>();
 
             Mapper.AssertConfigurationIsValid();
         }
