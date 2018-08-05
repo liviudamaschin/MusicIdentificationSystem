@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.2.0" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Ninject" Version="3.3.4" />
   </ItemGroup>
   
@@ -14,6 +16,12 @@
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\MusicIdentificationSystem.Common\MusicIdentificationSystem.Common.csproj" />
     <ProjectReference Include="..\MusicIdentificationSystem.DAL\MusicIdentificationSystem.DAL.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
