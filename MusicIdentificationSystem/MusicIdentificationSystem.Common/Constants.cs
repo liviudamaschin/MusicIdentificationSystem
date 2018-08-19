@@ -10,5 +10,7 @@ namespace MusicIdentificationSystem.Common
     {
         public const string AdminLTE_CreateFingerprint_UploadFolder_KeyName = "adminlte_createfingerprint_uploadfolder";
         public const string AdminLTE_CreateFingerprint_UploadFolder_KeyValue = "C:/Z/WORK/UploadMP3";
+        public const string AdminLTE_DateTimeFormat_ForJS = "DD/MM/YYYY hh:mm:ss A";
+        public const string AdminLTE_DateTimeFormat_ForC = "dd/MM/yyyy hh:mm:ss tt";
     }
 }

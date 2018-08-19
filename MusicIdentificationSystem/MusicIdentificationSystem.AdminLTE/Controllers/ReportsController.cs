@@ -3,12 +3,14 @@ using MusicIdentificationSystem.AdminLTE.Helpers;
 using MusicIdentificationSystem.AdminLTE.Models.Account;
 using MusicIdentificationSystem.AdminLTE.Models.Reports;
 using MusicIdentificationSystem.AdminLTE.Models.Track;
+using MusicIdentificationSystem.Common;
 using MusicIdentificationSystem.DAL;
 using MusicIdentificationSystem.DAL.DbEntities;
 using MusicIdentificationSystem.DAL.Repositories;
 using MusicIdentificationSystem.DAL.UnitOfWork;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -35,9 +37,8 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
             {
                 var timeReportListModel = new TimeReportListModel();
 
-                //var tracksList = trackRepository.Get();
-
-                //trackListModel.TrackModelsList = tracksList.Select(x => x.ToModel()).ToList();
+                timeReportListModel.StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                timeReportListModel.EndDate = timeReportListModel.StartDate.AddMonths(1).AddDays(-1);
 
                 return View("TimeReport", timeReportListModel);
             }
@@ -136,10 +137,12 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
                     var dates = model.Period.Split('-');
                     if (dates != null && dates.Length == 2)
                     {
-                        DateTime.TryParse(dates[0], out startDate);
-                        DateTime.TryParse(dates[1], out endDate);
+                        startDate = DateTime.ParseExact(dates[0].Trim(), Constants.AdminLTE_DateTimeFormat_ForC, CultureInfo.InvariantCulture, DateTimeStyles.None);
+                        endDate = DateTime.ParseExact(dates[1].Trim(), Constants.AdminLTE_DateTimeFormat_ForC, CultureInfo.InvariantCulture, DateTimeStyles.None);
                     }
-                     model.TimeReportModelsList = reportsRepository.GetTimeReport(startDate, endDate, model.AccountIds, model.StreamStationIds, model.TrackIds, reportType).Select(x => x.ToModel()).ToList();
+                    model.StartDate = startDate;
+                    model.EndDate = endDate;
+                    model.TimeReportModelsList = reportsRepository.GetTimeReport(startDate, endDate, model.AccountIds, model.StreamStationIds, model.TrackIds, reportType).Select(x => x.ToModel()).ToList();
 
                     return View("TimeReport", model);
                 }

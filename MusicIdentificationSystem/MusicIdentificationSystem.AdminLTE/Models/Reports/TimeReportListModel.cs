@@ -16,6 +16,9 @@ namespace MusicIdentificationSystem.AdminLTE.Models.Reports
             TimeReportModelsList = new List<TimeReportModel>();
         }
 
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
         public string Period { get; set; }
         public string AccountIds { get; set; }
         public string StreamStationIds { get; set; }

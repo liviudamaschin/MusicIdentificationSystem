@@ -1,6 +1,7 @@
 ﻿@model MusicIdentificationSystem.AdminLTE.Models.Reports.TimeReportListModel
 
 @using GridMvc.Html
+@using MusicIdentificationSystem.Common;
 
 @{
     Html.EnableClientValidation();
@@ -131,57 +132,91 @@
 </div>
 
 <script>
-$(document).ready(function () {
-    $.ajax({
-        type: 'GET',
-        url: '@Url.Action("GetAccountsList", "Reports")',
-        success: (function (data) {
-            for (i = 0; i < data.length; i++) {
-                $('#AccountModelsList').append($("<option/>", {
-                    value: data[i].Id,
-                    text: data[i].AccountName,
-                    selected: false
-                }));
-            };
-            $('#AccountModelsList').select2();
-        })
+    $(document).ready(function () {
+
+        var startDate = @Html.Raw(Json.Encode(Model.StartDate));
+        startDate = moment(startDate);
+        var endDate = @Html.Raw(Json.Encode(Model.EndDate));
+        endDate = moment(endDate);
+
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({
+            timePicker: true,
+            timePicker24Hour: true,
+            timePickerSeconds: true,
+            //format: '@Constants.AdminLTE_DateTimeFormat_ForJS',
+            locale: {
+                format: '@Constants.AdminLTE_DateTimeFormat_ForJS'
+            },
+
+            startDate: startDate,
+            endDate: endDate
+        });
+
+        var accounts = @Html.Raw(Json.Encode(Model.AccountIds));
+        var accountsArray = accounts ? accounts.split(",") : null;
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetAccountsList", "Reports")',
+            success: (function (data) {
+                for (i = 0; i < data.length; i++) {
+                    $('#AccountModelsList').append($("<option/>", {
+                        value: data[i].Id,
+                        text: data[i].AccountName,
+                        selected: accountsArray ? accountsArray.includes(data[i].Id.toString()) : false
+                    }));
+                };
+                $('#AccountModelsList').select2();
+            })
+        });
+
+        var streamStations = @Html.Raw(Json.Encode(Model.StreamStationIds));
+        var streamStationsArray = streamStations ? streamStations.split(",") : null;
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetStreamStationsList", "Reports")',
+            success: (function (data) {
+                for (i = 0; i < data.length; i++) {
+                    $('#StreamStationModelsList').append($("<option/>", {
+                        value: data[i].Id,
+                        text: data[i].StationName,
+                        selected: streamStationsArray ? streamStationsArray.includes(data[i].Id.toString()) : false
+                    }));
+                };
+                $('#StreamStationModelsList').select2();
+            })
+        });
+
+        var tracks = @Html.Raw(Json.Encode(Model.TrackIds));
+        var tracksArray = tracks ? tracks.split(",") : null;
+        $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetTracksList", "Reports")',
+            success: (function (data) {
+                for (i = 0; i < data.length; i++) {
+                    $('#TrackModelsList').append($("<option/>", {
+                        value: data[i].Id,
+                        text: data[i].Artist + " - " + data[i].Title,
+                        selected: tracksArray ? tracksArray.includes(data[i].Id.toString()) : false
+                    }));
+                };
+                $('#TrackModelsList').select2();
+            })
+        });
     });
 
-    $.ajax({
-        type: 'GET',
-        url: '@Url.Action("GetStreamStationsList", "Reports")',
-        success: (function (data) {
-            for (i = 0; i < data.length; i++) {
-                $('#StreamStationModelsList').append($("<option/>", {
-                    value: data[i].Id,
-                    text: data[i].StationName,
-                    selected: false
-                }));
-            };
-            $('#StreamStationModelsList').select2();
+    @*$(function () {
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({
+            timePicker: true,
+            timePicker24Hour: true,
+            timePickerSeconds: true,
+            //format: '@Constants.AdminLTE_DateTimeFormat_ForJS',
+            locale: {
+                format: '@Constants.AdminLTE_DateTimeFormat_ForJS'
+            }
         })
-    });
-
-    $.ajax({
-        type: 'GET',
-        url: '@Url.Action("GetTracksList", "Reports")',
-        success: (function (data) {
-            for (i = 0; i < data.length; i++) {
-                $('#TrackModelsList').append($("<option/>", {
-                    value: data[i].Id,
-                    text: data[i].Artist + " - " + data[i].Title,
-                    selected: false
-                }));
-            };
-            $('#TrackModelsList').select2();
-        })
-    });
-});
-
-$(function () {
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 15, format: 'MM/DD/YYYY h:mm A' })
-    });
+    });*@
 
     $('#reservationtime').on("change", function (event) {
         $('#Period').val($(event.currentTarget)[0].value);
@@ -192,7 +227,6 @@ $(function () {
         var values = [];
 
         $(event.currentTarget).find("option:selected").each(function (i, selected) {
-            //values[i] = $(selected).text();
             values[i] = $(selected).val();
         });
 
@@ -219,7 +253,6 @@ $(function () {
         var values = [];
 
         $(event.currentTarget).find("option:selected").each(function (i, selected) {
-            //values[i] = $(selected).text();
             values[i] = $(selected).val();
         });
 
@@ -246,7 +279,6 @@ $(function () {
         var values = [];
 
         $(event.currentTarget).find("option:selected").each(function (i, selected) {
-            //values[i] = $(selected).text();
             values[i] = $(selected).val();
         });
 
