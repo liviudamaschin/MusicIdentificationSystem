@@ -52,7 +52,7 @@ namespace MusicIdentificationSystem.DAL.Repositories
                     SqlDbType = SqlDbType.Text
                 };
             else
-                streamStationIdsParameter = new SqlParameter("@StreamStationIds", accountIds)
+                streamStationIdsParameter = new SqlParameter("@StreamStationIds", streamStationIds)
                 {
                     IsNullable = true,
                     Direction = ParameterDirection.Input,
@@ -68,7 +68,7 @@ namespace MusicIdentificationSystem.DAL.Repositories
                     SqlDbType = SqlDbType.Text
                 };
             else
-                trackIdsParameter = new SqlParameter("@TrackIds", accountIds)
+                trackIdsParameter = new SqlParameter("@TrackIds", trackIds)
                 {
                     IsNullable = true,
                     Direction = ParameterDirection.Input,
