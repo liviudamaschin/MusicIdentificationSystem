@@ -22,6 +22,6 @@ namespace MusicIdentificationSystem.DTO
 
         public decimal? AccountResultsInSeconds { get; set; }
         public long TotalTimeInSeconds { get; set; }
-        public decimal AccountPercent { get; set; }
+        public decimal? AccountPercent { get; set; }
     }
 }

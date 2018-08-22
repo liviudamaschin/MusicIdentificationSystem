@@ -46,7 +46,7 @@ namespace MusicIdentificationSystem.AdminLTE.Models.Reports
         [Display(ResourceType = typeof(Resources.Resources), Name = "TimeReport_TotalTimeInSeconds")]
         public long TotalTimeInSeconds { get; set; }
         [Display(ResourceType = typeof(Resources.Resources), Name = "TimeReport_AccountPercent")]
-        public decimal AccountPercent { get; set; }
+        public decimal? AccountPercent { get; set; }
 
 
         public TimeReportModel()
