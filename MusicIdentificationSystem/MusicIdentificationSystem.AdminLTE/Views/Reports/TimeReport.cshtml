@@ -15,6 +15,7 @@
 
 @using (Html.BeginForm("GenerateReport", "Reports", FormMethod.Post, new { id = "TimeReport-form" }))
 {
+    @Html.HiddenFor(x => x.ReportType);
 
     @Html.HiddenFor(x => x.Period);
 

@@ -115,22 +115,22 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
             {
                 try
                 {
-                    var reportType = 0;
+                    model.ReportType = 0;
                     // 1 - fara group by, cu data start melodie(time report details)
                     // 2 - cu group by  dupa account, stream station si track(time report first aggregation)
                     // 3 - cu group by dupa account(time report maximum aggregation)
                     // 4 - count cu group by dupa account, stream station si track(count report first aggregation)
                     // 5 - cu group by dupa account(count report maximum aggregation)
                     if (timeReportDetails)
-                        reportType = 1;
+                        model.ReportType = 1;
                     else if (timeReportFirstAggregation)
-                        reportType = 2;
+                        model.ReportType = 2;
                     else if (timeReportMaximumAggregation)
-                        reportType = 3;
+                        model.ReportType = 3;
                     else if (countReportFirstAggregation)
-                        reportType = 4;
+                        model.ReportType = 4;
                     else if (countReportMaximumAggregation)
-                        reportType = 5;
+                        model.ReportType = 5;
 
                     var startDate = DateTime.MinValue;
                     var endDate = DateTime.MinValue;
@@ -142,7 +142,22 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
                     }
                     model.StartDate = startDate;
                     model.EndDate = endDate;
-                    model.TimeReportModelsList = reportsRepository.GetTimeReport(startDate, endDate, model.AccountIds, model.StreamStationIds, model.TrackIds, reportType).Select(x => x.ToModel()).ToList();
+
+                    model.TimeReportModelsList = reportsRepository.GetTimeReport(model.StartDate, model.EndDate, model.AccountIds, model.StreamStationIds, model.TrackIds, model.ReportType).Select(x => x.ToModel()).ToList();
+
+                    #region TempData (transfer data from Controller to View  for Paging, Filtering and Sorting)
+                    var lightModel = new TimeReportListModel()
+                    {
+                        ReportType = model.ReportType,
+                        StartDate = model.StartDate,
+                        EndDate = model.EndDate,
+                        AccountIds = model.AccountIds,
+                        StreamStationIds = model.StreamStationIds,
+                        TrackIds = model.TrackIds
+                    };
+
+                    TempData["model"] = lightModel;
+                    #endregion
 
                     return View("TimeReport", model);
                 }
@@ -154,6 +169,47 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
             }
             else
             {
+                return View("TimeReport", model);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult GenerateReport()
+        {
+            TimeReportListModel model = null;
+
+            try
+            {
+                model = TempData["model"] as TimeReportListModel;
+            }
+            catch (Exception ex)
+            {
+                model = new TimeReportListModel();
+            }
+
+            try
+            {
+                #region TempData (transfer data from Controller to View  for Paging, Filtering and Sorting)
+                var lightModel = new TimeReportListModel()
+                {
+                    ReportType = model.ReportType,
+                    StartDate = model.StartDate,
+                    EndDate = model.EndDate,
+                    AccountIds = model.AccountIds,
+                    StreamStationIds = model.StreamStationIds,
+                    TrackIds = model.TrackIds
+                };
+
+                TempData["model"] = lightModel;
+                #endregion
+
+                model.TimeReportModelsList = reportsRepository.GetTimeReport(model.StartDate, model.EndDate, model.AccountIds, model.StreamStationIds, model.TrackIds, model.ReportType).Select(x => x.ToModel()).ToList();
+
+                return View("TimeReport", model);
+            }
+            catch (Exception ex)
+            {
+                ErrorNotification(Utils.UnwrapException(ex).Message);
                 return View("TimeReport", model);
             }
         }
