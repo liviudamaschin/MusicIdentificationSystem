@@ -96,6 +96,15 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="container-fluid">
+                <div class="pull-left">
+                    <div class="form-group">
+                        @*@Html.ActionLink(Resources.Resources.TimeReport_Button_Download, "Download")*@
+                        <a href="@Url.Action("Download", "Reports")" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.TimeReport_Button_Download">
+                            @Resources.Resources.TimeReport_Button_Download
+                        </a>
+                    </div>
+                </div>
+
                 <div class="pull-right">
                     <div class="form-group">
                         <input type="submit" name="count-report-first-aggregation" value="@Resources.Resources.TimeReport_Button_GenerateReport_CountReportFirstAggregation" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="@Resources.Resources.TimeReport_Button_GenerateReport_CountReportFirstAggregation" />
@@ -108,29 +117,29 @@
 
 }
 
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="force-scrollbar" style="overflow: auto">
-            @Html.Grid(Model.TimeReportModelsList).Named("TimeReportGrid").Columns(columns =>
-            {
-                columns.Add(c => c.AccountId).Titled(Resources.Resources.TimeReport_AccountId).Filterable(true);
-                columns.Add(c => c.AccountName).Titled(Resources.Resources.TimeReport_AccountName).Filterable(true);
-                columns.Add(c => c.StreamStationId).Titled(Resources.Resources.TimeReport_StreamStationId).Filterable(true);
-                columns.Add(c => c.StreamStationName).Titled(Resources.Resources.TimeReport_StreamStationName).Filterable(true);
-                columns.Add(c => c.TrackId).Titled(Resources.Resources.TimeReport_TrackId).Filterable(true);
-                columns.Add(c => c.Title).Titled(Resources.Resources.TimeReport_TrackTitle).Filterable(true);
-                columns.Add(c => c.Artist).Titled(Resources.Resources.TimeReport_TrackArtist).Filterable(true);
-                columns.Add(c => c.Length).Titled(Resources.Resources.TimeReport_TrackLength).Filterable(true);
-                columns.Add(c => c.QueryMatchLength).Titled(Resources.Resources.TimeReport_QueryMatchLength).Filterable(true);
-                columns.Add(c => c.StreamId).Titled(Resources.Resources.TimeReport_StreamId).Filterable(true);
-                columns.Add(c => c.ResultId).Titled(Resources.Resources.TimeReport_ResultId).Filterable(true);
-                columns.Add(c => c.AccountResultsInSeconds).Titled(Resources.Resources.TimeReport_AccountResultsInSeconds).Filterable(true);
-                columns.Add(c => c.TotalTimeInSeconds).Titled(Resources.Resources.TimeReport_TotalTimeInSeconds).Filterable(true);
-                columns.Add(c => c.AccountPercent).Titled(Resources.Resources.TimeReport_AccountPercent).Filterable(true);
-            }).WithPaging(10).Sortable(true).WithMultipleFilters().Selectable(false)
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="force-scrollbar" style="overflow: auto">
+                @Html.Grid(Model.TimeReportModelsList).Named("TimeReportGrid").Columns(columns =>
+                {
+                    columns.Add(c => c.AccountId).Titled(Resources.Resources.TimeReport_AccountId).Filterable(true);
+                    columns.Add(c => c.AccountName).Titled(Resources.Resources.TimeReport_AccountName).Filterable(true);
+                    columns.Add(c => c.StreamStationId).Titled(Resources.Resources.TimeReport_StreamStationId).Filterable(true);
+                    columns.Add(c => c.StreamStationName).Titled(Resources.Resources.TimeReport_StreamStationName).Filterable(true);
+                    columns.Add(c => c.TrackId).Titled(Resources.Resources.TimeReport_TrackId).Filterable(true);
+                    columns.Add(c => c.Title).Titled(Resources.Resources.TimeReport_TrackTitle).Filterable(true);
+                    columns.Add(c => c.Artist).Titled(Resources.Resources.TimeReport_TrackArtist).Filterable(true);
+                    columns.Add(c => c.Length).Titled(Resources.Resources.TimeReport_TrackLength).Filterable(true);
+                    columns.Add(c => c.QueryMatchLength).Titled(Resources.Resources.TimeReport_QueryMatchLength).Filterable(true);
+                    columns.Add(c => c.StreamId).Titled(Resources.Resources.TimeReport_StreamId).Filterable(true);
+                    columns.Add(c => c.ResultId).Titled(Resources.Resources.TimeReport_ResultId).Filterable(true);
+                    columns.Add(c => c.AccountResultsInSeconds).Titled(Resources.Resources.TimeReport_AccountResultsInSeconds).Filterable(true);
+                    columns.Add(c => c.TotalTimeInSeconds).Titled(Resources.Resources.TimeReport_TotalTimeInSeconds).Filterable(true);
+                    columns.Add(c => c.AccountPercent).Titled(Resources.Resources.TimeReport_AccountPercent).Filterable(true);
+                }).WithPaging(10).Sortable(true).WithMultipleFilters().Selectable(false)
+            </div>
         </div>
-    </div>
-</div>
+    </div>            
 
 <script>
     $(document).ready(function () {

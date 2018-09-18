@@ -453,4 +453,7 @@
   <data name="TimeReport_StartTime" xml:space="preserve">
     <value>Data start</value>
   </data>
+  <data name="TimeReport_Button_Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
 </root>

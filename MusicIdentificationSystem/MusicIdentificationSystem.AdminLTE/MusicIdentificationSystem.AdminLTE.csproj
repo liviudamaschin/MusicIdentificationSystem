@@ -283,6 +283,7 @@
     <Compile Include="AutoMapperConfig\MappingExtensions.cs" />
     <Compile Include="Controllers\CreateFingerprintController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DownloadFileActionResult.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\TrackController.cs" />
     <Compile Include="Controllers\StreamStationController.cs" />
@@ -294,6 +295,7 @@
     <Compile Include="Models\CreateFingerprint\FingerprintListModel.cs" />
     <Compile Include="Models\Dashboard\StreamStationStatusListModel.cs" />
     <Compile Include="Models\Dashboard\StreamStationStatusModel.cs" />
+    <Compile Include="Models\Reports\ReportType.cs" />
     <Compile Include="Models\Reports\TimeReportListModel.cs" />
     <Compile Include="Models\Reports\TimeReportModel.cs" />
     <Compile Include="Models\Track\TrackListModel.cs" />

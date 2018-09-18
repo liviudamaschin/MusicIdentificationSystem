@@ -1,19 +1,16 @@
 ﻿using MusicIdentificationSystem.AdminLTE.AutoMapperConfig;
 using MusicIdentificationSystem.AdminLTE.Helpers;
-using MusicIdentificationSystem.AdminLTE.Models.Account;
 using MusicIdentificationSystem.AdminLTE.Models.Reports;
-using MusicIdentificationSystem.AdminLTE.Models.Track;
 using MusicIdentificationSystem.Common;
 using MusicIdentificationSystem.DAL;
-using MusicIdentificationSystem.DAL.DbEntities;
 using MusicIdentificationSystem.DAL.Repositories;
-using MusicIdentificationSystem.DAL.UnitOfWork;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace MusicIdentificationSystem.AdminLTE.Controllers
 {
@@ -206,6 +203,50 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
                 model.TimeReportModelsList = reportsRepository.GetTimeReport(model.StartDate, model.EndDate, model.AccountIds, model.StreamStationIds, model.TrackIds, model.ReportType).Select(x => x.ToModel()).ToList();
 
                 return View("TimeReport", model);
+            }
+            catch (Exception ex)
+            {
+                ErrorNotification(Utils.UnwrapException(ex).Message);
+                return View("TimeReport", model);
+            }
+        }
+
+        public ActionResult Download()
+        {
+            TimeReportListModel model = null;
+
+            try
+            {
+                model = TempData["model"] as TimeReportListModel;
+            }
+            catch (Exception ex)
+            {
+                model = new TimeReportListModel();
+            }
+
+            try
+            {
+                #region TempData (transfer data from Controller to View  for Paging, Filtering and Sorting)
+                var lightModel = new TimeReportListModel()
+                {
+                    ReportType = model.ReportType,
+                    StartDate = model.StartDate,
+                    EndDate = model.EndDate,
+                    AccountIds = model.AccountIds,
+                    StreamStationIds = model.StreamStationIds,
+                    TrackIds = model.TrackIds
+                };
+
+                TempData["model"] = lightModel;
+                #endregion
+
+                model.TimeReportModelsList = reportsRepository.GetTimeReport(model.StartDate, model.EndDate, model.AccountIds, model.StreamStationIds, model.TrackIds, model.ReportType).Select(x => x.ToModel()).ToList();
+
+                GridView gridView = new GridView();
+                gridView.DataSource = model.TimeReportModelsList;
+                gridView.DataBind();
+
+                return new DownloadFileActionResult(gridView, string.Format("TimeReport_{0}_{1}.xls", ((ReportType)model.ReportType).ToString(), DateTime.Now.ToString("yyyyMMddHHmmss")));
             }
             catch (Exception ex)
             {

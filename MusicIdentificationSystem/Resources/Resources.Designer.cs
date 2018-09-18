@@ -718,6 +718,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download.
+        /// </summary>
+        public static string TimeReport_Button_Download {
+            get {
+                return ResourceManager.GetString("TimeReport_Button_Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Genereaza raport numar aparitii.
         /// </summary>
         public static string TimeReport_Button_GenerateReport_CountReportFirstAggregation {
