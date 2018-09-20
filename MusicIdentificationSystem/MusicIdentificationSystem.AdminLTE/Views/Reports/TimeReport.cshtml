@@ -121,22 +121,26 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="force-scrollbar" style="overflow: auto">
                 @Html.Grid(Model.TimeReportModelsList).Named("TimeReportGrid").Columns(columns =>
-                {
-                    columns.Add(c => c.AccountId).Titled(Resources.Resources.TimeReport_AccountId).Filterable(true);
-                    columns.Add(c => c.AccountName).Titled(Resources.Resources.TimeReport_AccountName).Filterable(true);
-                    columns.Add(c => c.StreamStationId).Titled(Resources.Resources.TimeReport_StreamStationId).Filterable(true);
-                    columns.Add(c => c.StreamStationName).Titled(Resources.Resources.TimeReport_StreamStationName).Filterable(true);
-                    columns.Add(c => c.TrackId).Titled(Resources.Resources.TimeReport_TrackId).Filterable(true);
-                    columns.Add(c => c.Title).Titled(Resources.Resources.TimeReport_TrackTitle).Filterable(true);
-                    columns.Add(c => c.Artist).Titled(Resources.Resources.TimeReport_TrackArtist).Filterable(true);
-                    columns.Add(c => c.Length).Titled(Resources.Resources.TimeReport_TrackLength).Filterable(true);
-                    columns.Add(c => c.QueryMatchLength).Titled(Resources.Resources.TimeReport_QueryMatchLength).Filterable(true);
-                    columns.Add(c => c.StreamId).Titled(Resources.Resources.TimeReport_StreamId).Filterable(true);
-                    columns.Add(c => c.ResultId).Titled(Resources.Resources.TimeReport_ResultId).Filterable(true);
-                    columns.Add(c => c.AccountResultsInSeconds).Titled(Resources.Resources.TimeReport_AccountResultsInSeconds).Filterable(true);
-                    columns.Add(c => c.TotalTimeInSeconds).Titled(Resources.Resources.TimeReport_TotalTimeInSeconds).Filterable(true);
-                    columns.Add(c => c.AccountPercent).Titled(Resources.Resources.TimeReport_AccountPercent).Filterable(true);
-                }).WithPaging(10).Sortable(true).WithMultipleFilters().Selectable(false)
+           {
+               columns.Add(c => c.AccountId).Titled(Resources.Resources.TimeReport_AccountId).Filterable(true);
+               columns.Add(c => c.AccountName).Titled(Resources.Resources.TimeReport_AccountName).Filterable(true);
+               columns.Add(c => c.StreamStationId).Titled(Resources.Resources.TimeReport_StreamStationId).Filterable(true);
+               columns.Add(c => c.StreamStationName).Titled(Resources.Resources.TimeReport_StreamStationName).Filterable(true);
+               columns.Add(c => c.TrackId).Titled(Resources.Resources.TimeReport_TrackId).Filterable(true);
+               columns.Add(c => c.Title).Titled(Resources.Resources.TimeReport_TrackTitle).Filterable(true);
+               columns.Add(c => c.Artist).Titled(Resources.Resources.TimeReport_TrackArtist).Filterable(true);
+               columns.Add(c => c.Length).Titled(Resources.Resources.TimeReport_TrackLength).Filterable(true);
+               columns.Add(c => c.ResultId).Titled(Resources.Resources.TimeReport_ResultId).Filterable(true);
+               columns.Add(c => c.QueryMatchLength).Titled(Resources.Resources.TimeReport_QueryMatchLength).Filterable(true);
+               columns.Add(c => c.QueryMatchStartsAt).Titled(Resources.Resources.TimeReport_QueryMatchStartsAt).Filterable(true);
+               columns.Add(c => c.StreamId).Titled(Resources.Resources.TimeReport_StreamId).Filterable(true);
+               columns.Add(c => c.FileName).Titled(Resources.Resources.TimeReport_StreamFileName).Filterable(true);
+               columns.Add(c => c.StartTime).Titled(Resources.Resources.TimeReport_StreamStartTime).Filterable(true);
+               columns.Add(c => c.EndTime).Titled(Resources.Resources.TimeReport_StreamEndTime).Filterable(true);
+               columns.Add(c => c.AccountResultsInSeconds).Titled(Resources.Resources.TimeReport_AccountResultsInSeconds).Filterable(true);
+               columns.Add(c => c.TotalTimeInSeconds).Titled(Resources.Resources.TimeReport_TotalTimeInSeconds).Filterable(true);
+               columns.Add(c => c.AccountPercent).Titled(Resources.Resources.TimeReport_AccountPercent).Filterable(true);
+           }).WithPaging(10).Sortable(true).WithMultipleFilters().Selectable(false)
             </div>
         </div>
     </div>            

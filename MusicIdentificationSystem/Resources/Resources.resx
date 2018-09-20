@@ -456,4 +456,13 @@
   <data name="TimeReport_Button_Download" xml:space="preserve">
     <value>Download</value>
   </data>
+  <data name="TimeReport_StreamEndTime" xml:space="preserve">
+    <value>Data final inregistrare</value>
+  </data>
+  <data name="TimeReport_StreamFileName" xml:space="preserve">
+    <value>Nume fisier inregistrare</value>
+  </data>
+  <data name="TimeReport_StreamStartTime" xml:space="preserve">
+    <value>Data start inregistrare</value>
+  </data>
 </root>

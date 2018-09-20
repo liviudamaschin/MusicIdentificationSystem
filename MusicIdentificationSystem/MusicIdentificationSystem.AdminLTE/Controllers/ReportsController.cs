@@ -243,6 +243,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
                 model.TimeReportModelsList = reportsRepository.GetTimeReport(model.StartDate, model.EndDate, model.AccountIds, model.StreamStationIds, model.TrackIds, model.ReportType).Select(x => x.ToModel()).ToList();
 
                 GridView gridView = new GridView();
+                gridView.RowDataBound += GridView_RowDataBound;
                 gridView.DataSource = model.TimeReportModelsList;
                 gridView.DataBind();
 
@@ -252,6 +253,31 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
             {
                 ErrorNotification(Utils.UnwrapException(ex).Message);
                 return View("TimeReport", model);
+            }
+        }
+
+        private void GridView_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.Cells[0].Text = Resources.Resources.TimeReport_AccountId;
+                e.Row.Cells[1].Text = Resources.Resources.TimeReport_AccountName;
+                e.Row.Cells[2].Text = Resources.Resources.TimeReport_StreamStationId;
+                e.Row.Cells[3].Text = Resources.Resources.TimeReport_StreamStationName;
+                e.Row.Cells[4].Text = Resources.Resources.TimeReport_TrackId;
+                e.Row.Cells[5].Text = Resources.Resources.TimeReport_TrackTitle;
+                e.Row.Cells[6].Text = Resources.Resources.TimeReport_TrackArtist;
+                e.Row.Cells[7].Text = Resources.Resources.TimeReport_TrackLength;
+                e.Row.Cells[8].Text = Resources.Resources.TimeReport_ResultId;
+                e.Row.Cells[9].Text = Resources.Resources.TimeReport_QueryMatchLength;
+                e.Row.Cells[10].Text = Resources.Resources.TimeReport_QueryMatchStartsAt;
+                e.Row.Cells[11].Text = Resources.Resources.TimeReport_StreamId;
+                e.Row.Cells[12].Text = Resources.Resources.TimeReport_StreamFileName;
+                e.Row.Cells[13].Text = Resources.Resources.TimeReport_StreamStartTime;
+                e.Row.Cells[14].Text = Resources.Resources.TimeReport_StreamEndTime;
+                e.Row.Cells[15].Text = Resources.Resources.TimeReport_AccountResultsInSeconds;
+                e.Row.Cells[16].Text = Resources.Resources.TimeReport_TotalTimeInSeconds;
+                e.Row.Cells[17].Text = Resources.Resources.TimeReport_AccountPercent;
             }
         }
     }

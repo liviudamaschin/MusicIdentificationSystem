@@ -862,11 +862,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data final inregistrare.
+        /// </summary>
+        public static string TimeReport_StreamEndTime {
+            get {
+                return ResourceManager.GetString("TimeReport_StreamEndTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nume fisier inregistrare.
+        /// </summary>
+        public static string TimeReport_StreamFileName {
+            get {
+                return ResourceManager.GetString("TimeReport_StreamFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Id inregistrare.
         /// </summary>
         public static string TimeReport_StreamId {
             get {
                 return ResourceManager.GetString("TimeReport_StreamId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data start inregistrare.
+        /// </summary>
+        public static string TimeReport_StreamStartTime {
+            get {
+                return ResourceManager.GetString("TimeReport_StreamStartTime", resourceCulture);
             }
         }
         
