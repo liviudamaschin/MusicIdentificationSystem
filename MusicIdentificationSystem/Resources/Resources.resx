@@ -465,4 +465,7 @@
   <data name="TimeReport_StreamStartTime" xml:space="preserve">
     <value>Data start inregistrare</value>
   </data>
+  <data name="TimeReport_CountAccountResults" xml:space="preserve">
+    <value>Nr aparitii per cont</value>
+  </data>
 </root>

@@ -41,6 +41,8 @@ namespace MusicIdentificationSystem.AdminLTE.Models.Reports
         public DateTime? StartTime { get; set; }
         [Display(ResourceType = typeof(Resources.Resources), Name = "TimeReport_EndTime")]
         public DateTime? EndTime { get; set; }
+        [Display(ResourceType = typeof(Resources.Resources), Name = "TimeReport_CountAccountResults")]
+        public long? CountAccountResults { get; set; }
         [Display(ResourceType = typeof(Resources.Resources), Name = "TimeReport_AccountResultsInSeconds")]
         public decimal? AccountResultsInSeconds { get; set; }
         [Display(ResourceType = typeof(Resources.Resources), Name = "TimeReport_TotalTimeInSeconds")]

@@ -27,6 +27,30 @@ DECLARE
 	   @TrackIds,
       @ReportType;
 
+
+DECLARE    
+   @StartDate DATETIME, 
+   @EndDate DATETIME,
+	@AccountIds NVARCHAR(MAX) = NULL,
+	@StreamStationIds NVARCHAR(MAX) = NULL,
+	@TrackIds NVARCHAR(MAX) = NULL,
+   @ReportType INT
+
+   SET @StartDate = '20180320'
+   SET @EndDate = '20180627'
+	SET @AccountIds = '1,2,11'
+	SET @StreamStationIds = '1,2,3,4,5,6,7,8,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45'
+	SET @TrackIds = '57,58,59,60,61,62,63,64,65,66,67,68'
+   SET @ReportType = 4
+
+   EXEC [sp_TimeReport]
+      @StartDate, 
+      @EndDate,
+	   @AccountIds,
+	   @StreamStationIds,
+	   @TrackIds,
+      @ReportType;
+
 */
 
 
@@ -140,8 +164,8 @@ BEGIN
       SELECT t.AccountId, t.AccountName, 
          t.StreamStationId, t.StreamStationName, 
          t.TrackId, T.Title, T.Artist, T.Length ,
-         SUM(t.QueryMatchLength) as AccountResultsInSeconds, CAST(DATEDIFF(SECOND, @StartDate, @EndDate) as BIGINT) as TotalTimeInSeconds,
-         SUM(t.QueryMatchLength) * 100 / DATEDIFF(SECOND, @StartDate, @EndDate) as AccountPercent
+         CAST(SUM(t.QueryMatchLength) as DECIMAL) as AccountResultsInSeconds, CAST(DATEDIFF(SECOND, @StartDate, @EndDate) as BIGINT) as TotalTimeInSeconds,
+         CAST(SUM(t.QueryMatchLength) * 100 / DATEDIFF(SECOND, @StartDate, @EndDate) as DECIMAL) as AccountPercent
       FROM #tmpResults t
       GROUP BY t.AccountId, t.AccountName, t.StreamStationId, t.StreamStationName, t.TrackId, t.Title, t.Artist, t.Length
    END
@@ -150,11 +174,32 @@ BEGIN
       SELECT t.AccountId, t.AccountName, 
          --t.StreamStationId, t.StreamStationName, 
          --t.TrackId, T.Title, T.Artist, T.Length ,
-         SUM(t.QueryMatchLength) as AccountResultsInSeconds, CAST(DATEDIFF(SECOND, @StartDate, @EndDate) as BIGINT) as TotalTimeInSeconds,
-         SUM(t.QueryMatchLength) * 100 / DATEDIFF(SECOND, @StartDate, @EndDate) as AccountPercent
+         CAST(SUM(t.QueryMatchLength) as DECIMAL) as AccountResultsInSeconds, CAST(DATEDIFF(SECOND, @StartDate, @EndDate) as BIGINT) as TotalTimeInSeconds,
+         CAST(SUM(t.QueryMatchLength) * 100 / DATEDIFF(SECOND, @StartDate, @EndDate) as DECIMAL) as AccountPercent
       FROM #tmpResults t
       GROUP BY t.AccountId, t.AccountName --, t.StreamStationId, t.StreamStationName, t.TrackId, t.Title, t.Artist, t.Length
    END
-
+   ELSE IF (@ReportType = 4) BEGIN
+      -- @ReportType = 4
+      SELECT t.AccountId, t.AccountName, 
+         t.StreamStationId, t.StreamStationName, 
+         t.TrackId, T.Title, T.Artist, T.Length ,
+         CAST(COUNT(t.ResultId) as BIGINT) AS CountAccountResults,
+         CAST(SUM(t.Length) as DECIMAL) as AccountResultsInSeconds, CAST(DATEDIFF(SECOND, @StartDate, @EndDate) as BIGINT) as TotalTimeInSeconds,
+         CAST(SUM(t.Length) * 100 / DATEDIFF(SECOND, @StartDate, @EndDate) as DECIMAL) as AccountPercent
+      FROM #tmpResults t
+      GROUP BY t.AccountId, t.AccountName, t.StreamStationId, t.StreamStationName, t.TrackId, t.Title, t.Artist, t.Length
+   END
+   ELSE IF (@ReportType = 5) BEGIN
+      -- @ReportType = 5
+      SELECT t.AccountId, t.AccountName, 
+         --t.StreamStationId, t.StreamStationName, 
+         --t.TrackId, T.Title, T.Artist, T.Length ,
+         CAST(COUNT(t.ResultId) as BIGINT) AS CountAccountResults,
+         CAST(SUM(t.Length) as DECIMAL) as AccountResultsInSeconds, CAST(DATEDIFF(SECOND, @StartDate, @EndDate) as BIGINT) as TotalTimeInSeconds,
+         CAST(SUM(t.Length) * 100 / DATEDIFF(SECOND, @StartDate, @EndDate) as DECIMAL) as AccountPercent
+      FROM #tmpResults t
+      GROUP BY t.AccountId, t.AccountName --, t.StreamStationId, t.StreamStationName, t.TrackId, t.Title, t.Artist, t.Length
+   END
 END
 

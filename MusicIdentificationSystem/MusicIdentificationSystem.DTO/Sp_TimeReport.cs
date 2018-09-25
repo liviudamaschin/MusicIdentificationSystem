@@ -20,6 +20,7 @@ namespace MusicIdentificationSystem.DTO
         public DateTime? StartTime { get; set; }
         public DateTime? EndTime { get; set; }
 
+        public long? CountAccountResults { get; set; }
         public decimal? AccountResultsInSeconds { get; set; }
         public long TotalTimeInSeconds { get; set; }
         public decimal? AccountPercent { get; set; }

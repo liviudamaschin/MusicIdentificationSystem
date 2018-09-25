@@ -275,9 +275,10 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
                 e.Row.Cells[12].Text = Resources.Resources.TimeReport_StreamFileName;
                 e.Row.Cells[13].Text = Resources.Resources.TimeReport_StreamStartTime;
                 e.Row.Cells[14].Text = Resources.Resources.TimeReport_StreamEndTime;
-                e.Row.Cells[15].Text = Resources.Resources.TimeReport_AccountResultsInSeconds;
-                e.Row.Cells[16].Text = Resources.Resources.TimeReport_TotalTimeInSeconds;
-                e.Row.Cells[17].Text = Resources.Resources.TimeReport_AccountPercent;
+                e.Row.Cells[15].Text = Resources.Resources.TimeReport_CountAccountResults;
+                e.Row.Cells[16].Text = Resources.Resources.TimeReport_AccountResultsInSeconds;
+                e.Row.Cells[17].Text = Resources.Resources.TimeReport_TotalTimeInSeconds;
+                e.Row.Cells[18].Text = Resources.Resources.TimeReport_AccountPercent;
             }
         }
     }

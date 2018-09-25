@@ -781,6 +781,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nr aparitii per cont.
+        /// </summary>
+        public static string TimeReport_CountAccountResults {
+            get {
+                return ResourceManager.GetString("TimeReport_CountAccountResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data final.
         /// </summary>
         public static string TimeReport_EndTime {
