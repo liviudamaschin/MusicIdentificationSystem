@@ -790,6 +790,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Va rog sa alegeti tipul de raport pe care doriti sa-l exportati!.
+        /// </summary>
+        public static string TimeReport_DownloadError {
+            get {
+                return ResourceManager.GetString("TimeReport_DownloadError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data final.
         /// </summary>
         public static string TimeReport_EndTime {

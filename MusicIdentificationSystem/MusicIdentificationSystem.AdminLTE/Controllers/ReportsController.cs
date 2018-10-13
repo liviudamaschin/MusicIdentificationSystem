@@ -34,8 +34,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
             {
                 var timeReportListModel = new TimeReportListModel();
 
-                timeReportListModel.StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-                timeReportListModel.EndDate = timeReportListModel.StartDate.AddMonths(1).AddDays(-1);
+                InitDataOnModel(timeReportListModel);
 
                 return View("TimeReport", timeReportListModel);
             }
@@ -222,10 +221,18 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
             catch (Exception ex)
             {
                 model = new TimeReportListModel();
+                InitDataOnModel(model);
             }
 
             try
             {
+                if (model == null)
+                {
+                    model = new TimeReportListModel();
+                    InitDataOnModel(model);
+                    throw new Exception(Resources.Resources.TimeReport_DownloadError);
+                }
+
                 #region TempData (transfer data from Controller to View  for Paging, Filtering and Sorting)
                 var lightModel = new TimeReportListModel()
                 {
@@ -244,6 +251,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
 
                 GridView gridView = new GridView();
                 gridView.RowDataBound += GridView_RowDataBound;
+                gridView.DataBound += GridView_DataBound;
                 gridView.DataSource = model.TimeReportModelsList;
                 gridView.DataBind();
 
@@ -260,6 +268,7 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
         {
             if (e.Row.RowType == DataControlRowType.Header)
             {
+                #region GridView header
                 e.Row.Cells[0].Text = Resources.Resources.TimeReport_AccountId;
                 e.Row.Cells[1].Text = Resources.Resources.TimeReport_AccountName;
                 e.Row.Cells[2].Text = Resources.Resources.TimeReport_StreamStationId;
@@ -279,7 +288,46 @@ namespace MusicIdentificationSystem.AdminLTE.Controllers
                 e.Row.Cells[16].Text = Resources.Resources.TimeReport_AccountResultsInSeconds;
                 e.Row.Cells[17].Text = Resources.Resources.TimeReport_TotalTimeInSeconds;
                 e.Row.Cells[18].Text = Resources.Resources.TimeReport_AccountPercent;
+                #endregion
+
+                #region Hide empty columns
+                GridView gridView = (GridView)sender;
+                var list = (List<TimeReportModel>)gridView.DataSource;
+
+                var properties = typeof(TimeReportModel).GetProperties().ToList();
+
+                for (var i = 0; i < properties.Count; i++)
+                {
+                    var property = properties[i];
+                    if (!list.Exists(x => property.GetValue(x) != null))
+                        e.Row.Cells[i].Visible = false;
+                }
+                #endregion
             }
+        }
+
+        protected void GridView_DataBound(object sender, EventArgs e)
+        {
+            #region Hide empty columns
+            GridView gridView = (GridView)sender;
+            var list = (List<TimeReportModel>)gridView.DataSource;
+
+            var properties = typeof(TimeReportModel).GetProperties().ToList();
+
+            for (var i = 0; i < properties.Count; i++)
+            {
+                var property = properties[i];
+                if (!list.Exists(x => property.GetValue(x) != null))
+                    foreach (var row in gridView.Rows)
+                        ((GridViewRow)row).Cells[i].Visible = false;
+            }
+            #endregion
+        }
+
+        private void InitDataOnModel(TimeReportListModel model)
+        {
+            model.StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            model.EndDate = model.StartDate.AddMonths(1).AddDays(-1);
         }
     }
 }
