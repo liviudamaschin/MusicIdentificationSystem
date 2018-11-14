@@ -9,7 +9,11 @@
 
         private static void ConvertFiles()
         {
-            MediaConvertor.ConvertFiles();
+            while (true)
+            {
+                MediaConvertor.ConvertFiles();
+
+            }
         }
     }
 }

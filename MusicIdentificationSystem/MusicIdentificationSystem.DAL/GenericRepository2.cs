@@ -115,7 +115,7 @@ namespace MusicIdentificationSystem.DAL
             {
                 procedureName += " " + string.Join(
                     ",",
-                    parameters.Select(x => string.Format("{0} = {0}", x.ParameterName)));
+                    parameters.Select(x => $"{x.ParameterName} = {x.SqlValue.ToString()}"));
                 sqlParameters.AddRange(parameters);
             }
             return this.context.Database.SqlQuery<U>(procedureName, sqlParameters.ToArray()).ToList();

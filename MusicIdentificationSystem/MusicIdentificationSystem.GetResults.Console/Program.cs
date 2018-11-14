@@ -15,7 +15,5 @@ namespace MusicIdentificationSystem.GetResults
             //MatchResults.MatchStream();
             MatchResults.MatchResultsFromStream();
         }
-
-            
     }
 }

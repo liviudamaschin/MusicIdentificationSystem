@@ -22,7 +22,7 @@ namespace MusicIdentificationSystem.DAL.DbEntities
         //[Column("FileNameTransformed")]
         public string FileNameTransformed { get; set; }
         public DateTime? ProcessDate { get; set; }
-
+        public string Status { get; set; }
         // Reverse navigation
 
         /// <summary>

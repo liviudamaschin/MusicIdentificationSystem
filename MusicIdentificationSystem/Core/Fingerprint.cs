@@ -94,7 +94,7 @@ namespace MusicIdentification.Core
             try
             {
 
-                int startAtSecond = 0; // start at the begining
+                int startAtSecond = 0; // start at the beginning
 
                 Mp3FileReader reader = new Mp3FileReader(queryAudioFile);
                 //WaveFileReader reader = new WaveFileReader(queryAudioFile);

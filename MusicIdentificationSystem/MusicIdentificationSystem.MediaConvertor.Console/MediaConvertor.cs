@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace MusicIdentificationSystem.MediaConvertor
 {
@@ -15,24 +16,38 @@ namespace MusicIdentificationSystem.MediaConvertor
         protected static readonly int Maxthreads = 2;
 
         protected static int BatchActiveThreadsCount = 0;
-        
+
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(MediaConvertor));
 
         public static void ConvertFiles()
         {
-            //UnitOfWork2 unitOfWork = new UnitOfWork2();
-            StreamRepository streamRepository = new StreamRepository();
-            StreamStationRepository streamStationRepository = new StreamStationRepository();
-            var streams = streamRepository.GetUnconvertedStreams();
-            foreach (var stream in streams)
+            try
             {
-                string convertedFileName;
-                string fileName = Path.Combine(cApp.AppSettings["StreamPath"], stream.FileName);
-                var streamStation = streamStationRepository.GetByID(stream.StationId);
-                Console.WriteLine($"Converting file {fileName}");
-                convertedFileName = MediaConvertor.ConvertCurrentFile(stream.Id, fileName, streamStation.LocalPath, streamStation.TransformFolder);
-               
-                Console.WriteLine($"converted file = {convertedFileName}");
+                //UnitOfWork2 unitOfWork = new UnitOfWork2();
+                StreamRepository streamRepository = new StreamRepository();
+                StreamStationRepository streamStationRepository = new StreamStationRepository();
+                var streams = streamRepository.GetUnconvertedStreams();
+                foreach (var stream in streams)
+                {
+                    string convertedFileName;
+                    string fileName = Path.Combine(cApp.AppSettings["StreamPath"], stream.FileName);
+                    var streamStation = streamStationRepository.GetByID(stream.StationId);
+                    Console.WriteLine($"Converting file {fileName}");
+                    log.Info($"Converting file {fileName}");
+                    convertedFileName = MediaConvertor.ConvertCurrentFile(stream.Id, fileName, streamStation.LocalPath, streamStation.TransformFolder);
+
+                    Console.WriteLine($"converted file = {convertedFileName}");
+                    log.Info($"converted file = {convertedFileName}");
+                }
             }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(e);
+                log.Error(ex.InnerException.Message);
+                log.Error($"Error: {JsonConvert.SerializeObject(ex)}");
+                throw;
+            }
+           
 
         }
         private static string ConvertCurrentFile(int streamId, string sourceFile, string folder, string convertFolder)

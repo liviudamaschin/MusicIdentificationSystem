@@ -13,6 +13,7 @@ namespace MusicIdentificationSystem.StreamCapture
 {
     public class RadioCapture
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(RadioCapture));
         String serverPath = "/";
 
         //private UnitOfWork2 unitOfWork;
@@ -202,6 +203,7 @@ namespace MusicIdentificationSystem.StreamCapture
 
 
                 Console.WriteLine("Start capture station {0}", station.StationName);
+                log.Info($"Start capture station {station.StationName}");
                 StreamStationEntity streamStation = streamStationRepository.GetByID(station.Id);
                 //StreamEntity streamEntity = null;
                 try
@@ -212,7 +214,7 @@ namespace MusicIdentificationSystem.StreamCapture
 
                     WebResponse resp = req.GetResponse();
                     stream = resp.GetResponseStream();
-                    var curentHour = DateTime.Now.Hour;
+                    var currentHour = DateTime.Now.Hour;
                     
                     fs = createNewFile(Path.Combine(cApp.AppSettings["StreamPath"], station.LocalPath), "defaultStream");
                     //stream = new StreamEntity();
@@ -232,7 +234,7 @@ namespace MusicIdentificationSystem.StreamCapture
                     //while (s.CanRead)
                     while (minutes == 0 || endTime > DateTime.Now || !ct.IsCancellationRequested)
                     {
-                        if (curentHour != DateTime.Now.Hour)
+                        if (currentHour != DateTime.Now.Hour)
                         {
                             if (fs != null)
                             {
@@ -253,7 +255,7 @@ namespace MusicIdentificationSystem.StreamCapture
                             streamEntity.StartTime = DateTime.Now;
                             streamRepository.Insert(streamEntity);
                             streamRepository.Save();
-                            curentHour = DateTime.Now.Hour;
+                            currentHour = DateTime.Now.Hour;
                         }
                         int bytesRead = stream.Read(buffer, 0, buffer.Length);
                         fs.Write(buffer, 0, bytesRead);
