@@ -471,4 +471,7 @@
   <data name="TimeReport_DownloadError" xml:space="preserve">
     <value>Va rog sa alegeti tipul de raport pe care doriti sa-l exportati!</value>
   </data>
+  <data name="Global_ApplicationName" xml:space="preserve">
+    <value>Music Identification System</value>
+  </data>
 </root>

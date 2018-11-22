@@ -178,7 +178,7 @@
                     $('#AccountModelsList').append($("<option/>", {
                         value: data[i].Id,
                         text: data[i].AccountName,
-                        selected: accountsArray ? accountsArray.includes(data[i].Id.toString()) : false
+                        selected: accountsArray ? accountsArray.indexOf(data[i].Id.toString()) > 0 : false
                     }));
                 };
                 $('#AccountModelsList').select2();
@@ -195,7 +195,7 @@
                     $('#StreamStationModelsList').append($("<option/>", {
                         value: data[i].Id,
                         text: data[i].StationName,
-                        selected: streamStationsArray ? streamStationsArray.includes(data[i].Id.toString()) : false
+                        selected: streamStationsArray ? streamStationsArray.indexOf(data[i].Id.toString()) > 0 : false
                     }));
                 };
                 $('#StreamStationModelsList').select2();
@@ -212,7 +212,7 @@
                     $('#TrackModelsList').append($("<option/>", {
                         value: data[i].Id,
                         text: data[i].Artist + " - " + data[i].Title,
-                        selected: tracksArray ? tracksArray.includes(data[i].Id.toString()) : false
+                        selected: tracksArray ? tracksArray.indexOf(data[i].Id.toString()) > 0 : false
                     }));
                 };
                 $('#TrackModelsList').select2();

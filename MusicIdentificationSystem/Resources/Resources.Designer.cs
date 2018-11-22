@@ -358,6 +358,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Music Identification System.
+        /// </summary>
+        public static string Global_ApplicationName {
+            get {
+                return ResourceManager.GetString("Global_ApplicationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
         public static string Global_Button_Back {
